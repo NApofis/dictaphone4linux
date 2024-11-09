@@ -13,28 +13,22 @@ jobs:
         with:
           submodules: true
 
-      - name: Build
-      - run: cmake --build .
+      - run: "
+          sudo apt-get update;
+          sudo apt-get install -y; 
+        "
+      - run: "
+          cmake .;
+          cmake --build .
+      "
+      - run: "
+        cmake --build . --target gtest;
+        ./tests --gtest_output=\"xml:test-results.xml\"
+      "
 
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload test result
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          tag_name: ${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dictaphone.deb
-          asset_name: dictaphone.deb
-          asset_content_type: application/vnd.debian.binary-package
+          name: test-results-ubuntu-static.xml
+          path: test-results.xml
