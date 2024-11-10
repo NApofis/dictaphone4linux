@@ -1,0 +1,50 @@
+name: 'Test'
+
+on:
+  push:
+    branches:
+      - 'feature/*'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - run: "
+          sudo apt-get update;
+          sudo apt-get install -y; 
+        "
+      - run: "
+          cmake .;
+          cmake --build .
+      "
+      - run: "
+        cmake --build . --target gtest;
+        ./tests --gtest_output=\"xml:test-results.xml\"
+      "
+
+      - name: Upload test result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-ubuntu-static.xml
+          path: test-results.xml
+
+      - name: Doxygen Action
+        uses: mattnotmitt/doxygen-action@v1.1.0
+        with:
+          doxyfile-path: ./Doxyfile
+          working-directory: .
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./doc/html/
+          enable_jekyll: false
+          allow_empty_commit: false
+          force_orphan: true
+          publish_branch: gh-pages

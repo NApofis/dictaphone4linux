@@ -16,4 +16,13 @@ target_link_libraries(tests
         gtest
         gtest_main
  )
+set(CPACK_GENERATOR DEB)
+set(CPACK_PACKAGE_CONTACT tihonovn.a@yandex.ru)
+set(CPACK_PACKAGE_VERSION ${RELEASE_VERSION})
+set(CPACK_PACKAGE_NAME "${PROJECT_NAME}-package"
+        CACHE STRING "The resulting package name"
+)
+include(CPack)
+
+#enable_testing()
 

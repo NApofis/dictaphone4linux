@@ -1,12 +1,17 @@
-name: 'dictaphone'
+name: 'Release'
 
 on:
-  push:
-    branches:
-      - 'feature/*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version'
+        required: true
+        type: string
+
+run-name: ${{ inputs.version }}
 
 jobs:
-  tests:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,17 +23,29 @@ jobs:
           sudo apt-get install -y; 
         "
       - run: "
-          cmake .;
-          cmake --build .
-      "
-      - run: "
-        cmake --build . --target gtest;
-        ./tests --gtest_output=\"xml:test-results.xml\"
+          cmake . -DRELEASE_VERSION=${{inputs.version}};
+          cmake --build .;
+          cmake --build . --target package
       "
 
-      - name: Upload test result
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: test-results-ubuntu-static.xml
-          path: test-results.xml
+          tag_name:  ${{ inputs.version }}
+          release_name: Release  ${{ inputs.version }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dictaphone-package-${{ inputs.version }}-Linux.deb
+          asset_name: dictaphone-package-${{ inputs.version }}-Linux.deb
+          asset_content_type: application/vnd.debian.binary-package
