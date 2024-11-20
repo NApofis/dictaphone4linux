@@ -1,7 +1,6 @@
 //
-// Created by ntikhonov on 09.11.24.
+// Created by ntikhonov on 16.11.24.
 //
-
 #include <iostream>
 
 int main()
