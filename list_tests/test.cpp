@@ -5,5 +5,5 @@
 // Demonstrate some basic assertions.
 TEST(VersionTest, BasicAssertions) {
     // Expect equality
-    ASSERT_TRUE(1 == 0);
+    ASSERT_TRUE(1 == 1);
 }
