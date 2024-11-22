@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
 project(dictaphone-common)
-set(CMAKE_CXX_STANDARD 20)
 
 add_library(${PROJECT_NAME} STATIC)
 add_library(libdictaphonecommon ALIAS ${PROJECT_NAME})

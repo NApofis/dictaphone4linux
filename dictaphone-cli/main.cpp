@@ -15,31 +15,31 @@ int main()
     UIConfigHandler config;
     UIDeleterRecords deleter(config.path_for_records);
 
-    auto devices = portaudio_devices::list_input_devices();
+    auto devices = portaudio::list_input_devices();
     std::vector<std::string> i_devices_4_show = {"None"};
     int index = 0;
     config.input_devices.push_back({index, {0, "None", "None", false}});
     for (const auto& d : devices)
     {
-        i_devices_4_show.push_back(d.description);
+        i_devices_4_show.push_back(d.human_name);
         index++;
         config.input_devices.emplace_back(index, d);
-        if(d.name == config.selected_input_device_name())
+        if(d.device == config.selected_input_device_name())
         {
             config.selected_input_device = index;
         }
     }
 
-    devices = portaudio_devices::list_output_devices();
+    devices = portaudio::list_output_devices();
     std::vector<std::string> o_devices_4_show = {"None"};
     index = 0;
     config.output_devices.push_back({0, {0, "None", "None", false}});
     for (const auto& d : devices)
     {
-        o_devices_4_show.push_back(d.description);
+        o_devices_4_show.push_back(d.human_name);
         index++;
         config.output_devices.emplace_back(index, d);
-        if(d.name == config.selected_output_device_name())
+        if(d.device == config.selected_output_device_name())
         {
             config.selected_output_device = index;
         }
@@ -108,7 +108,7 @@ int main()
 
                 hbox(text(" Путь до папки для хранения записей : "), element_path4records->Render()),
                 hbox(text(" Размер одной записи в минутах : "), element_file_size->Render()),
-                hbox(text(" Время хранения записей в минутах : "), element_shelf_life->Render()),
+                hbox(text(" Время хранения записей в днях : "), element_shelf_life->Render()),
                 hbox(text("")),
                 hbox(save_button->Render()) | align_right,
                 hbox(text(message_config)),

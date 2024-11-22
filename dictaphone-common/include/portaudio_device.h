@@ -8,18 +8,20 @@
 #include <vector>
 
 
-namespace portaudio_devices
+namespace portaudio
 {
-    struct Device
+    struct DeviceInfo
     {
         int id;
-        std::string name;
-        std::string description;
-        bool default_device;
-
+        std::string device;
+        std::string human_name;
+        const DeviceInfo* ref_device;
     };
 
-    std::vector<Device> list_input_devices();
-    std::vector<Device> list_output_devices();
+    std::vector<DeviceInfo> list_input_devices();
+    std::vector<DeviceInfo> list_output_devices();
+
+    bool create_input_device_module(const DeviceInfo& dev);
+    bool create_output_device_module(const DeviceInfo& device);
 
 }

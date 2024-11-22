@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(dictaphone)
+set(CMAKE_CXX_STANDARD 20)
 
 file (GLOB TESTS_LIST
         ${CMAKE_CURRENT_SOURCE_DIR}/list_tests/*.cpp

@@ -30,7 +30,7 @@ std::string execute_command(const std::string& cmd)
     return result;
 }
 
-namespace portaudio_devices
+namespace portaudio
 {
     const std::string SEPARATOR = "index: ";
 
@@ -53,7 +53,7 @@ namespace portaudio_devices
         return result;
     }
 
-    std::vector<Device> load_list_devices(const std::string& command)
+    std::vector<DeviceInfo> load_list_devices(const std::string& command)
     {
         const std::string command_result = execute_command(command);
         const auto devices = split_by_index(command_result);
@@ -72,7 +72,7 @@ namespace portaudio_devices
             }
             return "";
         };
-        std::vector<Device> result;
+        std::vector<DeviceInfo> result;
         bool next_default = false;
         for(const auto& device : devices)
         {
@@ -82,7 +82,6 @@ namespace portaudio_devices
                 {
                     auto& [id, name, description, default_device] = result.emplace_back();
                     id = stoi(read_value(device, SEPARATOR, 0));
-                    default_device = next_default;
                     name = current_name;
                     description = read_value(device, "device.description = ", '"');
                 }
@@ -93,15 +92,48 @@ namespace portaudio_devices
         return result;
     }
 
-    std::vector<Device> list_input_devices()
+    std::vector<DeviceInfo> list_input_devices()
     {
         return load_list_devices("pacmd list-sources");
     }
-    std::vector<Device> list_output_devices()
+    std::vector<DeviceInfo> list_output_devices()
     {
         return load_list_devices("pacmd list-sinks");
     }
 
 
+    bool create_input_device_module(const DeviceInfo& dev)
+    {
+        std::string cmd = "pacmd load-module module-remap-source master=" + dev.device +
+            " source_name=" + dev.ref_device->device +
+            " source_properties=\"'device.description=\"" + dev.human_name + "\"'\"";
+        execute_command(cmd);
+        auto tests = list_input_devices();
+        for (const auto& test : tests)
+        {
+            if(test.device == dev.ref_device->device && test.human_name == dev.human_name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool create_output_device_module(const DeviceInfo& dev)
+    {
+        std::string cmd = "pacmd load-module module-remap-source master=" + dev.device +
+            " source_name=" + dev.ref_device->device +
+            " source_properties=\"'device.description=\"" + dev.human_name + "\"'\"";
+        execute_command(cmd);
+        auto tests = list_input_devices();
+        for (const auto& test : tests)
+        {
+            if(test.device == dev.ref_device->device && test.human_name == dev.human_name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 

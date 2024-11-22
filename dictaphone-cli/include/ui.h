@@ -17,8 +17,8 @@ struct UIConfigHandler
     std::string shelf_life;
     std::string file_minute_size;
 
-    std::vector<std::pair<unsigned int, portaudio_devices::Device>> input_devices;
-    std::vector<std::pair<unsigned int, portaudio_devices::Device>> output_devices;
+    std::vector<std::pair<unsigned int, portaudio::DeviceInfo>> input_devices;
+    std::vector<std::pair<unsigned int, portaudio::DeviceInfo>> output_devices;
 
     bool save_config(std::string& message);
     [[nodiscard]] std::string selected_input_device_name() const { return config->input_device(); }

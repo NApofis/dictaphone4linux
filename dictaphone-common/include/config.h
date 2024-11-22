@@ -35,7 +35,7 @@ class Config
 public:
     Config();
 
-    bool save() const;
+    [[nodiscard]] bool save() const;
 
     std::string input_device() { return fields["input device"]; }
     void input_device(const std::string& val) { fields["input device"] = val; }
