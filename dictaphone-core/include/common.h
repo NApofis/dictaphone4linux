@@ -3,11 +3,34 @@
 //
 
 #pragma once
-#include "config.h"
-
 #include <syslog.h>
+#include <list>
+#include <vector>
+
+#include "config.h"
+#include "portaudio.h"
 
 const std::string DAEMON_NAME = "dictaphone4linux";
+constexpr size_t BUFFERS_COUNT = 20;
+constexpr size_t SAMPLE_RATE = 44100;
+constexpr size_t NUM_CHANNELS = 1;
+
+using SAMPLE_TYPE = short;
+constexpr unsigned long SAMPLE_VAL = []() constexpr -> unsigned long
+{
+    if(std::is_same_v<SAMPLE_TYPE, int>)
+    {
+        return paInt32;
+    }
+    else if(std::is_same_v<SAMPLE_TYPE, short>)
+    {
+        return paInt16;
+    }
+    else
+    {
+        return paFloat32;
+    }
+}();
 
 enum class Status
 {
@@ -17,7 +40,7 @@ enum class Status
 // Состоянеие устройства
 // название устройства
 using dev_status = std::pair< Status, std::string >;
-using records_storage = std::shared_ptr<std::list<std::shared_ptr<std::vector<char>>>>;
+using records_storage = std::shared_ptr<std::list<std::shared_ptr<std::vector<SAMPLE_TYPE>>>>;
 
 class Loger
 {
@@ -53,7 +76,7 @@ private:
     {
         syslog(priority, "%s", message.c_str());
         std::ofstream out;
-        out.open("/home/nik/test.txt", std::ios::app);
+        out.open(PROGRAM_ROOT_PATH+"/log.txt", std::ios::app);
         out << message << std::endl;
         out.close();
     }

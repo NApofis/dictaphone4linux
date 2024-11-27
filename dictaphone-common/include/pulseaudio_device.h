@@ -7,8 +7,9 @@
 #include <string>
 #include <vector>
 
+std::string execute_command(const std::string& cmd);
 
-namespace portaudio
+namespace pulseaudio
 {
     struct DeviceInfo
     {
@@ -25,3 +26,4 @@ namespace portaudio
     bool create_output_device_module(const DeviceInfo& device);
 
 }
+

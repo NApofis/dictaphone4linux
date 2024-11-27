@@ -3,11 +3,9 @@
 //
 
 #include <chrono>
-#include <filesystem>
 #include <portaudio.h>
 
 #include "config_handler.h"
-#include "portaudio_device.h"
 #include "records.h"
 #include "common.h"
 
@@ -43,7 +41,7 @@ void CoreConfigHandler::delete_old_records() const
     Loger::info("Удалено " + std::to_string(result) + " записей");
 }
 
-std::string CoreConfigHandler::receive_input_device(const portaudio::DeviceInfo& other)
+std::string CoreConfigHandler::receive_input_device(const pulseaudio::DeviceInfo& other)
 {
     std::string my_dev_human_name = other.human_name + " " + DAEMON_NAME;
     auto one_of_vector = check_portaudio_device({other.human_name, my_dev_human_name});
@@ -52,7 +50,7 @@ std::string CoreConfigHandler::receive_input_device(const portaudio::DeviceInfo&
         return one_of_vector;
     }
 
-    portaudio::create_input_device_module({0, DAEMON_NAME, my_dev_human_name, &other});
+    pulseaudio::create_input_device_module({0, DAEMON_NAME, my_dev_human_name, &other});
     one_of_vector = check_portaudio_device({my_dev_human_name});
     if(!one_of_vector.empty())
     {
@@ -65,7 +63,7 @@ std::string CoreConfigHandler::receive_input_device(const portaudio::DeviceInfo&
 
 std::string CoreConfigHandler::get_input_device_module() const
 {
-    auto device_list = portaudio::list_input_devices();
+    auto device_list = pulseaudio::list_input_devices();
     decltype(device_list)::const_iterator iter;
     bool found = false;
     for(auto i = device_list.cbegin(); i != device_list.cend(); i++)
@@ -88,7 +86,7 @@ std::string CoreConfigHandler::get_input_device_module() const
 
 std::string CoreConfigHandler::get_output_device_module() const
 {
-    auto device_list = portaudio::list_output_devices();
+    auto device_list = pulseaudio::list_output_devices();
     decltype(device_list)::const_iterator iter;
 
     bool found = false;
@@ -115,7 +113,7 @@ std::string CoreConfigHandler::get_output_device_module() const
         return receive_input_device({0, combiner_device + ".monitor", combiner_human_name});
     }
 
-    portaudio::create_output_device_module({0, DAEMON_NAME + " combiner", combiner_human_name, &*iter});
+    pulseaudio::create_output_device_module({0, DAEMON_NAME + " combiner", combiner_human_name, &*iter});
     one_of_vector = check_portaudio_device({combiner_human_name});
     if(!one_of_vector.empty())
     {

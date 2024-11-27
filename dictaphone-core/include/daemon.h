@@ -9,6 +9,7 @@
 #include <atomic>
 #include <mutex>
 #include <condition_variable>
+#include <controllers.h>
 #include <fstream>
 #include <filesystem>
 
@@ -47,6 +48,10 @@ class Daemon
     std::int32_t exit_code = EXIT_SUCCESS;
     static pid_t thread_pid;
 
+    std::unique_ptr<iChain> start;
+    std::shared_ptr<Data> data;
+
+
 public:
     static Daemon* create(const DaemonDuration& update_duration = std::chrono::seconds(10));
 
@@ -63,28 +68,9 @@ public:
 private:
     Daemon() : lock_file_hnd(lock_file, std::defer_lock) {}
 
-    void on_start()
-    {
-        std::ofstream out;
-        out.open("/home/nik/test.txt", std::ios::app);
-        out << "start" << std::endl;
-        out.close();
-    };
-    void on_update()
-    {
-        std::ofstream out;
-        out.open("/home/nik/test.txt", std::ios::app);
-        out << "update" << std::endl;
-        out.close();
-    };
-    void on_stop()
-    {
-        std::ofstream out;
-        out.open("/home/nik/test.txt", std::ios::app);
-        out << "end" << std::endl;
-        out.close();
-    };
-    void on_reload() {};
+    void on_start();
+    void on_update() const;
+    void on_stop() const;
 
     static void signal_handler(int sig);
     static void daemonize();

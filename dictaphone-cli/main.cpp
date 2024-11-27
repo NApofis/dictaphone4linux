@@ -6,6 +6,8 @@
 #include "ftxui/util/ref.hpp"  // for Ref
 
 #include "ui.h"
+#include "daemon_command.h"
+#include "pulseaudio_device.h"
 
 using namespace ftxui;
 
@@ -15,10 +17,10 @@ int main()
     UIConfigHandler config;
     UIDeleterRecords deleter(config.path_for_records);
 
-    auto devices = portaudio::list_input_devices();
+    auto devices = pulseaudio::list_input_devices();
     std::vector<std::string> i_devices_4_show = {"None"};
     int index = 0;
-    config.input_devices.push_back({index, {0, "None", "None", false}});
+    config.input_devices.push_back(std::make_pair(index, pulseaudio::DeviceInfo{0, "None", "None", nullptr}));
     for (const auto& d : devices)
     {
         i_devices_4_show.push_back(d.human_name);
@@ -30,10 +32,10 @@ int main()
         }
     }
 
-    devices = portaudio::list_output_devices();
+    devices = pulseaudio::list_output_devices();
     std::vector<std::string> o_devices_4_show = {"None"};
     index = 0;
-    config.output_devices.push_back({0, {0, "None", "None", false}});
+    config.output_devices.push_back(std::make_pair(0, pulseaudio::DeviceInfo{0, "None", "None", nullptr}));
     for (const auto& d : devices)
     {
         o_devices_4_show.push_back(d.human_name);
@@ -78,6 +80,24 @@ int main()
         deleter.delete_records(message_deleter);
     }, ButtonOption::Animated(Color::Red));
 
+    bool daemon_work = daemon_command::is_work();
+    std::string record_button_current_text = daemon_work ? "Остановить запись" : "Начать запись";
+    auto record_button = Button(&record_button_current_text, [& daemon_work, &record_button_current_text]()
+    {
+        if(daemon_work)
+        {
+            daemon_command::stop();
+            daemon_work = false;
+            record_button_current_text = "Начать запись";
+        }
+        else
+        {
+            daemon_command::start();
+            daemon_work = true;
+            record_button_current_text = "Остановить запись";
+        }
+    }, ButtonOption::Animated(Color::Default, Color::GrayDark, Color::Default, Color::White));
+
     auto cancel_button = Button("Закрыть", screen.ExitLoopClosure(), ButtonOption::Animated());
 
 
@@ -90,7 +110,7 @@ int main()
         Container::Horizontal({element_shelf_life}),
         Container::Horizontal({save_button}),
         Container::Horizontal({element_delete_period_value, element_delete_period, delete_button}),
-        Container::Horizontal({cancel_button})
+        Container::Horizontal({record_button, cancel_button})
     });
 
 
@@ -128,7 +148,7 @@ int main()
                 hbox(text(message_deleter))
             })| border,
 
-            hbox(filler(), cancel_button->Render()) | align_right,
+            hbox(record_button->Render(), filler(), cancel_button->Render()) ,
         }) | border;
 
     });

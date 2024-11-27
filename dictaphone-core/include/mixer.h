@@ -5,52 +5,69 @@
 #pragma once
 
 #include <atomic>
-#include <list>
-#include <string>
 #include <utility>
 #include <vector>
 #include <memory>
-#include <stdatomic.h>
+#include <thread>
+#include <shared_mutex>
 #include <unordered_map>
 
-#include <common.h>
-#include <device_handler.h>
+#include "common.h"
 
 
-class Mixer
+class Keeper
 {
-    struct BuffersList
-    {
-        struct Buffer
-        {
-            std::vector<char> data; // TODO size
-            char* prt = data.data();
-            size_t size = 0;
-        };
-        bool full = false;
-        size_t max_size = 0;
-        std::pmr::unordered_map<std::string, Buffer> buffers;
-    };
-    std::list<BuffersList> buffers;
-
-    std::shared_ptr<std::atomic_bool> stop;
-    records_storage result;
-    unsigned int minutes;
-    std::shared_ptr<std::mutex> result_locker;
 
 public:
-    Mixer(const std::shared_ptr<atomic_bool>& stop_flag,
-          records_storage storage,
-          std::shared_ptr<std::mutex> lock,
-          unsigned long size_minute) :
-    stop(stop_flag), result(std::move(storage)), result_locker(std::move(lock)), minutes(size_minute)
-    {
+    Keeper() = default;
+    virtual ~Keeper() = default;
+    virtual std::shared_ptr<std::vector<SAMPLE_TYPE>> get_place(const std::string& name, unsigned int& prev) = 0;
+};
 
+class Mixer final : public Keeper
+{
+
+    std::unordered_map<std::string, std::vector<std::shared_ptr<std::vector<SAMPLE_TYPE>>>> buffers;
+
+    unsigned int device_count = 0;
+    std::atomic_uint32_t max_buffer_number = 0;
+
+
+    std::shared_ptr<std::atomic_bool> stop_flag;
+
+    records_storage result_storage;
+    std::shared_ptr<std::vector<SAMPLE_TYPE>> result;
+    std::shared_ptr<std::mutex> result_locker;
+    size_t save_size = 10485760 / sizeof(SAMPLE_TYPE);
+
+    std::thread thread;
+    unsigned int device_buffer_number = 0;
+    std::mutex mixer_lock;
+
+    std::vector<SAMPLE_TYPE> residue_buffer;
+    void buffering();
+    static size_t calculate_index(unsigned int buffer_number);
+    static void insert_back(std::vector<SAMPLE_TYPE>& place, std::vector<SAMPLE_TYPE>& data);
+    static void mixer(std::vector<SAMPLE_TYPE>& place, size_t& start, std::vector<SAMPLE_TYPE>& data);
+    static void extra_mixer(std::vector<SAMPLE_TYPE>& place, size_t& start, size_t size, std::vector<SAMPLE_TYPE>& data);
+
+public:
+    Mixer(records_storage storage,
+          std::shared_ptr<std::mutex> lock) :
+        result_storage(std::move(storage)), result_locker(std::move(lock))
+    {
+    };
+    ~Mixer() override
+    {
+        stop();
     };
 
-    void registration(const std::string& name);
 
-    void* get_place(const std::string& name);
+    bool add_device(const std::string& name);
+    void remove_device(const std::string& name);
+    std::shared_ptr<std::vector<SAMPLE_TYPE>> get_place(const std::string& name, unsigned int& prev) override;
 
+    void run();
+    void stop();
 
 };

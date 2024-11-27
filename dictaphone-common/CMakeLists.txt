@@ -39,7 +39,6 @@ target_link_libraries(${PROJECT_NAME}
         ${PORTAUDIO_STATIC_LIB}
         ${ALSA_LIBRARIES}
         ${PULSEAUDIO_LIBRARY}
-        ${DATE_STATIC_LIB}
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -47,7 +46,6 @@ target_include_directories(${PROJECT_NAME}
             include
             ${PORTAUDIO_INCLUDE_DIR}
         PRIVATE
-            ${DATE_INCLUDE_DIR}
             ${ALSA_INCLUDE_DIRS}
             ${PULSEAUDIO_INCLUDE_DIR}
 )

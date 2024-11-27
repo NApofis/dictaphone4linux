@@ -37,7 +37,7 @@ namespace records
                 filename.size() - RECORD_FILE_NAME_MASK.size() - RECORD_FILE_NAME_EXTENSION.size());
 
             std::tm tm = {};
-            strptime(time_created.c_str(), "%Y-%m-%d_%H-%M", &tm);
+            strptime(time_created.c_str(), RECORD_FILE_NAME_POSTFIX.c_str(), &tm);
             auto tp = std::chrono::system_clock::from_time_t(std::mktime(&tm));
             if(com(&tp, time))
             {

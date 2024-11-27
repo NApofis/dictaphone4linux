@@ -6,8 +6,9 @@
 #include <memory>
 #include <string>
 #include <bits/stl_vector.h>
+#include <filesystem>
 
-#include <portaudio_device.h>
+#include "pulseaudio_device.h"
 #include "config.h"
 
 struct CoreConfigHandler
@@ -23,7 +24,7 @@ struct CoreConfigHandler
 
     CoreConfigHandler()
     {
-        last_check = std::chrono::system_clock::now();
+        last_check = std::filesystem::last_write_time(CONFIG_FILE_PATH);
         config = std::make_shared<Config>();
     };
 
@@ -32,6 +33,6 @@ private:
     std::shared_ptr<Config> config;
     std::chrono::time_point<std::chrono::file_clock> last_check;
 
-    [[nodiscard]] static std::string receive_input_device(const portaudio::DeviceInfo& other);
+    [[nodiscard]] static std::string receive_input_device(const pulseaudio::DeviceInfo& other);
     [[nodiscard]] static std::string check_portaudio_device(const std::vector<std::string>& names) ;
 };

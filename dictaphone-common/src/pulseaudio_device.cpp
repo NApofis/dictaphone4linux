@@ -5,8 +5,7 @@
 #include <string>
 #include <array>
 
-#include "portaudio.h"
-#include "portaudio_device.h"
+#include "pulseaudio_device.h"
 
 
 std::string execute_command(const std::string& cmd)
@@ -30,7 +29,7 @@ std::string execute_command(const std::string& cmd)
     return result;
 }
 
-namespace portaudio
+namespace pulseaudio
 {
     const std::string SEPARATOR = "index: ";
 
@@ -73,21 +72,18 @@ namespace portaudio
             return "";
         };
         std::vector<DeviceInfo> result;
-        bool next_default = false;
         for(const auto& device : devices)
         {
             if(device.find("ports:") != std::string::npos && device.find("active port:") != std::string::npos)
             {
                 if(auto current_name = read_value(device, "name: ", '<'); !current_name.empty())
                 {
-                    auto& [id, name, description, default_device] = result.emplace_back();
-                    id = stoi(read_value(device, SEPARATOR, 0));
-                    name = current_name;
-                    description = read_value(device, "device.description = ", '"');
+                    auto& dev = result.emplace_back();
+                    dev.id = stoi(read_value(device, SEPARATOR, 0));
+                    dev.device = current_name;
+                    dev.human_name = read_value(device, "device.description = ", '"');
                 }
             }
-            next_default = device.find_first_of('*') != std::string::npos;
-
         }
         return result;
     }

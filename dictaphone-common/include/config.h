@@ -14,6 +14,7 @@ const std::string CONFIG_FILE_PATH = PROGRAM_ROOT_PATH+"/config.conf";
 const std::string START_STRING = "# Config file for dictaphone";
 const std::string JOIN_STRING = ": ";
 const std::string RECORD_FILE_NAME_MASK = "dictaphone_record_";
+const std::string RECORD_FILE_NAME_POSTFIX = "%Y-%m-%d_%H-%M";
 const std::string RECORD_FILE_NAME_EXTENSION = ".wav";
 
 
