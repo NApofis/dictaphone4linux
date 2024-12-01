@@ -14,6 +14,7 @@ const std::string DAEMON_NAME = "dictaphone4linux";
 constexpr size_t BUFFERS_COUNT = 20;
 constexpr size_t SAMPLE_RATE = 44100;
 constexpr size_t NUM_CHANNELS = 1;
+constexpr size_t CHUNK_BUFFER_SIZE = 512; // 1/25
 
 using SAMPLE_TYPE = short;
 constexpr unsigned long SAMPLE_VAL = []() constexpr -> unsigned long
@@ -40,7 +41,9 @@ enum class Status
 // Состоянеие устройства
 // название устройства
 using dev_status = std::pair< Status, std::string >;
-using records_storage = std::shared_ptr<std::list<std::shared_ptr<std::vector<SAMPLE_TYPE>>>>;
+using record_sample_data = std::shared_ptr<std::vector<SAMPLE_TYPE>>;
+using device_sample = std::pair<SAMPLE_TYPE*, size_t>;
+using records_storage = std::shared_ptr<std::list<record_sample_data>>;
 
 class Loger
 {

@@ -4,8 +4,11 @@
 #include <iostream>
 #include <string>
 #include <array>
+#include <fstream>
 
 #include "pulseaudio_device.h"
+
+#include <complex>
 
 
 std::string execute_command(const std::string& cmd)
@@ -29,6 +32,8 @@ std::string execute_command(const std::string& cmd)
     return result;
 }
 
+
+
 namespace pulseaudio
 {
     const std::string SEPARATOR = "index: ";
@@ -49,6 +54,7 @@ namespace pulseaudio
             start = find + SEPARATOR.size();
             find = str.find(SEPARATOR, start);
         }
+        result.push_back(str.substr(start - SEPARATOR.size()));
         return result;
     }
 
@@ -74,18 +80,31 @@ namespace pulseaudio
         std::vector<DeviceInfo> result;
         for(const auto& device : devices)
         {
-            if(device.find("ports:") != std::string::npos && device.find("active port:") != std::string::npos)
+            if(auto current_name = read_value(device, "name: ", '<'); !current_name.empty())
             {
-                if(auto current_name = read_value(device, "name: ", '<'); !current_name.empty())
-                {
-                    auto& dev = result.emplace_back();
-                    dev.id = stoi(read_value(device, SEPARATOR, 0));
-                    dev.device = current_name;
-                    dev.human_name = read_value(device, "device.description = ", '"');
-                }
+                auto& dev = result.emplace_back();
+                dev.real = device.find("ports:") != std::string::npos && device.find("active port:") != std::string::npos;
+                dev.id = stoi(read_value(device, SEPARATOR, 0));
+                dev.device = current_name;
+                dev.human_name = read_value(device, "device.description = ", '"');
             }
         }
         return result;
+    }
+
+    DeviceInfo* find(std::vector<DeviceInfo>& devices,
+        const std::string* device, const std::string* human_name, const bool* real)
+    {
+        for (auto& info : devices)
+        {
+            if((!device || *device == info.device) &&
+                (!human_name || *human_name == info.human_name) &&
+                (!real || *real == info.real))
+            {
+                return &info;
+            }
+        }
+        return nullptr;
     }
 
     std::vector<DeviceInfo> list_input_devices()
@@ -100,36 +119,25 @@ namespace pulseaudio
 
     bool create_input_device_module(const DeviceInfo& dev)
     {
-        std::string cmd = "pacmd load-module module-remap-source master=" + dev.device +
-            " source_name=" + dev.ref_device->device +
-            " source_properties=\"'device.description=\"" + dev.human_name + "\"'\"";
+        std::string cmd = "pacmd load-module module-remap-source master=" + dev.master +
+            " source_name=" + dev.device +
+            R"( source_properties="'device.description=\")" + dev.human_name + R"(\"'")";
         execute_command(cmd);
         auto tests = list_input_devices();
-        for (const auto& test : tests)
-        {
-            if(test.device == dev.ref_device->device && test.human_name == dev.human_name)
-            {
-                return true;
-            }
-        }
-        return false;
+        constexpr bool real = false;
+        return find(tests, &dev.device, &dev.human_name, &real);
     }
 
     bool create_output_device_module(const DeviceInfo& dev)
     {
-        std::string cmd = "pacmd load-module module-remap-source master=" + dev.device +
-            " source_name=" + dev.ref_device->device +
-            " source_properties=\"'device.description=\"" + dev.human_name + "\"'\"";
+        const std::string cmd = "pacmd load-module module-combine-sink sink_name=" + dev.device +
+            " slaves=" + dev.master +
+            R"( sink_properties="'device.description=\")" + dev.human_name + R"(\"'")";
+
         execute_command(cmd);
-        auto tests = list_input_devices();
-        for (const auto& test : tests)
-        {
-            if(test.device == dev.ref_device->device && test.human_name == dev.human_name)
-            {
-                return true;
-            }
-        }
-        return false;
+        auto tests = list_output_devices();
+        constexpr bool real = false;
+        return find(tests, &dev.device, &dev.human_name, &real);
     }
 }
 

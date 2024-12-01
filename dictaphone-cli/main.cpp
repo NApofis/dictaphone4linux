@@ -18,32 +18,38 @@ int main()
     UIDeleterRecords deleter(config.path_for_records);
 
     auto devices = pulseaudio::list_input_devices();
-    std::vector<std::string> i_devices_4_show = {"None"};
+    std::vector<std::string> i_devices_4_show = {NONE_DEVICE};
     int index = 0;
-    config.input_devices.push_back(std::make_pair(index, pulseaudio::DeviceInfo{0, "None", "None", nullptr}));
+    config.input_devices.emplace_back(index, pulseaudio::DeviceInfo{0, NONE_DEVICE, NONE_DEVICE, nullptr});
     for (const auto& d : devices)
     {
-        i_devices_4_show.push_back(d.human_name);
-        index++;
-        config.input_devices.emplace_back(index, d);
-        if(d.device == config.selected_input_device_name())
+        if(d.real)
         {
-            config.selected_input_device = index;
+            i_devices_4_show.push_back(d.human_name);
+            index++;
+            config.input_devices.emplace_back(index, d);
+            if(d.device == config.selected_input_device_name())
+            {
+                config.selected_input_device = index;
+            }
         }
     }
 
     devices = pulseaudio::list_output_devices();
-    std::vector<std::string> o_devices_4_show = {"None"};
+    std::vector<std::string> o_devices_4_show = {NONE_DEVICE};
     index = 0;
-    config.output_devices.push_back(std::make_pair(0, pulseaudio::DeviceInfo{0, "None", "None", nullptr}));
+    config.output_devices.emplace_back(0, pulseaudio::DeviceInfo{0, NONE_DEVICE, NONE_DEVICE, nullptr});
     for (const auto& d : devices)
     {
-        o_devices_4_show.push_back(d.human_name);
-        index++;
-        config.output_devices.emplace_back(index, d);
-        if(d.device == config.selected_output_device_name())
+        if(d.real)
         {
-            config.selected_output_device = index;
+            o_devices_4_show.push_back(d.human_name);
+            index++;
+            config.output_devices.emplace_back(index, d);
+            if(d.device == config.selected_output_device_name())
+            {
+                config.selected_output_device = index;
+            }
         }
     }
 

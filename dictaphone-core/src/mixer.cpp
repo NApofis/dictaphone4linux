@@ -7,17 +7,17 @@
 
 #include "mixer.h"
 
-void Mixer::insert_back(std::vector<SAMPLE_TYPE>& place, std::vector<SAMPLE_TYPE>& data)
+void Mixer::insert_back(record_sample_data place, device_sample data)
 {
-    place.insert(place.end(), data.begin(), data.end());
-    memset(data.data(), 0, SAMPLE_RATE);
+    place->insert(place->end(), data.first, data.first + data.second);
+    memset(data.first, 0, SAMPLE_RATE);
 }
 
-void Mixer::mixer(std::vector<SAMPLE_TYPE>& place, size_t& start, std::vector<SAMPLE_TYPE>& data)
+void Mixer::mixer(record_sample_data place, size_t& start, device_sample data)
 {
-    for(auto& val: data)
+    for(size_t i = 0; i < data.second; i++)
     {
-        auto sound = val + place[start];
+        long sound = data.first[i] + (*place)[start] - (data.first[i] * (*place)[start] >> 0x10);
         if(sound > std::numeric_limits<SAMPLE_TYPE>::max())
         {
             sound = std::numeric_limits<SAMPLE_TYPE>::max();
@@ -26,8 +26,8 @@ void Mixer::mixer(std::vector<SAMPLE_TYPE>& place, size_t& start, std::vector<SA
         {
             sound = std::numeric_limits<SAMPLE_TYPE>::min();
         }
-        val = 0;
-        place[start] = sound;
+        data.first[i] = 0;
+        (*place)[start] = sound;
         start++;
     }
 }
@@ -39,17 +39,18 @@ size_t Mixer::calculate_index(const unsigned int buffer_number)
     return i;
 }
 
-void Mixer::extra_mixer(std::vector<SAMPLE_TYPE>& place, size_t& start, const size_t size, std::vector<SAMPLE_TYPE>& data)
+void Mixer::residue_mixer(record_sample_data place, size_t& start, const size_t size, record_sample_data data)
 {
-    if(data.size() <= size)
+    if(data->size() <= size)
     {
-        return mixer(place, start, data);
+
+        return mixer(place, start, {data->data(), data->size()});
     }
-    std::vector<SAMPLE_TYPE> mixer_part{data.begin(), data.begin() + size};
+    device_sample mixer_part(data->data(), size);
     mixer(place, start, mixer_part);
-    std::vector<SAMPLE_TYPE> insert_part{data.begin() + size, data.end()};
+    device_sample insert_part(data->data() + size, data->size() - size);
     insert_back(place, insert_part);
-    memset(place.data(), 0, SAMPLE_RATE);
+    data->clear();
 }
 
 
@@ -58,14 +59,16 @@ void Mixer::extra_mixer(std::vector<SAMPLE_TYPE>& place, size_t& start, const si
 bool Mixer::add_device(const std::string& name)
 {
     std::lock_guard local_lock(mixer_lock);
-    if(!residue_buffer.empty())
+    if(!residue_buffer->empty())
     {
         return false;
     }
 
     for(int i = 0; i < BUFFERS_COUNT; i++)
     {
-        buffers[name].emplace_back(std::make_shared<std::vector<SAMPLE_TYPE>>(SAMPLE_RATE, 0));
+        auto s = SAMPLE_RATE / CHUNK_BUFFER_SIZE;
+        buffers[name].emplace_back(std::make_pair(new SAMPLE_TYPE[s * CHUNK_BUFFER_SIZE], s * CHUNK_BUFFER_SIZE));
+        memset(buffers[name].back().first, 0, buffers[name].back().second);
     }
     return true;
 }
@@ -74,25 +77,31 @@ void Mixer::remove_device(const std::string& name)
 {
     std::lock_guard<std::mutex> local_lock(mixer_lock);
     const unsigned int max = max_buffer_number.load();
-    bool residue_empty = residue_buffer.empty();
+    bool residue_empty = residue_buffer->empty();
     size_t start = 0;
     for(unsigned int i = device_buffer_number; i < max; i++)
     {
         if(residue_empty)
         {
-            insert_back(residue_buffer, *buffers[name][calculate_index(i)]);
+            insert_back(residue_buffer, buffers[name][calculate_index(i)]);
         }
         else
         {
-            mixer(residue_buffer, start, *buffers[name][calculate_index(i)]);
+            mixer(residue_buffer, start, buffers[name][calculate_index(i)]);
         }
+
+    }
+
+    for(auto buf: buffers[name])
+    {
+        delete buf.first;
     }
     buffers.erase(name);
 }
 
 
 
-std::shared_ptr<std::vector<SAMPLE_TYPE>> Mixer::get_place(const std::string& name, unsigned int& prev)
+device_sample Mixer::get_place(const std::string& name, unsigned int& prev)
 {
     prev++;
     auto max = max_buffer_number.load();
@@ -151,7 +160,7 @@ void Mixer::buffering()
 
         if(!result)
         {
-            result = std::make_shared<std::vector<SAMPLE_TYPE>>();
+            result = std::make_shared<record_sample_data::element_type>();
         }
 
         size_t result_size = result->size();
@@ -163,19 +172,19 @@ void Mixer::buffering()
             {
                 if(first_dev)
                 {
-                    insert_back(*result, *value[calculate_index(j)]);
+                    insert_back(result, value[calculate_index(j)]);
                 }
                 else
                 {
-                    mixer(*result, start, *value[calculate_index(j)]);
+                    mixer(result, start, value[calculate_index(j)]);
                 }
             }
             first_dev = false;
         }
 
-        if(!residue_buffer.empty())
+        if(!residue_buffer->empty())
         {
-            extra_mixer(*result, result_size, result->size() - result_size, residue_buffer);
+            residue_mixer(result, result_size, result->size() - result_size, residue_buffer);
         }
 
         if(buffers.empty())

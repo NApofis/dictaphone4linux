@@ -16,8 +16,12 @@ namespace pulseaudio
         int id;
         std::string device;
         std::string human_name;
-        const DeviceInfo* ref_device;
+        std::string master;
+        bool real;
     };
+
+    DeviceInfo* find(std::vector<DeviceInfo>& devices,
+        const std::string* device, const std::string* human_name, const bool* real);
 
     std::vector<DeviceInfo> list_input_devices();
     std::vector<DeviceInfo> list_output_devices();

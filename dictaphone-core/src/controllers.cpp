@@ -13,7 +13,7 @@ void ConfigController::process_device(const bool is_input_dev, dev_status& statu
    std::string* saved;
    if(is_input_dev)
    {
-      name = config_handler->get_input_device_module();
+      name = config_handler->get_input_device_module(nullptr);
       saved = &saved_input_device_name;
    }
    else
@@ -192,7 +192,7 @@ void SoundSaveController::cancel()
    return next_cancel_if_exists();
 }
 
-size_t SoundSaveController::max_file_size()
+size_t SoundSaveController::max_file_size() const
 {
    return (data->minute_size * 60) * SAMPLE_RATE * sizeof(SAMPLE_TYPE);
 }
@@ -201,35 +201,25 @@ size_t SoundSaveController::max_file_size()
 void SoundSaveController::write_sound()
 {
 
-   records_storage need_write = std::make_shared<records_storage::element_type>();
+   size_t storage_count = 0;
+   records_storage need_write;
    {
       std::lock_guard<std::mutex> lock(*data->storage_records_lock);
-      if(!data->storage_records->empty())
+      if(data->storage_records->empty())
       {
-         for(size_t i = 0; i < data->storage_records->size(); ++i)
+         return;
+      }
+      need_write = std::make_shared<records_storage::element_type>();
+      for(auto& record : *data->storage_records)
+      {
+         if(record && !record->empty())
          {
-            need_write->push_back(data->storage_records->front());
-            data->storage_records->pop_front();
+            storage_count += record->size();
+            need_write->push_back(record);
          }
       }
+      data->storage_records->clear();
    }
-
-   if(need_write->empty())
-   {
-      return;
-   }
-
-   size_t full_size = 0;
-   for(auto& record : *need_write)
-   {
-      full_size += record->size() * sizeof(SAMPLE_TYPE);
-   }
-
-   if(full_size == 0)
-   {
-      return;
-   }
-
 
    WavHeaders headers;
    if(current_file.empty())
@@ -243,20 +233,19 @@ void SoundSaveController::write_sound()
       out.close();
    }
 
-   headers.chunk_size = file_size + full_size + sizeof(WavHeaders) - 8;
-   headers.subchunk_2_size = file_size + full_size + sizeof(WavHeaders) - 44;
+   headers.chunk_size = file_size + (storage_count  * sizeof(SAMPLE_TYPE)) + sizeof(WavHeaders) - 8;
+   headers.subchunk_2_size = file_size + (storage_count * sizeof(SAMPLE_TYPE)) + sizeof(WavHeaders) - 44;
 
-   std::ofstream out(current_file, std::ios::binary);
+   std::ofstream out(current_file, std::ios::binary|std::ios::app);
    write_header(out, headers);
    out.seekp(0, std::ios::end);
-   for(auto& record : *need_write)
+   for(auto& rec: *need_write)
    {
-      auto data = reinterpret_cast<char*>(record->data());
-      out.write(data, record->size() * sizeof(SAMPLE_TYPE));
+      out.write(reinterpret_cast<const char*>(rec->data()), sizeof(SAMPLE_TYPE) * rec->size());
    }
    out.close();
 
-   file_size += full_size;
+   file_size += storage_count * sizeof(SAMPLE_TYPE);;
    if(file_size > max_file_size())
    {
       current_file.clear();

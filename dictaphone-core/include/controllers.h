@@ -32,7 +32,7 @@ struct Data
 class iChain {
 
 protected:
-    std::shared_ptr<Data> data = std::make_shared<Data>();
+    std::shared_ptr<Data> data;
     std::unique_ptr<iChain> next = nullptr;
 
     void next_execute_if_exists() const
@@ -98,10 +98,10 @@ public:
 
 class SoundSaveController final : public iChain
 {
-    struct WavHeaders
+    typedef struct WavHeaders
     {
         uint8_t RIFF[4] = {'R', 'I', 'F', 'F'}; // RIFF Header Magic header
-        uint32_t chunk_size{};                     // RIFF Chunk Size
+        uint32_t chunk_size ;                     // RIFF Chunk Size
         uint8_t WAVE[4] = {'W', 'A', 'V', 'E'}; // WAVE Header
 
         /* "fmt" sub-chunk */
@@ -118,13 +118,13 @@ class SoundSaveController final : public iChain
 
         /* "data" sub-chunk */
         uint8_t subchunk_2_ID[4] = {'d', 'a', 't', 'a'}; // "data"  string
-        uint32_t subchunk_2_size{};                        // Sampled data length
-    };
+        uint32_t subchunk_2_size;                        // Sampled data length
+    } wav;
 
     static void read_header(std::ifstream& file, WavHeaders& header);
     static void write_header(std::ofstream& file, WavHeaders& header);
 
-    size_t max_file_size();
+    size_t max_file_size() const;
 
     std::string current_file;
     size_t file_size = 0;

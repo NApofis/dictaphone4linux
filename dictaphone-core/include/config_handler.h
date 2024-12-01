@@ -14,7 +14,7 @@
 struct CoreConfigHandler
 {
 
-    [[nodiscard]] std::string get_input_device_module() const;
+    [[nodiscard]] std::string get_input_device_module(pulseaudio::DeviceInfo* ptr) const;
     [[nodiscard]] std::string get_output_device_module() const;
     [[nodiscard]] std::string get_path_for_records() const;
     [[nodiscard]] unsigned int get_file_minute_size() const { return config->file_minute_size(); }
@@ -33,6 +33,5 @@ private:
     std::shared_ptr<Config> config;
     std::chrono::time_point<std::chrono::file_clock> last_check;
 
-    [[nodiscard]] static std::string receive_input_device(const pulseaudio::DeviceInfo& other);
-    [[nodiscard]] static std::string check_portaudio_device(const std::vector<std::string>& names) ;
+    [[nodiscard]] static bool check_portaudio_device(const std::string& name);
 };

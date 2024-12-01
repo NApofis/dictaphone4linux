@@ -44,7 +44,7 @@ namespace pulseaudio
 
         inputParameters.channelCount = 1;
         inputParameters.sampleFormat = SAMPLE_VAL;
-        inputParameters.suggestedLatency = Pa_GetDeviceInfo(inputParameters.device)->defaultLowInputLatency;
+        inputParameters.suggestedLatency = Pa_GetDeviceInfo(inputParameters.device)->defaultHighInputLatency;
         inputParameters.hostApiSpecificStreamInfo = nullptr;
 
         PaStream* stream;
@@ -54,7 +54,7 @@ namespace pulseaudio
             &inputParameters,
             nullptr,
             SAMPLE_RATE,
-            SAMPLE_RATE,
+            CHUNK_BUFFER_SIZE,
             paClipOff, /* we won't output out of range samples so don't bother clipping them */
             callback,
             &data);
@@ -73,7 +73,7 @@ namespace pulseaudio
             flag->store(true);
             return;
         }
-        Loger::error("Подключено устройство " + device);
+        Loger::info("Подключено устройство " + device);
 
         try
         {
@@ -92,20 +92,28 @@ namespace pulseaudio
 
     static int callback(const void* input_data, void*, const unsigned long frames_per_Buffer, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void* user_data)
     {
-        auto* data = static_cast<StreamData*>(user_data);
-        std::shared_ptr<std::vector<SAMPLE_TYPE>> sample;
-        try
+        auto* info = static_cast<StreamData*>(user_data);
+
+        if(!info->data.first || info->data_id + frames_per_Buffer > info->data.second)
         {
-            sample = data->keep->get_place(data->name, data->buffer_id);
+            try
+            {
+                info->data = info->keep->get_place(info->name, info->buffer_id);
+                info->data_id = 0;
+                info->data_ptr = info->data.first;
+            }
+            catch (std::exception& e)
+            {
+                Loger::error(std::string("Ошибка при записи звука. ") + e.what());
+                return 1;
+            }
         }
-        catch (std::exception& e)
-        {
-            Loger::error(std::string("Ошибка при записи звука. ") + e.what());
-            return 1;
-        }
+
         const auto* input = static_cast<const SAMPLE_TYPE*>(input_data);
 
-        memmove(sample->data(), input, frames_per_Buffer);
+        memcpy(info->data_ptr, input, frames_per_Buffer * sizeof(SAMPLE_TYPE));
+        info->data_id += frames_per_Buffer;
+        info->data_ptr += frames_per_Buffer;
         return 0;
     }
 }

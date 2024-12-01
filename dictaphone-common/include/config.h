@@ -17,6 +17,7 @@ const std::string RECORD_FILE_NAME_MASK = "dictaphone_record_";
 const std::string RECORD_FILE_NAME_POSTFIX = "%Y-%m-%d_%H-%M";
 const std::string RECORD_FILE_NAME_EXTENSION = ".wav";
 
+const std::string NONE_DEVICE = "None";
 
 class Config
 {
