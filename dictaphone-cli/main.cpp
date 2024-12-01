@@ -20,7 +20,7 @@ int main()
     auto devices = pulseaudio::list_input_devices();
     std::vector<std::string> i_devices_4_show = {NONE_DEVICE};
     int index = 0;
-    config.input_devices.emplace_back(index, pulseaudio::DeviceInfo{0, NONE_DEVICE, NONE_DEVICE, nullptr});
+    config.input_devices.emplace_back(index, pulseaudio::DeviceInfo{0, NONE_DEVICE, NONE_DEVICE});
     for (const auto& d : devices)
     {
         if(d.real)
@@ -38,7 +38,7 @@ int main()
     devices = pulseaudio::list_output_devices();
     std::vector<std::string> o_devices_4_show = {NONE_DEVICE};
     index = 0;
-    config.output_devices.emplace_back(0, pulseaudio::DeviceInfo{0, NONE_DEVICE, NONE_DEVICE, nullptr});
+    config.output_devices.emplace_back(0, pulseaudio::DeviceInfo{0, NONE_DEVICE, NONE_DEVICE});
     for (const auto& d : devices)
     {
         if(d.real)

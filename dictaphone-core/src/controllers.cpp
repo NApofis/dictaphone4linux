@@ -92,10 +92,8 @@ void DeviceController::verification(dev_status& new_dev, DeviceHandlerInfo& dev_
    if(!dev_info.name.empty())
    {
       dev_info.stop_flag->store(true);
-      if(dev_info.thread.joinable())
-      {
-         dev_info.thread.join();
-      }
+      dev_info.thread.join();
+
       mix->remove_device(dev_info.name);
       dev_info.name.clear();
    }
@@ -110,13 +108,13 @@ void DeviceController::verification(dev_status& new_dev, DeviceHandlerInfo& dev_
 
    // Выбрали новое устройство
    dev_info.name = new_dev.second;
-   dev_info.stop_flag = std::make_shared<std::atomic_bool>(false);
-   dev_info.thread = std::thread([this, &dev_info, name=new_dev.second](){pulseaudio::connect(name, mix, dev_info.stop_flag);});
    if (!mix->add_device(dev_info.name))
    {
       Loger::warning("Устройство не подключено поскольку еще не сохранены записи предыдущего устройства");
       new_dev.first = Status::brocken;
    }
+   dev_info.stop_flag = std::make_shared<std::atomic_bool>(false);
+   dev_info.thread = std::thread([this, &dev_info, name=new_dev.second](){pulseaudio::connect(name, mix, dev_info.stop_flag);});
 }
 
 void DeviceController::execute()
@@ -167,14 +165,14 @@ std::string SoundSaveController::gen_filename()
    return data->path_for_records + '/' + RECORD_FILE_NAME_MASK + date::format(RECORD_FILE_NAME_POSTFIX, t) + RECORD_FILE_NAME_EXTENSION;
 }
 
-void SoundSaveController::read_header(std::ifstream& file, WavHeaders& header)
+void SoundSaveController::read_header(std::fstream& file, WavHeaders& header)
 {
    file.seekg(0, std::ios::beg);
    const auto header_str = reinterpret_cast<char *>(&header);
    file.readsome(header_str, sizeof(WavHeaders));
 }
 
-void SoundSaveController::write_header(std::ofstream& file, WavHeaders& header)
+void SoundSaveController::write_header(std::fstream& file, WavHeaders& header)
 {
    file.seekp(0, std::ios::beg);
    const auto header_str = reinterpret_cast<char *>(&header);
@@ -222,21 +220,21 @@ void SoundSaveController::write_sound()
    }
 
    WavHeaders headers;
+   std::fstream out;
    if(current_file.empty())
    {
       current_file = gen_filename();
+      out.open(current_file, std::ios_base::binary | std::ios_base::out | std::ios_base::trunc);
    }
    else
    {
-      std::ifstream out(current_file, std::ios::binary);
+      out.open(current_file, std::ios_base::binary | std::ios_base::out | std::ios_base::in);
       read_header(out, headers);
-      out.close();
    }
+
 
    headers.chunk_size = file_size + (storage_count  * sizeof(SAMPLE_TYPE)) + sizeof(WavHeaders) - 8;
    headers.subchunk_2_size = file_size + (storage_count * sizeof(SAMPLE_TYPE)) + sizeof(WavHeaders) - 44;
-
-   std::ofstream out(current_file, std::ios::binary|std::ios::app);
    write_header(out, headers);
    out.seekp(0, std::ios::end);
    for(auto& rec: *need_write)
@@ -245,7 +243,7 @@ void SoundSaveController::write_sound()
    }
    out.close();
 
-   file_size += storage_count * sizeof(SAMPLE_TYPE);;
+   file_size += storage_count * sizeof(SAMPLE_TYPE);
    if(file_size > max_file_size())
    {
       current_file.clear();
@@ -253,3 +251,5 @@ void SoundSaveController::write_sound()
    }
 }
 
+//21399588
+//37044000

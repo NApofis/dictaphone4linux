@@ -21,8 +21,6 @@
 
 #include "daemon.h"
 
-#include "config.h"
-
 
 Daemon* Daemon::instance = nullptr;
 pid_t Daemon::thread_pid;
@@ -132,26 +130,26 @@ void Daemon::signal_handler(const int sig)
 
 void Daemon::daemonize()
 {
-    // thread_pid = fork();
-    // if (thread_pid > 0)
-    // {
-    //     Loger::info("Создан отдельный поток для демона");
-    //     std::exit(EXIT_SUCCESS);
-    // }
-    // else if (thread_pid < 0)
-    // {
-    //     std::exit(EXIT_FAILURE);
-    // }
+    thread_pid = fork();
+    if (thread_pid > 0)
+    {
+        Loger::info("Создан отдельный поток для демона");
+        std::exit(EXIT_SUCCESS);
+    }
+    else if (thread_pid < 0)
+    {
+        std::exit(EXIT_FAILURE);
+    }
 
-    // umask(0);
+    umask(0);
     Loger::init();
 
-    // pid_t sid = setsid();
-    // if (sid < 0)
-    // {
-    //     Loger::error(" Не удалось установить SID для дочернего процесса: " + std::string(std::strerror(errno)));
-    //     std::exit(EXIT_FAILURE);
-    // }
+    pid_t sid = setsid();
+    if (sid < 0)
+    {
+        Loger::error(" Не удалось установить SID для дочернего процесса: " + std::string(std::strerror(errno)));
+        std::exit(EXIT_FAILURE);
+    }
 
     signal(SIGTERM, signal_handler);
     signal(SIGINT, signal_handler);
@@ -181,7 +179,7 @@ void Daemon::start_daemon()
         return;
     }
 
-    daemonize();
+    // daemonize();
     if(!lock_file_hnd.try_lock())
     {
         Loger::info("Демон " + DAEMON_NAME + " уже запущен");
@@ -237,7 +235,11 @@ void Daemon::run(int argc, const char* argv[])
         if(lock_file_hnd.try_lock())
         {
             std::cout << "None" << std::endl;
-        };
+        }
+        else
+        {
+            std::cout << lock_file.get_pid_from_lockfile() << std::endl;
+        }
     }
     else
     {

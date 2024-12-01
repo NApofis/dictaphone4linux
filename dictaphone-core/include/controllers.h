@@ -98,7 +98,7 @@ public:
 
 class SoundSaveController final : public iChain
 {
-    typedef struct WavHeaders
+    struct WavHeaders
     {
         uint8_t RIFF[4] = {'R', 'I', 'F', 'F'}; // RIFF Header Magic header
         uint32_t chunk_size ;                     // RIFF Chunk Size
@@ -119,10 +119,10 @@ class SoundSaveController final : public iChain
         /* "data" sub-chunk */
         uint8_t subchunk_2_ID[4] = {'d', 'a', 't', 'a'}; // "data"  string
         uint32_t subchunk_2_size;                        // Sampled data length
-    } wav;
+    };
 
-    static void read_header(std::ifstream& file, WavHeaders& header);
-    static void write_header(std::ofstream& file, WavHeaders& header);
+    static void read_header(std::fstream& file, WavHeaders& header);
+    static void write_header(std::fstream& file, WavHeaders& header);
 
     size_t max_file_size() const;
 

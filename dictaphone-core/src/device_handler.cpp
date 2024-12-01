@@ -98,7 +98,13 @@ namespace pulseaudio
         {
             try
             {
-                info->data = info->keep->get_place(info->name, info->buffer_id);
+                const auto place = info->keep->get_place(info->name, info->buffer_id);
+                if(place.first == nullptr)
+                {
+                    return 1;
+                }
+
+                info->data = place;
                 info->data_id = 0;
                 info->data_ptr = info->data.first;
             }

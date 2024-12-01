@@ -4,16 +4,19 @@
 
 #include <mutex>
 #include <cstring>
+#include <unordered_map>
 
 #include "mixer.h"
+
+#include <bits/ranges_algo.h>
 
 void Mixer::insert_back(record_sample_data place, device_sample data)
 {
     place->insert(place->end(), data.first, data.first + data.second);
-    memset(data.first, 0, SAMPLE_RATE);
+    memset(data.first, 0, data.second);
 }
 
-void Mixer::mixer(record_sample_data place, size_t& start, device_sample data)
+void Mixer::mixer(record_sample_data place, size_t start, device_sample data)
 {
     for(size_t i = 0; i < data.second; i++)
     {
@@ -26,10 +29,10 @@ void Mixer::mixer(record_sample_data place, size_t& start, device_sample data)
         {
             sound = std::numeric_limits<SAMPLE_TYPE>::min();
         }
-        data.first[i] = 0;
         (*place)[start] = sound;
         start++;
     }
+    memset(data.first, 0, data.second);
 }
 
 size_t Mixer::calculate_index(const unsigned int buffer_number)
@@ -39,21 +42,35 @@ size_t Mixer::calculate_index(const unsigned int buffer_number)
     return i;
 }
 
-void Mixer::residue_mixer(record_sample_data place, size_t& start, const size_t size, record_sample_data data)
-{
-    if(data->size() <= size)
-    {
 
-        return mixer(place, start, {data->data(), data->size()});
+void Mixer::residue_mixer(record_sample_data place, size_t& start, device_sample data)
+{
+    size_t free_space = place->size() - start;
+
+    if(data.second <= free_space)
+    {
+        mixer(place, start, data);
+        start += data.second;
+        return;
     }
-    device_sample mixer_part(data->data(), size);
-    mixer(place, start, mixer_part);
-    device_sample insert_part(data->data() + size, data->size() - size);
+
+    if(free_space)
+    {
+        device_sample mixer_part(data.first, free_space);
+        mixer(place, start, mixer_part);
+    }
+
+    device_sample insert_part(data.first + free_space, data.second - free_space);
     insert_back(place, insert_part);
-    data->clear();
+
+    memset(data.first, 0, data.second);
+    start += data.second;
 }
 
-
+void Mixer::residue_mixer(record_sample_data place, size_t& start, record_sample_data data)
+{
+    residue_mixer(place, start, {data->data(), data->size()});
+}
 
 
 bool Mixer::add_device(const std::string& name)
@@ -63,7 +80,8 @@ bool Mixer::add_device(const std::string& name)
     {
         return false;
     }
-
+    buffer_numbers[name] = std::make_shared<std::atomic_uint32_t>(0);
+    device_buffer_number[name] = 0;
     for(int i = 0; i < BUFFERS_COUNT; i++)
     {
         auto s = SAMPLE_RATE / CHUNK_BUFFER_SIZE;
@@ -76,20 +94,10 @@ bool Mixer::add_device(const std::string& name)
 void Mixer::remove_device(const std::string& name)
 {
     std::lock_guard<std::mutex> local_lock(mixer_lock);
-    const unsigned int max = max_buffer_number.load();
-    bool residue_empty = residue_buffer->empty();
     size_t start = 0;
-    for(unsigned int i = device_buffer_number; i < max; i++)
+    for(unsigned int i = device_buffer_number[name]; i < buffer_numbers[name]->load(); i++)
     {
-        if(residue_empty)
-        {
-            insert_back(residue_buffer, buffers[name][calculate_index(i)]);
-        }
-        else
-        {
-            mixer(residue_buffer, start, buffers[name][calculate_index(i)]);
-        }
-
+        residue_mixer(residue_buffer, start, buffers[name][calculate_index(i)]);
     }
 
     for(auto buf: buffers[name])
@@ -97,28 +105,21 @@ void Mixer::remove_device(const std::string& name)
         delete buf.first;
     }
     buffers.erase(name);
+    buffer_numbers.erase(name);
+    device_buffer_number.erase(name);
 }
 
 
 
 device_sample Mixer::get_place(const std::string& name, unsigned int& prev)
 {
-    prev++;
-    auto max = max_buffer_number.load();
-    while(true)
+    if(buffer_numbers.find(name) == buffer_numbers.end())
     {
-        if((max < prev && max_buffer_number.compare_exchange_strong(max, prev))
-            || (max == prev))
-        {
-            break;
-        }
-        else if (max > prev)
-        {
-            prev = max;
-            break;
-        }
+        return {nullptr, 0};
     }
+    buffer_numbers[name]->store(prev);
     auto result = buffers[name][calculate_index(prev)];
+    prev++;
     return result;
 }
 
@@ -151,9 +152,19 @@ void Mixer::buffering()
         count_sleep = 0;
 
         std::lock_guard lock_mixer(mixer_lock);
-        const unsigned int max = max_buffer_number.load();
 
-        if(device_buffer_number >= max)
+        std::unordered_map<std::string, unsigned int> numbers;
+        bool need_check = false;
+        for(auto& [name, num] : device_buffer_number)
+        {
+            numbers[name] = buffer_numbers[name]->load();
+            if(numbers[name] > num)
+            {
+                need_check = true;
+            }
+        }
+
+        if(!need_check)
         {
             continue;
         }
@@ -164,37 +175,24 @@ void Mixer::buffering()
         }
 
         size_t result_size = result->size();
-        bool first_dev = true;
         for(auto& [name, value]: buffers)
         {
             size_t start = result_size;
-            for(unsigned int j = device_buffer_number; j < max; j++)
+            for(unsigned int j = device_buffer_number[name]; j < numbers[name]; j++)
             {
-                if(first_dev)
-                {
-                    insert_back(result, value[calculate_index(j)]);
-                }
-                else
-                {
-                    mixer(result, start, value[calculate_index(j)]);
-                }
+                residue_mixer(result, start, value[calculate_index(j)]);
             }
-            first_dev = false;
+            device_buffer_number[name] = numbers[name];
         }
 
         if(!residue_buffer->empty())
         {
-            residue_mixer(result, result_size, result->size() - result_size, residue_buffer);
+            residue_mixer(result, result_size, residue_buffer);
         }
 
         if(buffers.empty())
         {
-            device_buffer_number = 0;
-            max_buffer_number.store(0);
-        }
-        else
-        {
-            device_buffer_number = max;
+            device_buffer_number.clear();
         }
 
         if(result->size() >= save_size)
