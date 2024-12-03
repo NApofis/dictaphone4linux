@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(dictaphone-cli)
+project(dictaphone4linux-cli)
 
 file (GLOB FILES
         main.cpp

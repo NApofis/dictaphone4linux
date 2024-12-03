@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+DIR="@PROGRAM_ROOT_DIRECTORY@"
+mkdir -p $DIR
+chmod 777 $DIR
+
+exit 0
