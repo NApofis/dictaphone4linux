@@ -41,9 +41,12 @@ class Daemon
 
     std::chrono::high_resolution_clock::duration update_duration{};
     std::atomic<bool> m_is_running{false};
+    std::atomic<bool> m_is_stop{false};
 
     std::condition_variable update_cv;
-    std::mutex local_mutex;
+    std::condition_variable close_cv;
+    std::mutex update_local_mutex;
+    std::mutex close_local_mutex;
 
     std::int32_t exit_code = EXIT_SUCCESS;
     static pid_t thread_pid;

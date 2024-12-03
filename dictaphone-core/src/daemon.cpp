@@ -165,8 +165,20 @@ void Daemon::stop(const int code)
     Loger::info("Демон завершает работу");
     exit_code = code;
     m_is_running.store(false);
-    lock_file_hnd.unlock();
     update_cv.notify_all();
+    lock_file_hnd.unlock();
+
+    unsigned int counter = 0;
+    while (!m_is_stop.load() && counter < 10)
+    {
+        std::unique_lock lock(close_local_mutex);
+        close_cv.wait_for(lock, std::chrono::seconds(1), [this]()
+        {
+            return m_is_stop.load();
+        });
+        counter++;
+    }
+
     Loger::info("Демон завершил работу");
     Loger::shutdown();
 }
@@ -179,7 +191,7 @@ void Daemon::start_daemon()
         return;
     }
 
-    // daemonize();
+    daemonize();
     if(!lock_file_hnd.try_lock())
     {
         Loger::info("Демон " + DAEMON_NAME + " уже запущен");
@@ -194,13 +206,14 @@ void Daemon::start_daemon()
     while (m_is_running.load())
     {
         on_update();
-        std::unique_lock lock(local_mutex);
+        std::unique_lock lock(update_local_mutex);
         update_cv.wait_for(lock, update_duration, [this]()
         {
             return !m_is_running.load();
         });
     }
     on_stop();
+    m_is_stop.store(true);
 }
 
 void Daemon::run(int argc, const char* argv[])
