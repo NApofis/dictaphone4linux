@@ -4,12 +4,13 @@
 
 #include "daemon_command.h"
 #include "pulseaudio_device.h"
+#include "config.h"
 
 namespace daemon_command
 {
     bool is_work()
     {
-        return execute_command("dictaphone-core --status") != "None";
+        return execute_command("dictaphone-core --status") != NONE_DEVICE;
     }
 
     void start()

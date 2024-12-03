@@ -127,6 +127,7 @@ class SoundSaveController final : public iChain
     size_t max_file_size() const;
 
     std::string current_file;
+    std::string path_for_records;
     size_t file_size = 0;
 
     std::string gen_filename();

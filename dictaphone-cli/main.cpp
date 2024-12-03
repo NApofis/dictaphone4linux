@@ -133,7 +133,7 @@ int main()
                 }),
 
                 hbox(text(" Путь до папки для хранения записей : "), element_path4records->Render()),
-                hbox(text(" Размер одной записи в минутах : "), element_file_size->Render()),
+                hbox(text(" Ориентировочный размер одной записи в минутах : "), element_file_size->Render()),
                 hbox(text(" Время хранения записей в днях : "), element_shelf_life->Render()),
                 hbox(text("")),
                 hbox(save_button->Render()) | align_right,

@@ -1,0 +1,3 @@
+#pragma once
+
+#cmakedefine PROGRAM_ROOT_DIRECTORY "@PROGRAM_ROOT_DIRECTORY@"

@@ -4,6 +4,8 @@ project(dictaphone-common)
 add_library(${PROJECT_NAME} STATIC)
 add_library(libdictaphonecommon ALIAS ${PROJECT_NAME})
 
+configure_file(include/const.h.in const.h)
+
 file (GLOB_RECURSE ${PROJECT_NAME}_SRC_FILES src/*.cpp)
 target_sources(${PROJECT_NAME}
         PRIVATE

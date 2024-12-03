@@ -5,6 +5,7 @@
 #include <mutex>
 #include <cstring>
 #include <unordered_map>
+#include <iostream>
 
 #include "mixer.h"
 
@@ -76,24 +77,30 @@ void Mixer::residue_mixer(record_sample_data place, size_t& start, record_sample
 bool Mixer::add_device(const std::string& name)
 {
     std::lock_guard local_lock(mixer_lock);
-    if(!residue_buffer->empty())
+    if(!residue_buffer->empty() || buffer_numbers.find(name) != buffer_numbers.end())
     {
         return false;
     }
-    buffer_numbers[name] = std::make_shared<std::atomic_uint32_t>(0);
-    device_buffer_number[name] = 0;
+
     for(int i = 0; i < BUFFERS_COUNT; i++)
     {
         auto s = SAMPLE_RATE / CHUNK_BUFFER_SIZE;
         buffers[name].emplace_back(std::make_pair(new SAMPLE_TYPE[s * CHUNK_BUFFER_SIZE], s * CHUNK_BUFFER_SIZE));
         memset(buffers[name].back().first, 0, buffers[name].back().second);
     }
+    buffer_numbers[name] = std::make_shared<std::atomic_uint32_t>(0);
+    device_buffer_number[name] = 0;
     return true;
 }
 
 void Mixer::remove_device(const std::string& name)
 {
     std::lock_guard<std::mutex> local_lock(mixer_lock);
+    if(buffer_numbers.find(name) == buffer_numbers.end())
+    {
+        return ;
+    }
+
     size_t start = 0;
     for(unsigned int i = device_buffer_number[name]; i < buffer_numbers[name]->load(); i++)
     {
@@ -150,8 +157,13 @@ void Mixer::buffering()
             continue;
         }
         count_sleep = 0;
-
         std::lock_guard lock_mixer(mixer_lock);
+
+        if(!result)
+        {
+            result = std::make_shared<record_sample_data::element_type>();
+        }
+        size_t result_size = result->size();
 
         std::unordered_map<std::string, unsigned int> numbers;
         bool need_check = false;
@@ -164,30 +176,22 @@ void Mixer::buffering()
             }
         }
 
-        if(!need_check)
+        if(need_check)
         {
-            continue;
-        }
-
-        if(!result)
-        {
-            result = std::make_shared<record_sample_data::element_type>();
-        }
-
-        size_t result_size = result->size();
-        for(auto& [name, value]: buffers)
-        {
-            size_t start = result_size;
-            for(unsigned int j = device_buffer_number[name]; j < numbers[name]; j++)
+            for(auto& [name, value]: buffers)
             {
-                residue_mixer(result, start, value[calculate_index(j)]);
+                size_t start = result_size;
+                for(unsigned int j = device_buffer_number[name]; j < numbers[name]; j++)
+                {
+                    residue_mixer(result, start, value[calculate_index(j)]);
+                }
+                device_buffer_number[name] = numbers[name];
             }
-            device_buffer_number[name] = numbers[name];
         }
-
         if(!residue_buffer->empty())
         {
             residue_mixer(result, result_size, residue_buffer);
+            residue_buffer->clear();
         }
 
         if(buffers.empty())

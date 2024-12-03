@@ -37,8 +37,11 @@ void CoreConfigHandler::delete_old_records() const
 
     auto now = std::chrono::system_clock::now();
     now -= std::chrono::days(days);
-    auto result = records::delete_records_before(path, &now);
-    Loger::info("Удалено " + std::to_string(result) + " записей");
+    const auto result = records::delete_records_before(path, &now);
+    if(result > 0)
+    {
+        Loger::info("Удалено " + std::to_string(result) + " записей");
+    }
 }
 
 std::string CoreConfigHandler::get_input_device_module(pulseaudio::DeviceInfo* ptr) const

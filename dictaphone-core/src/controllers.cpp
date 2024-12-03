@@ -5,6 +5,7 @@
 #include "controllers.h"
 #include "common.h"
 #include "date/tz.h"
+#include <iostream>
 
 
 void ConfigController::process_device(const bool is_input_dev, dev_status& status)
@@ -48,13 +49,13 @@ void ConfigController::execute()
       is_new = config_handler->load_new_version();
    }
 
+   config_handler->delete_old_records();
+
    if(is_new)
    {
       data->path_for_records = config_handler->get_path_for_records();
       data->minute_size = config_handler->get_file_minute_size();
    }
-   config_handler->delete_old_records();
-
    if(is_new || data->input_device.first == Status::brocken)
    {
       process_device(true, data->input_device);
@@ -76,6 +77,7 @@ void DeviceController::verification(dev_status& new_dev, DeviceHandlerInfo& dev_
       if(!dev_info.name.empty() && dev_info.stop_flag->load())
       {
          Loger::warning("Потеря соединения с устройством");
+         std::cout << "Потеря соединения с устройством" << std::endl;
          new_dev.first = Status::brocken;
          mix->remove_device(dev_info.name);
       }
@@ -84,6 +86,7 @@ void DeviceController::verification(dev_status& new_dev, DeviceHandlerInfo& dev_
 
    if(new_dev.first != Status::created)
    {
+      std::cout << "Устройство не было подключено после разъединения" << std::endl;
       Loger::error("Устройство не было подключено после разъединения");
       return;
    }
@@ -91,11 +94,12 @@ void DeviceController::verification(dev_status& new_dev, DeviceHandlerInfo& dev_
    // Устройство изменилось => нужно остановить текущую запись
    if(!dev_info.name.empty())
    {
+      std::cout << "Отключение" << std::endl;
       dev_info.stop_flag->store(true);
       dev_info.thread.join();
 
       mix->remove_device(dev_info.name);
-      dev_info.name.clear();
+      dev_info.name = "";
    }
 
    new_dev.first = Status::unchanged;
@@ -221,10 +225,11 @@ void SoundSaveController::write_sound()
 
    WavHeaders headers;
    std::fstream out;
-   if(current_file.empty())
+   if(current_file.empty() || data->path_for_records != path_for_records)
    {
       current_file = gen_filename();
       out.open(current_file, std::ios_base::binary | std::ios_base::out | std::ios_base::trunc);
+      path_for_records = data->path_for_records;
    }
    else
    {

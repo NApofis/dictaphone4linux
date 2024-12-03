@@ -234,7 +234,7 @@ void Daemon::run(int argc, const char* argv[])
     {
         if(lock_file_hnd.try_lock())
         {
-            std::cout << "None" << std::endl;
+            std::cout << NONE_DEVICE << std::endl;
         }
         else
         {
