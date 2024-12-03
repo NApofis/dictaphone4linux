@@ -7,15 +7,17 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include "dictaphone-common/const.h"
 
-
-const std::string PROGRAM_ROOT_PATH = "/opt/dictaphone4linux";
+const std::string PROGRAM_ROOT_PATH = PROGRAM_ROOT_DIRECTORY;
 const std::string CONFIG_FILE_PATH = PROGRAM_ROOT_PATH+"/config.conf";
 const std::string START_STRING = "# Config file for dictaphone";
 const std::string JOIN_STRING = ": ";
 const std::string RECORD_FILE_NAME_MASK = "dictaphone_record_";
+const std::string RECORD_FILE_NAME_POSTFIX = "%Y-%m-%d_%H-%M";
 const std::string RECORD_FILE_NAME_EXTENSION = ".wav";
 
+const std::string NONE_DEVICE = "None";
 
 class Config
 {
@@ -35,7 +37,7 @@ class Config
 public:
     Config();
 
-    bool save() const;
+    [[nodiscard]] bool save() const;
 
     std::string input_device() { return fields["input device"]; }
     void input_device(const std::string& val) { fields["input device"] = val; }

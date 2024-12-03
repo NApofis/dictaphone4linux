@@ -6,6 +6,8 @@
 #include "ftxui/util/ref.hpp"  // for Ref
 
 #include "ui.h"
+#include "daemon_command.h"
+#include "pulseaudio_device.h"
 
 using namespace ftxui;
 
@@ -15,33 +17,39 @@ int main()
     UIConfigHandler config;
     UIDeleterRecords deleter(config.path_for_records);
 
-    auto devices = portaudio_devices::list_input_devices();
-    std::vector<std::string> i_devices_4_show = {"None"};
+    auto devices = pulseaudio::list_input_devices();
+    std::vector<std::string> i_devices_4_show = {NONE_DEVICE};
     int index = 0;
-    config.input_devices.push_back({index, {0, "None", "None", false}});
+    config.input_devices.emplace_back(index, pulseaudio::DeviceInfo{0, NONE_DEVICE, NONE_DEVICE});
     for (const auto& d : devices)
     {
-        i_devices_4_show.push_back(d.description);
-        index++;
-        config.input_devices.emplace_back(index, d);
-        if(d.name == config.selected_input_device_name())
+        if(d.real)
         {
-            config.selected_input_device = index;
+            i_devices_4_show.push_back(d.human_name);
+            index++;
+            config.input_devices.emplace_back(index, d);
+            if(d.device == config.selected_input_device_name())
+            {
+                config.selected_input_device = index;
+            }
         }
     }
 
-    devices = portaudio_devices::list_output_devices();
-    std::vector<std::string> o_devices_4_show = {"None"};
+    devices = pulseaudio::list_output_devices();
+    std::vector<std::string> o_devices_4_show = {NONE_DEVICE};
     index = 0;
-    config.output_devices.push_back({0, {0, "None", "None", false}});
+    config.output_devices.emplace_back(0, pulseaudio::DeviceInfo{0, NONE_DEVICE, NONE_DEVICE});
     for (const auto& d : devices)
     {
-        o_devices_4_show.push_back(d.description);
-        index++;
-        config.output_devices.emplace_back(index, d);
-        if(d.name == config.selected_output_device_name())
+        if(d.real)
         {
-            config.selected_output_device = index;
+            o_devices_4_show.push_back(d.human_name);
+            index++;
+            config.output_devices.emplace_back(index, d);
+            if(d.device == config.selected_output_device_name())
+            {
+                config.selected_output_device = index;
+            }
         }
     }
 
@@ -78,6 +86,24 @@ int main()
         deleter.delete_records(message_deleter);
     }, ButtonOption::Animated(Color::Red));
 
+    bool daemon_work = daemon_command::is_work();
+    std::string record_button_current_text = daemon_work ? "Остановить запись" : "Начать запись";
+    auto record_button = Button(&record_button_current_text, [& daemon_work, &record_button_current_text]()
+    {
+        if(daemon_work)
+        {
+            daemon_command::stop();
+            daemon_work = false;
+            record_button_current_text = "Начать запись";
+        }
+        else
+        {
+            daemon_command::start();
+            daemon_work = true;
+            record_button_current_text = "Остановить запись";
+        }
+    }, ButtonOption::Animated(Color::Default, Color::GrayDark, Color::Default, Color::White));
+
     auto cancel_button = Button("Закрыть", screen.ExitLoopClosure(), ButtonOption::Animated());
 
 
@@ -90,7 +116,7 @@ int main()
         Container::Horizontal({element_shelf_life}),
         Container::Horizontal({save_button}),
         Container::Horizontal({element_delete_period_value, element_delete_period, delete_button}),
-        Container::Horizontal({cancel_button})
+        Container::Horizontal({record_button, cancel_button})
     });
 
 
@@ -107,8 +133,8 @@ int main()
                 }),
 
                 hbox(text(" Путь до папки для хранения записей : "), element_path4records->Render()),
-                hbox(text(" Размер одной записи в минутах : "), element_file_size->Render()),
-                hbox(text(" Время хранения записей в минутах : "), element_shelf_life->Render()),
+                hbox(text(" Ориентировочный размер одной записи в минутах : "), element_file_size->Render()),
+                hbox(text(" Время хранения записей в днях : "), element_shelf_life->Render()),
                 hbox(text("")),
                 hbox(save_button->Render()) | align_right,
                 hbox(text(message_config)),
@@ -128,7 +154,7 @@ int main()
                 hbox(text(message_deleter))
             })| border,
 
-            hbox(filler(), cancel_button->Render()) | align_right,
+            hbox(record_button->Render(), filler(), cancel_button->Render()) ,
         }) | border;
 
     });

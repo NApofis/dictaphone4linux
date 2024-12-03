@@ -21,7 +21,7 @@ bool UIConfigHandler::save_config(std::string& message)
     {
         if(fst == selected_input_device)
         {
-            config->input_device(snd.name);
+            config->input_device(snd.device);
             break;
         }
     }
@@ -30,7 +30,7 @@ bool UIConfigHandler::save_config(std::string& message)
     {
         if(fst == selected_output_device)
         {
-            config->output_device(snd.name);
+            config->output_device(snd.device);
             break;
         }
     }

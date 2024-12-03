@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(dictaphone)
+set(CMAKE_CXX_STANDARD 20)
 
+set(PROGRAM_ROOT_DIRECTORY "/opt/dictaphone4linux")
 file (GLOB TESTS_LIST
         ${CMAKE_CURRENT_SOURCE_DIR}/list_tests/*.cpp
 )
@@ -25,6 +27,8 @@ add_subdirectory(dictaphone-core)
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_CONTACT tihonovn.a@yandex.ru)
 set(CPACK_PACKAGE_VERSION ${RELEASE_VERSION})
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libasound2-dev, libpulse-dev")
+set(CPACK_PACKAGE_DIRECTORY "${PROGRAM_ROOT_DIRECTORY}")
 set(CPACK_PACKAGE_NAME "${PROJECT_NAME}-package"
         CACHE STRING "The resulting package name"
 )

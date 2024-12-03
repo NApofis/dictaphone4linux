@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
 project(dictaphone-common)
-set(CMAKE_CXX_STANDARD 20)
 
 add_library(${PROJECT_NAME} STATIC)
 add_library(libdictaphonecommon ALIAS ${PROJECT_NAME})
+
+configure_file(include/const.h.in const.h)
 
 file (GLOB_RECURSE ${PROJECT_NAME}_SRC_FILES src/*.cpp)
 target_sources(${PROJECT_NAME}
@@ -40,7 +41,6 @@ target_link_libraries(${PROJECT_NAME}
         ${PORTAUDIO_STATIC_LIB}
         ${ALSA_LIBRARIES}
         ${PULSEAUDIO_LIBRARY}
-        ${DATE_STATIC_LIB}
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -48,7 +48,6 @@ target_include_directories(${PROJECT_NAME}
             include
             ${PORTAUDIO_INCLUDE_DIR}
         PRIVATE
-            ${DATE_INCLUDE_DIR}
             ${ALSA_INCLUDE_DIRS}
             ${PULSEAUDIO_INCLUDE_DIR}
 )

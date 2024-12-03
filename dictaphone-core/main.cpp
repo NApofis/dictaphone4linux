@@ -1,10 +1,12 @@
 //
 // Created by ntikhonov on 16.11.24.
 //
-#include <iostream>
 
-int main()
+#include "daemon.h"
+
+int main(int argc, const char* argv[])
 {
-    std::cout << "Hello World!" << std::endl;
-    return 0;
+    const auto daemon = Daemon::create();
+    daemon->run(argc, argv);
+
 }
