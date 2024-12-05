@@ -20,7 +20,7 @@ jobs:
 
       - run: "
           sudo apt-get update;
-          sudo apt-get install -y; 
+          sudo apt-get install -y doxygen; 
         "
       - run: "
           cmake . -DRELEASE_VERSION=${{inputs.version}};
