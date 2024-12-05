@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 file (GLOB FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/controllers/*.cpp
 )
 add_executable(${PROJECT_NAME} main.cpp ${FILES})
 

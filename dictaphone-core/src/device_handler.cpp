@@ -9,7 +9,7 @@
 #include "device_handler.h"
 #include "common.h"
 
-namespace pulseaudio
+namespace portaudio
 {
     void connect(const std::string& device, const std::shared_ptr<Keeper>& keeper, const std::shared_ptr<std::atomic_bool>& flag)
     {

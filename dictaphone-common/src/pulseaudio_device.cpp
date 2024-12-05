@@ -11,6 +11,9 @@
 #include <complex>
 
 
+/*
+ * Выполнить команду в консоле
+ */
 std::string execute_command(const std::string& cmd)
 {
     FILE* pipe = popen(cmd.c_str(), "r");
@@ -34,7 +37,7 @@ std::string execute_command(const std::string& cmd)
 
 
 
-namespace pulseaudio
+namespace portaudio
 {
     const std::string SEPARATOR = "index: ";
 

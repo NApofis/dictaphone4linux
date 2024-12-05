@@ -9,16 +9,19 @@
 #include <map>
 #include "dictaphone-common/const.h"
 
-const std::string PROGRAM_ROOT_PATH = PROGRAM_ROOT_DIRECTORY;
-const std::string CONFIG_FILE_PATH = PROGRAM_ROOT_PATH+"/config.conf";
-const std::string START_STRING = "# Config file for dictaphone";
-const std::string JOIN_STRING = ": ";
-const std::string RECORD_FILE_NAME_MASK = "dictaphone_record_";
-const std::string RECORD_FILE_NAME_POSTFIX = "%Y-%m-%d_%H-%M";
-const std::string RECORD_FILE_NAME_EXTENSION = ".wav";
+const std::string PROGRAM_ROOT_PATH = PROGRAM_ROOT_DIRECTORY; // Папка с файлами пдля программы
+const std::string CONFIG_FILE_PATH = PROGRAM_ROOT_PATH+"/config.conf"; // Полный путь до конфигурационного файла
+const std::string START_STRING = "# Config file for dictaphone"; // Первая строка конфига
+const std::string JOIN_STRING = ": "; // Разделитель ключей и значений в конфиге
+const std::string RECORD_FILE_NAME_MASK = "dictaphone_record_"; // Название айдио файла
+const std::string RECORD_FILE_NAME_POSTFIX = "%Y-%m-%d_%H-%M"; // Формат времени для названия аудио файла
+const std::string RECORD_FILE_NAME_EXTENSION = ".wav"; // Расширение аудио файлов с записями
 
-const std::string NONE_DEVICE = "None";
+const std::string NONE_DEVICE = "None"; // Обозначение отсутствия устройства
 
+/*
+ * Основной класс для работы с конфигурационным файлом
+ */
 class Config
 {
     friend std::ofstream& operator<<(std::ofstream& os, const Config* rhs);

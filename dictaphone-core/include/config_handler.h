@@ -5,16 +5,19 @@
 #pragma once
 #include <memory>
 #include <string>
-#include <bits/stl_vector.h>
 #include <filesystem>
 
 #include "pulseaudio_device.h"
 #include "config.h"
 
+
+/*
+ * Декоратор для работы с конфигурационным файлом в демоне
+ */
 struct CoreConfigHandler
 {
 
-    [[nodiscard]] std::string get_input_device_module(pulseaudio::DeviceInfo* ptr) const;
+    [[nodiscard]] std::string get_input_device_module(portaudio::DeviceInfo* ptr) const;
     [[nodiscard]] std::string get_output_device_module() const;
     [[nodiscard]] std::string get_path_for_records() const;
     [[nodiscard]] unsigned int get_file_minute_size() const { return config->file_minute_size(); }

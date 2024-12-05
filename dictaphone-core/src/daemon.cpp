@@ -20,11 +20,11 @@
 #include <sys/wait.h>
 
 #include "daemon.h"
+#include "controllers/sound.h"
+#include "controllers/device.h"
 
 
 Daemon* Daemon::instance = nullptr;
-pid_t Daemon::thread_pid;
-
 
 
 bool LockFile::try_lock()
@@ -56,9 +56,10 @@ void LockFile::lock()
         close(file_descriptor);
         throw std::system_error();
     }
-    const auto cpid = std::to_string(getpid());
-    write(file_descriptor, cpid.c_str(), cpid.size());
-    Loger::info("Блокировка успешно создана");
+    auto cpid = std::to_string(getpid());
+    cpid.resize(file_length, ' ');
+    write(file_descriptor, cpid.c_str(), file_length);
+    Loger::info("Блокировка успешно создана для потока " + cpid);
 }
 
 void LockFile::unlock() const
@@ -69,10 +70,11 @@ void LockFile::unlock() const
         throw std::system_error();
     }
     close(file_descriptor);
+    delete_file();
     Loger::info("Блокировка удалена");
 }
 
-pid_t LockFile::get_pid_from_lockfile()
+int LockFile::get_pid_from_lockfile()
 {
     file_descriptor = open(filename.c_str(), O_RDONLY, 0444);
     if (file_descriptor == -1)
@@ -80,8 +82,8 @@ pid_t LockFile::get_pid_from_lockfile()
         exit(EXIT_FAILURE);
     }
 
-    char cpid[10]="";
-    const auto read_size = read(file_descriptor, &cpid, sizeof(cpid));
+    std::string cpid(file_length, ' ');
+    const auto read_size = read(file_descriptor, cpid.data(), file_length);
     if (read_size <= 0)
     {
         Loger::error("Неизвестен pid демона");
@@ -89,7 +91,8 @@ pid_t LockFile::get_pid_from_lockfile()
         exit(EXIT_FAILURE);
     }
     close(file_descriptor);
-    return atoi(cpid);
+    auto pid = std::stoi(cpid);
+    return pid;
 
 }
 
@@ -130,10 +133,11 @@ void Daemon::signal_handler(const int sig)
 
 void Daemon::daemonize()
 {
+    auto pid = getpid();
     thread_pid = fork();
     if (thread_pid > 0)
     {
-        Loger::info("Создан отдельный поток для демона");
+        Loger::info("Создан отдельный поток для демона " + std::to_string(thread_pid) + " - " + std::to_string(pid));
         std::exit(EXIT_SUCCESS);
     }
     else if (thread_pid < 0)
@@ -142,7 +146,6 @@ void Daemon::daemonize()
     }
 
     umask(0);
-    Loger::init();
 
     pid_t sid = setsid();
     if (sid < 0)
@@ -166,21 +169,6 @@ void Daemon::stop(const int code)
     exit_code = code;
     m_is_running.store(false);
     update_cv.notify_all();
-    lock_file_hnd.unlock();
-
-    unsigned int counter = 0;
-    while (!m_is_stop.load() && counter < 10)
-    {
-        std::unique_lock lock(close_local_mutex);
-        close_cv.wait_for(lock, std::chrono::seconds(1), [this]()
-        {
-            return m_is_stop.load();
-        });
-        counter++;
-    }
-
-    Loger::info("Демон завершил работу");
-    Loger::shutdown();
 }
 
 void Daemon::start_daemon()
@@ -213,7 +201,8 @@ void Daemon::start_daemon()
         });
     }
     on_stop();
-    m_is_stop.store(true);
+    lock_file_hnd.unlock();
+    Loger::info("Демон завершил работу");
 }
 
 void Daemon::run(int argc, const char* argv[])

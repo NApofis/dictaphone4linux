@@ -44,9 +44,9 @@ void CoreConfigHandler::delete_old_records() const
     }
 }
 
-std::string CoreConfigHandler::get_input_device_module(pulseaudio::DeviceInfo* ptr) const
+std::string CoreConfigHandler::get_input_device_module(portaudio::DeviceInfo* ptr) const
 {
-    auto device_list = pulseaudio::list_input_devices();
+    auto device_list = portaudio::list_input_devices();
     std::string dev_name;
     if(!ptr)
     {
@@ -57,7 +57,7 @@ std::string CoreConfigHandler::get_input_device_module(pulseaudio::DeviceInfo* p
             return {};
         }
 
-        ptr = pulseaudio::find(device_list, &device, nullptr, nullptr);
+        ptr = portaudio::find(device_list, &device, nullptr, nullptr);
         if(!ptr)
         {
             Loger::error("Выбранное устройство ввода не найдено");
@@ -70,9 +70,9 @@ std::string CoreConfigHandler::get_input_device_module(pulseaudio::DeviceInfo* p
 
 
     constexpr bool real = false;
-    if(!pulseaudio::find(device_list, &ptr->device, &ptr->human_name, &real))
+    if(!portaudio::find(device_list, &ptr->device, &ptr->human_name, &real))
     {
-        if(!pulseaudio::create_input_device_module(*ptr))
+        if(!portaudio::create_input_device_module(*ptr))
         {
             Loger::error("Ошибка при создании модуля для устройства ввода " + ptr->human_name);
             return {};
@@ -90,14 +90,14 @@ std::string CoreConfigHandler::get_input_device_module(pulseaudio::DeviceInfo* p
 
 std::string CoreConfigHandler::get_output_device_module() const
 {
-    auto device_list = pulseaudio::list_output_devices();
+    auto device_list = portaudio::list_output_devices();
     const auto device = config->output_device();
     if(device == NONE_DEVICE)
     {
         Loger::info("Устройство выводе не выбрано");
         return {};
     }
-    const auto ptr = pulseaudio::find(device_list, &device, nullptr, nullptr);
+    const auto ptr = portaudio::find(device_list, &device, nullptr, nullptr);
     if(!ptr)
     {
         Loger::error("Выбранное устройство выводе не найдено");
@@ -108,16 +108,16 @@ std::string CoreConfigHandler::get_output_device_module() const
     const auto combiner_human_name = DAEMON_NAME + " " + ptr->human_name + " combiner";
 
     constexpr bool real = false;
-    if(!pulseaudio::find(device_list, &combiner_device, &combiner_human_name, &real))
+    if(!portaudio::find(device_list, &combiner_device, &combiner_human_name, &real))
     {
-        if(!pulseaudio::create_output_device_module({0, combiner_device, combiner_human_name, ptr->device}))
+        if(!portaudio::create_output_device_module({0, combiner_device, combiner_human_name, ptr->device}))
         {
             Loger::error("Ошибка при создании модуля для устройства вывода " + combiner_human_name);
             return {};
         }
     }
 
-    pulseaudio::DeviceInfo device_info{0, DAEMON_NAME + "-output-remap", DAEMON_NAME + " " + ptr->human_name + " remap", combiner_device + ".monitor"};
+    portaudio::DeviceInfo device_info{0, DAEMON_NAME + "-output-remap", DAEMON_NAME + " " + ptr->human_name + " remap", combiner_device + ".monitor"};
     return get_input_device_module(&device_info);
 }
 

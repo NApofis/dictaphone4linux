@@ -8,6 +8,10 @@
 #include "pulseaudio_device.h"
 #include "config.h"
 
+
+/*
+ * Декоратор для работы с файлом конфигурации в UI
+ */
 struct UIConfigHandler
 {
     int selected_input_device = 0;
@@ -17,8 +21,8 @@ struct UIConfigHandler
     std::string shelf_life;
     std::string file_minute_size;
 
-    std::vector<std::pair<unsigned int, pulseaudio::DeviceInfo>> input_devices;
-    std::vector<std::pair<unsigned int, pulseaudio::DeviceInfo>> output_devices;
+    std::vector<std::pair<unsigned int, portaudio::DeviceInfo>> input_devices;
+    std::vector<std::pair<unsigned int, portaudio::DeviceInfo>> output_devices;
 
     bool save_config(std::string& message);
     [[nodiscard]] std::string selected_input_device_name() const { return config->input_device(); }
@@ -30,6 +34,9 @@ private:
     std::shared_ptr<Config> config;
 };
 
+/*
+ * Класс с методами для удаления записей(файлов) за определенный промежуток времени
+ */
 struct UIDeleterRecords
 {
     std::string selected_delete_value = "30";

@@ -9,14 +9,20 @@
 
 std::string execute_command(const std::string& cmd);
 
-namespace pulseaudio
+/**
+* Методы для работы с аудио устройствами через драйвер pulseaudio
+*/
+namespace portaudio
 {
+    /*
+     * Данные устройства pulseaudio
+     */
     struct DeviceInfo
     {
         int id;
-        std::string device;
+        std::string device; // Програмное название
         std::string human_name;
-        std::string master;
+        std::string master; // Родительское устройство
         bool real;
     };
 

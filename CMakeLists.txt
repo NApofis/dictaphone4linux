@@ -12,8 +12,6 @@ file (GLOB TESTS_LIST
 )
 
 add_executable(tests ${TESTS_LIST})
-add_subdirectory(./external/googletest)
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR} ${CMAKE_BINARY_DIR})
 
 set( BUILD_TZ_LIB ON CACHE INTERNAL "build/install of TZ library")
 set( USE_SYSTEM_TZ_DB ON CACHE INTERNAL "Use the operating system's timezone database" )

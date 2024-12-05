@@ -8,6 +8,9 @@
 #include <memory>
 
 
+/*
+ * Методы для удаление записей(файлов)
+ */
 namespace records
 {
     unsigned int delete_records_after(const std::shared_ptr<std::string>& path, const std::chrono::system_clock::time_point* time);

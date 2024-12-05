@@ -9,16 +9,20 @@
 #include <atomic>
 #include <mutex>
 #include <condition_variable>
-#include <controllers.h>
 #include <fstream>
 #include <filesystem>
 
 #include "common.h"
+#include "controllers/config.h"
 
+/*
+ * Блокировка не позволяющая запустить два экземпляра демона одновременно. Сделана для использования вместо мьютекса
+ */
 class LockFile
 {
-    std::string filename = PROGRAM_ROOT_PATH + "/" + DAEMON_NAME + ".lock";
+    std::string filename = PROGRAM_ROOT_PATH + "/" + DAEMON_NAME + ".lock"; // файл блокировки
     int file_descriptor = 0;
+    const int file_length = 10;
     void delete_file() const { std::filesystem::remove(filename); }
 
 public:
@@ -26,11 +30,13 @@ public:
     void lock();
     void unlock() const;
     [[nodiscard]] bool try_lock();
-    ~LockFile() {delete_file();}
 
-    pid_t get_pid_from_lockfile ();
+    int get_pid_from_lockfile ();
 };
 
+/*
+ *  Демон синглтон для записи звука в фане
+ */
 class Daemon
 {
     using DaemonDuration = std::chrono::high_resolution_clock::duration;
@@ -44,23 +50,19 @@ class Daemon
     std::atomic<bool> m_is_stop{false};
 
     std::condition_variable update_cv;
-    std::condition_variable close_cv;
     std::mutex update_local_mutex;
-    std::mutex close_local_mutex;
 
     std::int32_t exit_code = EXIT_SUCCESS;
-    static pid_t thread_pid;
 
     std::unique_ptr<iChain> start;
     std::shared_ptr<Data> data;
-
+    pid_t thread_pid;
 
 public:
     static Daemon* create(const DaemonDuration& update_duration = std::chrono::seconds(10));
 
     virtual ~Daemon()
     {
-        Loger::shutdown();
         std::exit(exit_code);
     }
 
@@ -75,8 +77,9 @@ private:
     void on_update() const;
     void on_stop() const;
 
+
     static void signal_handler(int sig);
-    static void daemonize();
+    void daemonize();
     void start_daemon();
 
 };

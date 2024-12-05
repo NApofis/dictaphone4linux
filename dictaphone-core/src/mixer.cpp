@@ -199,7 +199,7 @@ void Mixer::buffering()
             device_buffer_number.clear();
         }
 
-        if(result->size() >= save_size)
+        if(result->size() >= save_size || (!result->empty() && stop_flag->load()))
         {
             std::lock_guard lock_storage(*result_locker);
             result_storage->push_back(result);
