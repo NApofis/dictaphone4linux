@@ -3,6 +3,7 @@ project(dictaphone4linux-common)
 
 add_library(${PROJECT_NAME} STATIC)
 add_library(libdictaphonecommon ALIAS ${PROJECT_NAME})
+configure_file(include/const.h.in const.h)
 
 file (GLOB_RECURSE ${PROJECT_NAME}_SRC_FILES src/*.cpp)
 target_sources(${PROJECT_NAME}
@@ -44,6 +45,7 @@ target_link_libraries(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME}
         PUBLIC
             include
+            ${CMAKE_BINARY_DIR}
             ${PORTAUDIO_INCLUDE_DIR}
         PRIVATE
             ${ALSA_INCLUDE_DIRS}

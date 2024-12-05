@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(PROGRAM_ROOT_DIRECTORY "/opt/dictaphone4linux")
 configure_file(dictaphone-common/include/const.h.in dictaphone-common/const.h)
-configure_file(deb/postinst.in postinst)
+configure_file(${PROJECT_SOURCE_DIR}/deb/postinst.in postinst)
 
 set( BUILD_TZ_LIB ON CACHE INTERNAL "build/install of TZ library")
 set( USE_SYSTEM_TZ_DB ON CACHE INTERNAL "Use the operating system's timezone database" )
