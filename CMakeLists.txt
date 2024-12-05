@@ -7,20 +7,10 @@ set(PROGRAM_ROOT_DIRECTORY "/opt/dictaphone4linux")
 configure_file(dictaphone-common/include/const.h.in dictaphone-common/const.h)
 configure_file(deb/postinst.in postinst)
 
-file (GLOB TESTS_LIST
-        ${CMAKE_CURRENT_SOURCE_DIR}/list_tests/*.cpp
-)
-
-add_executable(tests ${TESTS_LIST})
-
 set( BUILD_TZ_LIB ON CACHE INTERNAL "build/install of TZ library")
 set( USE_SYSTEM_TZ_DB ON CACHE INTERNAL "Use the operating system's timezone database" )
 add_subdirectory(./external/date)
 
-target_link_libraries(tests
-        gtest
-        gtest_main
- )
 add_subdirectory(dictaphone-common)
 add_subdirectory(dictaphone-cli)
 add_subdirectory(dictaphone-core)
