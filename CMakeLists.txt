@@ -9,6 +9,8 @@ configure_file(deb/postinst.in postinst)
 
 set( BUILD_TZ_LIB ON CACHE INTERNAL "build/install of TZ library")
 set( USE_SYSTEM_TZ_DB ON CACHE INTERNAL "Use the operating system's timezone database" )
+set( PA_USE_ASIO ON CACHE INTERNAL "Will use alsa driver" )
+set( PA_USE_PULSEAUDIO ON CACHE INTERNAL "Will use pulseaudion driver" )
 add_subdirectory(./external/date)
 
 add_subdirectory(dictaphone-common)
