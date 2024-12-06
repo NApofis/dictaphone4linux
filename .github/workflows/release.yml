@@ -20,35 +20,13 @@ jobs:
 
       - run: "
           sudo apt-get update;
-          sudo apt-get install -y doxygen; 
+          sudo apt-get upgrade; 
         "
       - run: "
           cmake . -DRELEASE_VERSION=${{inputs.version}};
           cmake --build .;
           cmake --build . --target package
       "
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name:  ${{ inputs.version }}
-          release_name: Release  ${{ inputs.version }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dictaphone4linux-package-${{ inputs.version }}-Linux.deb
-          asset_name: dictaphone4linux-package-${{ inputs.version }}-Linux.deb
-          asset_content_type: application/vnd.debian.binary-package
 
       - name: Doxygen Action
         uses: mattnotmitt/doxygen-action@v1.1.0
