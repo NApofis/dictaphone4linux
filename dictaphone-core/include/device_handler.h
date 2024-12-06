@@ -11,7 +11,7 @@
 #include <portaudio.h>
 
 
-/*
+/**
  * Методы для работы с библиотекой portaudio
  */
 namespace portaudio

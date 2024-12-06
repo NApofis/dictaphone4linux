@@ -8,7 +8,7 @@
 
 #include "controllers/icontroller.h"
 
-/*
+/**
  * Элемент цепочки запускающий запись звука с аудио устройств
  */
 class DeviceController : public iChain

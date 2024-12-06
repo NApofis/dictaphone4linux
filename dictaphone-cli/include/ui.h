@@ -9,7 +9,7 @@
 #include "config.h"
 
 
-/*
+/**
  * Декоратор для работы с файлом конфигурации в UI
  */
 struct UIConfigHandler
@@ -34,7 +34,7 @@ private:
     std::shared_ptr<Config> config;
 };
 
-/*
+/**
  * Класс с методами для удаления записей(файлов) за определенный промежуток времени
  */
 struct UIDeleterRecords

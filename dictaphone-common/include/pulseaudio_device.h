@@ -14,7 +14,7 @@ std::string execute_command(const std::string& cmd);
 */
 namespace portaudio
 {
-    /*
+    /**
      * Данные устройства pulseaudio
      */
     struct DeviceInfo

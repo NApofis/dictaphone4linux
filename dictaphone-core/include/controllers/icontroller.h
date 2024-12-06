@@ -13,7 +13,7 @@
 #include "config_handler.h"
 #include "common.h"
 
-/*
+/**
  * Общие данные передаваемые между классами цепочки
  */
 struct Data
@@ -29,7 +29,7 @@ struct Data
 
 };
 
-/*
+/**
  * Интерфейс для элементов цепочки
  */
 class iChain

@@ -24,7 +24,7 @@ public:
     virtual device_sample get_place(const std::string& name, unsigned int& prev) = 0;
 };
 
-/*
+/**
  * Класс отвечающий за:
  * 1. Раздачу буффера устройствам
  * 2. Преобразование данных с устройств в звук

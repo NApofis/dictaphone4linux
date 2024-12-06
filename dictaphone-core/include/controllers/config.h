@@ -6,7 +6,7 @@
 
 #include "controllers/icontroller.h"
 
-/*
+/**
  * Элемент цепочки отслеживающий изменения в конфигурационном файле
  */
 class ConfigController : public iChain

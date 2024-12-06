@@ -15,7 +15,7 @@
 #include "common.h"
 #include "controllers/config.h"
 
-/*
+/**
  * Блокировка не позволяющая запустить два экземпляра демона одновременно. Сделана для использования вместо мьютекса
  */
 class LockFile
@@ -34,7 +34,7 @@ public:
     int get_pid_from_lockfile ();
 };
 
-/*
+/**
  *  Демон синглтон для записи звука в фане
  */
 class Daemon

@@ -33,7 +33,7 @@ constexpr unsigned long SAMPLE_VAL = []() constexpr -> unsigned long
     }
 }();
 
-/*
+/**
  * Статусы устройства
  */
 enum class Status
@@ -48,7 +48,7 @@ using record_sample_data = std::shared_ptr<std::vector<SAMPLE_TYPE>>;
 using device_sample = std::pair<SAMPLE_TYPE*, size_t>;
 using records_storage = std::shared_ptr<std::list<record_sample_data>>;
 
-/*
+/**
  * Логер будет сохранять логи работы в файл в папке программы
  */
 class Loger

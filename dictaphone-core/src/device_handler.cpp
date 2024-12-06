@@ -55,7 +55,7 @@ namespace portaudio
             nullptr,
             SAMPLE_RATE,
             CHUNK_BUFFER_SIZE,
-            paClipOff, /* we won't output out of range samples so don't bother clipping them */
+            paClipOff,
             callback,
             &data);
 

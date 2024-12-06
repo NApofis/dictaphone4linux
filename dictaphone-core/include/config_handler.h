@@ -11,7 +11,7 @@
 #include "config.h"
 
 
-/*
+/**
  * Декоратор для работы с конфигурационным файлом в демоне
  */
 struct CoreConfigHandler

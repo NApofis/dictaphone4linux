@@ -8,7 +8,7 @@
 #include <memory>
 
 
-/*
+/**
  * Методы для удаление записей(файлов)
  */
 namespace records
