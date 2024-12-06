@@ -20,7 +20,7 @@ jobs:
 
       - run: "
           sudo apt-get update;
-          sudo apt-get upgrade; 
+          sudo apt-get install -y doxygen; 
         "
       - run: "
           cmake . -DRELEASE_VERSION=${{inputs.version}};
@@ -28,18 +28,24 @@ jobs:
           cmake --build . --target package
       "
 
-      - name: Doxygen Action
-        uses: mattnotmitt/doxygen-action@v1.1.0
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          doxyfile-path: ./Doxyfile
-          working-directory: .
+          tag_name:  ${{ inputs.version }}
+          release_name: Release  ${{ inputs.version }}
+          draft: false
+          prerelease: false
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./doc/html/
-          enable_jekyll: false
-          allow_empty_commit: false
-          force_orphan: true
-          publish_branch: gh-pages
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dictaphone4linux-package-${{ inputs.version }}-Linux.deb
+          asset_name: dictaphone4linux-package-${{ inputs.version }}-Linux.deb
+          asset_content_type: application/vnd.debian.binary-package
