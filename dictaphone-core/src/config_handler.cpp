@@ -124,23 +124,26 @@ std::string CoreConfigHandler::get_output_device_module() const
 
 bool CoreConfigHandler::check_portaudio_device(const std::string& name)
 {
-    freopen("/dev/null","w",stderr);
+    freopen("/dev/null","w", stderr);
     PaError err = Pa_Initialize();
-    freopen("/dev/tty","w",stderr);
-    if (err != paNoError) {
+    freopen("/dev/tty","w", stderr);
+    if (err != paNoError)
+    {
         Loger::error("Не удалось получить список устройств portaudio");
         return {};
     }
 
+    std::string dev_names;
     for (int i = 0; i < Pa_GetDeviceCount(); i++)
     {
         const auto deviceInfo = Pa_GetDeviceInfo(i);
-
+        dev_names += std::string(deviceInfo->name) + ", ";
         if (deviceInfo->name == name)
         {
             return true;
         }
     }
+    Loger::warning("Устройство " + name + " не найдено в списке [" + dev_names + "]");
     return false;
 }
 
