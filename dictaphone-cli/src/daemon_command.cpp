@@ -10,17 +10,18 @@ namespace daemon_command
 {
     bool is_work()
     {
-        return execute_command("dictaphone-core --status") != NONE_DEVICE;
+        auto status =  execute_command("dictaphone4linux-core --status");
+        return status.find(NONE_DEVICE) == std::string::npos;
     }
 
     void start()
     {
-        execute_command("dictaphone-core --start");
+        execute_command("dictaphone4linux-core --start");
     }
 
 
     void stop()
     {
-        execute_command("dictaphone-core --stop");
+        execute_command("dictaphone4linux-core --stop");
     }
 }

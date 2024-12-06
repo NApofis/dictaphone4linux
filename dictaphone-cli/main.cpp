@@ -92,18 +92,16 @@ int main()
 
     bool daemon_work = daemon_command::is_work();
     std::string record_button_current_text = daemon_work ? "Остановить запись" : "Начать запись";
-    auto record_button = Button(&record_button_current_text, [& daemon_work, &record_button_current_text]()
+    auto record_button = Button(&record_button_current_text, [&record_button_current_text]()
     {
-        if(daemon_work)
+        if(daemon_command::is_work())
         {
             daemon_command::stop();
-            daemon_work = false;
             record_button_current_text = "Начать запись";
         }
         else
         {
             daemon_command::start();
-            daemon_work = true;
             record_button_current_text = "Остановить запись";
         }
     }, ButtonOption::Animated(Color::Default, Color::GrayDark, Color::Default, Color::White));
