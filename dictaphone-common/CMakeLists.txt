@@ -18,7 +18,7 @@ ExternalProject_Add(portaudio
         GIT_TAG           "master"
         SOURCE_DIR        ""
         BUILD_IN_SOURCE   1
-        CONFIGURE_COMMAND cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=./build -DBUILD_SHARED_LIBS=ON
+        CONFIGURE_COMMAND cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=./build
         BUILD_COMMAND     make
         INSTALL_COMMAND   make install
         TEST_COMMAND      ""
@@ -29,7 +29,7 @@ ExternalProject_Add(portaudio
 
 ExternalProject_Get_Property( portaudio SOURCE_DIR BINARY_DIR )
 set( PORTAUDIO_INCLUDE_DIR "${SOURCE_DIR}/build/include" )
-set( PORTAUDIO_STATIC_LIB ${BINARY_DIR}/build/lib/libportaudio.so )
+set( PORTAUDIO_STATIC_LIB ${BINARY_DIR}/build/lib/libportaudio.a )
 
 add_dependencies( ${PROJECT_NAME} portaudio)
 
