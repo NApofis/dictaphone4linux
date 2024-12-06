@@ -74,7 +74,7 @@ std::string CoreConfigHandler::get_input_device_module(portaudio::DeviceInfo* pt
     {
         if(!portaudio::create_input_device_module(*ptr))
         {
-            Loger::error("Ошибка при создании модуля для устройства ввода " + ptr->human_name);
+            Loger::error("Ошибка при создании виртуального устройства3 " + ptr->human_name);
             return {};
         }
     }
@@ -83,7 +83,7 @@ std::string CoreConfigHandler::get_input_device_module(portaudio::DeviceInfo* pt
     {
         return ptr->human_name;
     }
-    Loger::error("Ошибка при создании модуля для устройства ввода " + ptr->human_name);
+    Loger::error("Ошибка при создании виртуального устройства2 " + ptr->human_name);
     return {};
 }
 
@@ -112,7 +112,7 @@ std::string CoreConfigHandler::get_output_device_module() const
     {
         if(!portaudio::create_output_device_module({0, combiner_device, combiner_human_name, ptr->device}))
         {
-            Loger::error("Ошибка при создании модуля для устройства вывода " + combiner_human_name);
+            Loger::error("Ошибка при создании виртуального устройства1 " + combiner_human_name);
             return {};
         }
     }
