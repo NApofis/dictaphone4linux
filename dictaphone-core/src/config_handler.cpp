@@ -134,18 +134,25 @@ bool CoreConfigHandler::check_portaudio_device(const std::string& name)
     }
 
     std::string dev_names;
+    bool found = false;
     for (int i = 0; i < Pa_GetDeviceCount(); i++)
     {
         const auto deviceInfo = Pa_GetDeviceInfo(i);
         dev_names += std::string(deviceInfo->name) + ", ";
         if (deviceInfo->name == name)
         {
-            return true;
+            found = true;
+            break;
         }
     }
-    Loger::warning("Устройство " + name + " не найдено в списке [" + dev_names + "]");
+
     Pa_Terminate();
-    return false;
+    if (!found)
+    {
+        Loger::warning("Устройство " + name + " не найдено в списке [" + dev_names + "]");
+        return false;
+    }
+    return true;
 }
 
 bool CoreConfigHandler::load_new_version()
