@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dictaphone4linux: Исходный файл dictaphone-common/include/pulseaudio_device.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">dictaphone4linux
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_013409b4ec75c02a1c9bf7e488079368.html">dictaphone-common</a></li><li class="navelem"><a class="el" href="dir_66b4892c0260f89bf8e1e7a13a39474a.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">pulseaudio_device.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="pulseaudio__device_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Created by ntikhonov on 17.11.24.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>std::string <a class="code hl_function" href="pulseaudio__device_8h.html#a6bfb621ab335abce5b13e943435945a3">execute_command</a>(<span class="keyword">const</span> std::string&amp; cmd);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="namespaceportaudio.html">   15</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceportaudio.html">portaudio</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structportaudio_1_1DeviceInfo.html">   20</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structportaudio_1_1DeviceInfo.html">DeviceInfo</a></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structportaudio_1_1DeviceInfo.html#a0a75df07f11e04c2fe3e8f5d09d7a58e">   22</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="structportaudio_1_1DeviceInfo.html#a0a75df07f11e04c2fe3e8f5d09d7a58e">id</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structportaudio_1_1DeviceInfo.html#a7149496a9649d75fe310e8b81f6e6c31">   23</a></span>        std::string <a class="code hl_variable" href="structportaudio_1_1DeviceInfo.html#a7149496a9649d75fe310e8b81f6e6c31">device</a>; <span class="comment">// Програмное название</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structportaudio_1_1DeviceInfo.html#abecb860ca3d3d36d63a7668472d5967b">   24</a></span>        std::string <a class="code hl_variable" href="structportaudio_1_1DeviceInfo.html#abecb860ca3d3d36d63a7668472d5967b">human_name</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structportaudio_1_1DeviceInfo.html#a6ce8f8d7b2726406cd2a75ebe2106cd1">   25</a></span>        std::string <a class="code hl_variable" href="structportaudio_1_1DeviceInfo.html#a6ce8f8d7b2726406cd2a75ebe2106cd1">master</a>; <span class="comment">// Родительское устройство</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structportaudio_1_1DeviceInfo.html#a315e33e4efb6d4912090c6cd979f3af6">   26</a></span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="structportaudio_1_1DeviceInfo.html#a315e33e4efb6d4912090c6cd979f3af6">real</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    };</div>
+</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_struct" href="structportaudio_1_1DeviceInfo.html">DeviceInfo</a>* <a class="code hl_function" href="namespaceportaudio.html#a1986cbe8b076f026efca89391c059ef6">find</a>(std::vector&lt;DeviceInfo&gt;&amp; devices,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">const</span> std::string* device, <span class="keyword">const</span> std::string* human_name, <span class="keyword">const</span> <span class="keywordtype">bool</span>* real);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    std::vector&lt;DeviceInfo&gt; <a class="code hl_function" href="namespaceportaudio.html#aa82c9af7436ca7a160d4081b39932ad6">list_input_devices</a>();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    std::vector&lt;DeviceInfo&gt; <a class="code hl_function" href="namespaceportaudio.html#a2ec0396106d47c1186fd5ec289a96c48">list_output_devices</a>();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceportaudio.html#af82a34d45a4fe7d1e54260098f60e5e6">create_input_device_module</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structportaudio_1_1DeviceInfo.html">DeviceInfo</a>&amp; dev);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespaceportaudio.html#a8ee604bfdd8567bb51b657b9d5d8c827">   36</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceportaudio.html#a8ee604bfdd8567bb51b657b9d5d8c827">create_output_device_module</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structportaudio_1_1DeviceInfo.html">DeviceInfo</a>&amp; device);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
+</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="ttc" id="anamespaceportaudio_html"><div class="ttname"><a href="namespaceportaudio.html">portaudio</a></div><div class="ttdef"><b>Definition</b> pulseaudio_device.h:16</div></div>
+<div class="ttc" id="anamespaceportaudio_html_a1986cbe8b076f026efca89391c059ef6"><div class="ttname"><a href="namespaceportaudio.html#a1986cbe8b076f026efca89391c059ef6">portaudio::find</a></div><div class="ttdeci">DeviceInfo * find(std::vector&lt; DeviceInfo &gt; &amp;devices, const std::string *device, const std::string *human_name, const bool *real)</div><div class="ttdef"><b>Definition</b> pulseaudio_device.cpp:99</div></div>
+<div class="ttc" id="anamespaceportaudio_html_a2ec0396106d47c1186fd5ec289a96c48"><div class="ttname"><a href="namespaceportaudio.html#a2ec0396106d47c1186fd5ec289a96c48">portaudio::list_output_devices</a></div><div class="ttdeci">std::vector&lt; DeviceInfo &gt; list_output_devices()</div><div class="ttdef"><b>Definition</b> pulseaudio_device.cpp:118</div></div>
+<div class="ttc" id="anamespaceportaudio_html_a8ee604bfdd8567bb51b657b9d5d8c827"><div class="ttname"><a href="namespaceportaudio.html#a8ee604bfdd8567bb51b657b9d5d8c827">portaudio::create_output_device_module</a></div><div class="ttdeci">bool create_output_device_module(const DeviceInfo &amp;device)</div></div>
+<div class="ttc" id="anamespaceportaudio_html_aa82c9af7436ca7a160d4081b39932ad6"><div class="ttname"><a href="namespaceportaudio.html#aa82c9af7436ca7a160d4081b39932ad6">portaudio::list_input_devices</a></div><div class="ttdeci">std::vector&lt; DeviceInfo &gt; list_input_devices()</div><div class="ttdef"><b>Definition</b> pulseaudio_device.cpp:114</div></div>
+<div class="ttc" id="anamespaceportaudio_html_af82a34d45a4fe7d1e54260098f60e5e6"><div class="ttname"><a href="namespaceportaudio.html#af82a34d45a4fe7d1e54260098f60e5e6">portaudio::create_input_device_module</a></div><div class="ttdeci">bool create_input_device_module(const DeviceInfo &amp;dev)</div><div class="ttdef"><b>Definition</b> pulseaudio_device.cpp:124</div></div>
+<div class="ttc" id="apulseaudio__device_8h_html_a6bfb621ab335abce5b13e943435945a3"><div class="ttname"><a href="pulseaudio__device_8h.html#a6bfb621ab335abce5b13e943435945a3">execute_command</a></div><div class="ttdeci">std::string execute_command(const std::string &amp;cmd)</div><div class="ttdef"><b>Definition</b> pulseaudio_device.cpp:18</div></div>
+<div class="ttc" id="astructportaudio_1_1DeviceInfo_html"><div class="ttname"><a href="structportaudio_1_1DeviceInfo.html">portaudio::DeviceInfo</a></div><div class="ttdef"><b>Definition</b> pulseaudio_device.h:21</div></div>
+<div class="ttc" id="astructportaudio_1_1DeviceInfo_html_a0a75df07f11e04c2fe3e8f5d09d7a58e"><div class="ttname"><a href="structportaudio_1_1DeviceInfo.html#a0a75df07f11e04c2fe3e8f5d09d7a58e">portaudio::DeviceInfo::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> pulseaudio_device.h:22</div></div>
+<div class="ttc" id="astructportaudio_1_1DeviceInfo_html_a315e33e4efb6d4912090c6cd979f3af6"><div class="ttname"><a href="structportaudio_1_1DeviceInfo.html#a315e33e4efb6d4912090c6cd979f3af6">portaudio::DeviceInfo::real</a></div><div class="ttdeci">bool real</div><div class="ttdef"><b>Definition</b> pulseaudio_device.h:26</div></div>
+<div class="ttc" id="astructportaudio_1_1DeviceInfo_html_a6ce8f8d7b2726406cd2a75ebe2106cd1"><div class="ttname"><a href="structportaudio_1_1DeviceInfo.html#a6ce8f8d7b2726406cd2a75ebe2106cd1">portaudio::DeviceInfo::master</a></div><div class="ttdeci">std::string master</div><div class="ttdef"><b>Definition</b> pulseaudio_device.h:25</div></div>
+<div class="ttc" id="astructportaudio_1_1DeviceInfo_html_a7149496a9649d75fe310e8b81f6e6c31"><div class="ttname"><a href="structportaudio_1_1DeviceInfo.html#a7149496a9649d75fe310e8b81f6e6c31">portaudio::DeviceInfo::device</a></div><div class="ttdeci">std::string device</div><div class="ttdef"><b>Definition</b> pulseaudio_device.h:23</div></div>
+<div class="ttc" id="astructportaudio_1_1DeviceInfo_html_abecb860ca3d3d36d63a7668472d5967b"><div class="ttname"><a href="structportaudio_1_1DeviceInfo.html#abecb860ca3d3d36d63a7668472d5967b">portaudio::DeviceInfo::human_name</a></div><div class="ttdeci">std::string human_name</div><div class="ttdef"><b>Definition</b> pulseaudio_device.h:24</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dictaphone4linux: Исходный файл dictaphone-core/include/mixer.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">dictaphone4linux
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e04bd40bd7dff2801aaf17266eadab2c.html">dictaphone-core</a></li><li class="navelem"><a class="el" href="dir_56a2555623869d721e3f74aade86a732.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">mixer.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="mixer_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Created by ntikhonov on 20.11.24.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;atomic&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;shared_mutex&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="common_8h.html">common.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// Интерфейс классов предоставляющий бефферы для записи данных полученных с аудио устройства</span></div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classKeeper.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="classKeeper.html">Keeper</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classKeeper.html#a4853578645c900cfd2f27fc758e54b56">   22</a></span>    <a class="code hl_function" href="classKeeper.html#a4853578645c900cfd2f27fc758e54b56">Keeper</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classKeeper.html#ac7f4ec96280fd8d8d0363f03b260ff67">   23</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classKeeper.html#ac7f4ec96280fd8d8d0363f03b260ff67">~Keeper</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classKeeper.html#aa31cfc9faf6a79b94d00fddacbe90b09">   24</a></span>    <span class="keyword">virtual</span> <a class="code hl_typedef" href="common_8h.html#a9a9b2bab273ada6a7bfb1620a4758eff">device_sample</a> <a class="code hl_function" href="classKeeper.html#aa31cfc9faf6a79b94d00fddacbe90b09">get_place</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; prev) = 0;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>};</div>
+</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classMixer.html">   34</a></span><span class="keyword">class </span><a class="code hl_class" href="classMixer.html">Mixer</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classKeeper.html">Keeper</a></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    std::unordered_map&lt;std::string, std::vector&lt;device_sample&gt;&gt; buffers;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> device_count = 0;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::unordered_map&lt;std::string, std::shared_ptr&lt;std::atomic_uint32_t&gt;&gt; buffer_numbers;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    std::unordered_map&lt;std::string, unsigned int&gt; device_buffer_number;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    std::shared_ptr&lt;std::atomic_bool&gt; stop_flag;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_typedef" href="common_8h.html#af3d1165b963e6786c2e6b4f719b4eacf">records_storage</a> result_storage;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_typedef" href="common_8h.html#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a> result;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    std::shared_ptr&lt;std::mutex&gt; result_locker;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">size_t</span> save_size = 10485760 / <span class="keyword">sizeof</span>(<a class="code hl_typedef" href="common_8h.html#afd09629dd82d36841459b86c16d1dd90">SAMPLE_TYPE</a>);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// size_t save_size = 2097152 / sizeof(SAMPLE_TYPE);</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    std::thread thread;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    std::mutex mixer_lock;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_typedef" href="common_8h.html#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a> residue_buffer = std::make_shared&lt;record_sample_data::element_type&gt;();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> buffering();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">static</span> <span class="keywordtype">size_t</span> calculate_index(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> buffer_number);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> insert_back(<a class="code hl_typedef" href="common_8h.html#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a> place, <a class="code hl_typedef" href="common_8h.html#a9a9b2bab273ada6a7bfb1620a4758eff">device_sample</a> data);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> mixer(<a class="code hl_typedef" href="common_8h.html#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a> place, <span class="keywordtype">size_t</span> start, <a class="code hl_typedef" href="common_8h.html#a9a9b2bab273ada6a7bfb1620a4758eff">device_sample</a> data);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> residue_mixer(<a class="code hl_typedef" href="common_8h.html#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a> place, <span class="keywordtype">size_t</span>&amp; start, <a class="code hl_typedef" href="common_8h.html#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a> data);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> residue_mixer(<a class="code hl_typedef" href="common_8h.html#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a> place, <span class="keywordtype">size_t</span>&amp; start, <a class="code hl_typedef" href="common_8h.html#a9a9b2bab273ada6a7bfb1620a4758eff">device_sample</a> data);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classMixer.html#a574036bed3350bc8226a4cb21333b33a">   65</a></span>    <a class="code hl_function" href="classMixer.html#a574036bed3350bc8226a4cb21333b33a">Mixer</a>(<a class="code hl_typedef" href="common_8h.html#af3d1165b963e6786c2e6b4f719b4eacf">records_storage</a> storage,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>          std::shared_ptr&lt;std::mutex&gt; lock) :</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        result_storage(std::move(storage)), result_locker(std::move(lock)) {};</div>
+</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classMixer.html#afc1d498290778616cbdceb6c38c42c86">   69</a></span>    <a class="code hl_function" href="classMixer.html#afc1d498290778616cbdceb6c38c42c86">~Mixer</a>()<span class="keyword"> override</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_function" href="classMixer.html#ae36e97b0769fe6c317aa9e7fea14884c">stop</a>();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    };</div>
+</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classMixer.html#a950a7c1fd7f8c7c2dbb41061bf04bf37">add_device</a>(<span class="keyword">const</span> std::string&amp; name);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMixer.html#acb2fe877682b76e6c7c89be2e95b538e">remove_device</a>(<span class="keyword">const</span> std::string&amp; name);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_typedef" href="common_8h.html#a9a9b2bab273ada6a7bfb1620a4758eff">device_sample</a> <a class="code hl_function" href="classMixer.html#a1e3a24c76fb4f555610036ce1a602173">get_place</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; prev) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMixer.html#ae3839b5d62cadd0876151fff16b5ec4d">run</a>();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMixer.html#ae36e97b0769fe6c317aa9e7fea14884c">stop</a>();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>};</div>
+</div>
+<div class="ttc" id="aclassKeeper_html"><div class="ttname"><a href="classKeeper.html">Keeper</a></div><div class="ttdef"><b>Definition</b> mixer.h:19</div></div>
+<div class="ttc" id="aclassKeeper_html_a4853578645c900cfd2f27fc758e54b56"><div class="ttname"><a href="classKeeper.html#a4853578645c900cfd2f27fc758e54b56">Keeper::Keeper</a></div><div class="ttdeci">Keeper()=default</div></div>
+<div class="ttc" id="aclassKeeper_html_aa31cfc9faf6a79b94d00fddacbe90b09"><div class="ttname"><a href="classKeeper.html#aa31cfc9faf6a79b94d00fddacbe90b09">Keeper::get_place</a></div><div class="ttdeci">virtual device_sample get_place(const std::string &amp;name, unsigned int &amp;prev)=0</div></div>
+<div class="ttc" id="aclassKeeper_html_ac7f4ec96280fd8d8d0363f03b260ff67"><div class="ttname"><a href="classKeeper.html#ac7f4ec96280fd8d8d0363f03b260ff67">Keeper::~Keeper</a></div><div class="ttdeci">virtual ~Keeper()=default</div></div>
+<div class="ttc" id="aclassMixer_html"><div class="ttname"><a href="classMixer.html">Mixer</a></div><div class="ttdef"><b>Definition</b> mixer.h:35</div></div>
+<div class="ttc" id="aclassMixer_html_a1e3a24c76fb4f555610036ce1a602173"><div class="ttname"><a href="classMixer.html#a1e3a24c76fb4f555610036ce1a602173">Mixer::get_place</a></div><div class="ttdeci">device_sample get_place(const std::string &amp;name, unsigned int &amp;prev) override</div><div class="ttdef"><b>Definition</b> mixer.cpp:121</div></div>
+<div class="ttc" id="aclassMixer_html_a574036bed3350bc8226a4cb21333b33a"><div class="ttname"><a href="classMixer.html#a574036bed3350bc8226a4cb21333b33a">Mixer::Mixer</a></div><div class="ttdeci">Mixer(records_storage storage, std::shared_ptr&lt; std::mutex &gt; lock)</div><div class="ttdef"><b>Definition</b> mixer.h:65</div></div>
+<div class="ttc" id="aclassMixer_html_a950a7c1fd7f8c7c2dbb41061bf04bf37"><div class="ttname"><a href="classMixer.html#a950a7c1fd7f8c7c2dbb41061bf04bf37">Mixer::add_device</a></div><div class="ttdeci">bool add_device(const std::string &amp;name)</div><div class="ttdef"><b>Definition</b> mixer.cpp:77</div></div>
+<div class="ttc" id="aclassMixer_html_acb2fe877682b76e6c7c89be2e95b538e"><div class="ttname"><a href="classMixer.html#acb2fe877682b76e6c7c89be2e95b538e">Mixer::remove_device</a></div><div class="ttdeci">void remove_device(const std::string &amp;name)</div><div class="ttdef"><b>Definition</b> mixer.cpp:96</div></div>
+<div class="ttc" id="aclassMixer_html_ae36e97b0769fe6c317aa9e7fea14884c"><div class="ttname"><a href="classMixer.html#ae36e97b0769fe6c317aa9e7fea14884c">Mixer::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdef"><b>Definition</b> mixer.cpp:139</div></div>
+<div class="ttc" id="aclassMixer_html_ae3839b5d62cadd0876151fff16b5ec4d"><div class="ttname"><a href="classMixer.html#ae3839b5d62cadd0876151fff16b5ec4d">Mixer::run</a></div><div class="ttdeci">void run()</div><div class="ttdef"><b>Definition</b> mixer.cpp:133</div></div>
+<div class="ttc" id="aclassMixer_html_afc1d498290778616cbdceb6c38c42c86"><div class="ttname"><a href="classMixer.html#afc1d498290778616cbdceb6c38c42c86">Mixer::~Mixer</a></div><div class="ttdeci">~Mixer() override</div><div class="ttdef"><b>Definition</b> mixer.h:69</div></div>
+<div class="ttc" id="acommon_8h_html"><div class="ttname"><a href="common_8h.html">common.h</a></div></div>
+<div class="ttc" id="acommon_8h_html_a96165ad54bf3b8541c220e00c39f6306"><div class="ttname"><a href="common_8h.html#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a></div><div class="ttdeci">std::shared_ptr&lt; std::vector&lt; SAMPLE_TYPE &gt; &gt; record_sample_data</div><div class="ttdef"><b>Definition</b> common.h:46</div></div>
+<div class="ttc" id="acommon_8h_html_a9a9b2bab273ada6a7bfb1620a4758eff"><div class="ttname"><a href="common_8h.html#a9a9b2bab273ada6a7bfb1620a4758eff">device_sample</a></div><div class="ttdeci">std::pair&lt; SAMPLE_TYPE *, size_t &gt; device_sample</div><div class="ttdef"><b>Definition</b> common.h:47</div></div>
+<div class="ttc" id="acommon_8h_html_af3d1165b963e6786c2e6b4f719b4eacf"><div class="ttname"><a href="common_8h.html#af3d1165b963e6786c2e6b4f719b4eacf">records_storage</a></div><div class="ttdeci">std::shared_ptr&lt; std::list&lt; record_sample_data &gt; &gt; records_storage</div><div class="ttdef"><b>Definition</b> common.h:48</div></div>
+<div class="ttc" id="acommon_8h_html_afd09629dd82d36841459b86c16d1dd90"><div class="ttname"><a href="common_8h.html#afd09629dd82d36841459b86c16d1dd90">SAMPLE_TYPE</a></div><div class="ttdeci">short SAMPLE_TYPE</div><div class="ttdef"><b>Definition</b> common.h:18</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

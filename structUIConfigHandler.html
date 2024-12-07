@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dictaphone4linux: Структура UIConfigHandler</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">dictaphone4linux
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="structUIConfigHandler-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Структура UIConfigHandler</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="ui_8h_source.html">ui.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a926fcbff4f6334e5ec95bae8fc63ede1" id="r_a926fcbff4f6334e5ec95bae8fc63ede1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a926fcbff4f6334e5ec95bae8fc63ede1">save_config</a> (std::string &amp;message)</td></tr>
+<tr class="separator:a926fcbff4f6334e5ec95bae8fc63ede1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac39710882e03ed203e938268cbff20b4" id="r_ac39710882e03ed203e938268cbff20b4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac39710882e03ed203e938268cbff20b4">selected_input_device_name</a> () const</td></tr>
+<tr class="separator:ac39710882e03ed203e938268cbff20b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab29ca0d7112c176a97d7f0958436f6c9" id="r_ab29ca0d7112c176a97d7f0958436f6c9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab29ca0d7112c176a97d7f0958436f6c9">selected_output_device_name</a> () const</td></tr>
+<tr class="separator:ab29ca0d7112c176a97d7f0958436f6c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3906459b27aef1613834570720c5448" id="r_aa3906459b27aef1613834570720c5448"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3906459b27aef1613834570720c5448">UIConfigHandler</a> ()</td></tr>
+<tr class="separator:aa3906459b27aef1613834570720c5448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a1480ddecc16076655041b282c961e0f2" id="r_a1480ddecc16076655041b282c961e0f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1480ddecc16076655041b282c961e0f2">selected_input_device</a> = 0</td></tr>
+<tr class="separator:a1480ddecc16076655041b282c961e0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ebb915fda289f188066d335bba2b587" id="r_a1ebb915fda289f188066d335bba2b587"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ebb915fda289f188066d335bba2b587">selected_output_device</a> = 0</td></tr>
+<tr class="separator:a1ebb915fda289f188066d335bba2b587"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62c5f452ed2aae6dbdf4710545d439f4" id="r_a62c5f452ed2aae6dbdf4710545d439f4"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62c5f452ed2aae6dbdf4710545d439f4">path_for_records</a></td></tr>
+<tr class="separator:a62c5f452ed2aae6dbdf4710545d439f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14eb1269bc8b0ca1eafbafca3b24f4bf" id="r_a14eb1269bc8b0ca1eafbafca3b24f4bf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14eb1269bc8b0ca1eafbafca3b24f4bf">path_to_file</a></td></tr>
+<tr class="separator:a14eb1269bc8b0ca1eafbafca3b24f4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8ac622169b1a66953e28654a40d4112" id="r_ac8ac622169b1a66953e28654a40d4112"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8ac622169b1a66953e28654a40d4112">shelf_life</a></td></tr>
+<tr class="separator:ac8ac622169b1a66953e28654a40d4112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a8dd65286ea70687eea65faee6a4ee6" id="r_a7a8dd65286ea70687eea65faee6a4ee6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a8dd65286ea70687eea65faee6a4ee6">file_minute_size</a></td></tr>
+<tr class="separator:a7a8dd65286ea70687eea65faee6a4ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa09abd39d6786759a31a698161abc68" id="r_afa09abd39d6786759a31a698161abc68"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; unsigned int, <a class="el" href="structportaudio_1_1DeviceInfo.html">portaudio::DeviceInfo</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa09abd39d6786759a31a698161abc68">input_devices</a></td></tr>
+<tr class="separator:afa09abd39d6786759a31a698161abc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73138cd4ee55cb3092ba67ea949ba1f5" id="r_a73138cd4ee55cb3092ba67ea949ba1f5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; unsigned int, <a class="el" href="structportaudio_1_1DeviceInfo.html">portaudio::DeviceInfo</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73138cd4ee55cb3092ba67ea949ba1f5">output_devices</a></td></tr>
+<tr class="separator:a73138cd4ee55cb3092ba67ea949ba1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Декоратор для работы с файлом конфигурации в UI </p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a id="aa3906459b27aef1613834570720c5448" name="aa3906459b27aef1613834570720c5448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3906459b27aef1613834570720c5448">&#9670;&#160;</a></span>UIConfigHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UIConfigHandler::UIConfigHandler </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="a926fcbff4f6334e5ec95bae8fc63ede1" name="a926fcbff4f6334e5ec95bae8fc63ede1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a926fcbff4f6334e5ec95bae8fc63ede1">&#9670;&#160;</a></span>save_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UIConfigHandler::save_config </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac39710882e03ed203e938268cbff20b4" name="ac39710882e03ed203e938268cbff20b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac39710882e03ed203e938268cbff20b4">&#9670;&#160;</a></span>selected_input_device_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string UIConfigHandler::selected_input_device_name </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab29ca0d7112c176a97d7f0958436f6c9" name="ab29ca0d7112c176a97d7f0958436f6c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab29ca0d7112c176a97d7f0958436f6c9">&#9670;&#160;</a></span>selected_output_device_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string UIConfigHandler::selected_output_device_name </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a7a8dd65286ea70687eea65faee6a4ee6" name="a7a8dd65286ea70687eea65faee6a4ee6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a8dd65286ea70687eea65faee6a4ee6">&#9670;&#160;</a></span>file_minute_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string UIConfigHandler::file_minute_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afa09abd39d6786759a31a698161abc68" name="afa09abd39d6786759a31a698161abc68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa09abd39d6786759a31a698161abc68">&#9670;&#160;</a></span>input_devices</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::pair&lt;unsigned int, <a class="el" href="structportaudio_1_1DeviceInfo.html">portaudio::DeviceInfo</a>&gt; &gt; UIConfigHandler::input_devices</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a73138cd4ee55cb3092ba67ea949ba1f5" name="a73138cd4ee55cb3092ba67ea949ba1f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73138cd4ee55cb3092ba67ea949ba1f5">&#9670;&#160;</a></span>output_devices</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::pair&lt;unsigned int, <a class="el" href="structportaudio_1_1DeviceInfo.html">portaudio::DeviceInfo</a>&gt; &gt; UIConfigHandler::output_devices</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a62c5f452ed2aae6dbdf4710545d439f4" name="a62c5f452ed2aae6dbdf4710545d439f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62c5f452ed2aae6dbdf4710545d439f4">&#9670;&#160;</a></span>path_for_records</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;std::string&gt; UIConfigHandler::path_for_records</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a14eb1269bc8b0ca1eafbafca3b24f4bf" name="a14eb1269bc8b0ca1eafbafca3b24f4bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14eb1269bc8b0ca1eafbafca3b24f4bf">&#9670;&#160;</a></span>path_to_file</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string UIConfigHandler::path_to_file</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1480ddecc16076655041b282c961e0f2" name="a1480ddecc16076655041b282c961e0f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1480ddecc16076655041b282c961e0f2">&#9670;&#160;</a></span>selected_input_device</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int UIConfigHandler::selected_input_device = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ebb915fda289f188066d335bba2b587" name="a1ebb915fda289f188066d335bba2b587"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ebb915fda289f188066d335bba2b587">&#9670;&#160;</a></span>selected_output_device</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int UIConfigHandler::selected_output_device = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac8ac622169b1a66953e28654a40d4112" name="ac8ac622169b1a66953e28654a40d4112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8ac622169b1a66953e28654a40d4112">&#9670;&#160;</a></span>shelf_life</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string UIConfigHandler::shelf_life</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>Объявления и описания членов структур находятся в файлах:<ul>
+<li>dictaphone-cli/include/<a class="el" href="ui_8h_source.html">ui.h</a></li>
+<li>dictaphone-cli/src/<a class="el" href="ui_8cpp.html">ui.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

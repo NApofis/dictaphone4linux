@@ -1,0 +1,14 @@
+<map id="dictaphone&#45;cli/include/ui.h" name="dictaphone&#45;cli/include/ui.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="33,5,203,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="17,153,70,178"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,34,40,52,25,65,13,80,8,94,10,109,25,139,20,141,5,111,3,94,8,78,21,61,37,48,74,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="22,79,89,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="110,33,78,69,74,65,106,29"/>
+<area shape="rect" id="Node000004" href="$pulseaudio__device_8h.html" title=" " alt="" coords="113,79,251,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="131,29,163,66,160,69,127,33"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="275,79,340,105"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="151,29,262,71,260,76,149,34"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="160,108,82,147,80,143,158,103"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="154,153,211,178"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="185,105,185,137,180,137,180,105"/>
+</map>

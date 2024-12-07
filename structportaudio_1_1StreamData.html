@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dictaphone4linux: Структура portaudio::StreamData</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">dictaphone4linux
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceportaudio.html">portaudio</a></li><li class="navelem"><a class="el" href="structportaudio_1_1StreamData.html">StreamData</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="structportaudio_1_1StreamData-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Структура portaudio::StreamData</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="device__handler_8h_source.html">device_handler.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a121034863a2e95cab5b40d23384c809c" id="r_a121034863a2e95cab5b40d23384c809c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a121034863a2e95cab5b40d23384c809c">name</a></td></tr>
+<tr class="separator:a121034863a2e95cab5b40d23384c809c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eb18042c63469b156ec801674b02821" id="r_a0eb18042c63469b156ec801674b02821"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0eb18042c63469b156ec801674b02821">buffer_id</a> = 0</td></tr>
+<tr class="separator:a0eb18042c63469b156ec801674b02821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5c807f8f532b01ce8267311e14176f3" id="r_ae5c807f8f532b01ce8267311e14176f3"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classKeeper.html">Keeper</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5c807f8f532b01ce8267311e14176f3">keep</a></td></tr>
+<tr class="separator:ae5c807f8f532b01ce8267311e14176f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a850c8014855042350a2941a60c0d5f79" id="r_a850c8014855042350a2941a60c0d5f79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8h.html#a9a9b2bab273ada6a7bfb1620a4758eff">device_sample</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a850c8014855042350a2941a60c0d5f79">data</a> = {nullptr, 0}</td></tr>
+<tr class="separator:a850c8014855042350a2941a60c0d5f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0de8bc66eb3a2158707426160b666bfa" id="r_a0de8bc66eb3a2158707426160b666bfa"><td class="memItemLeft" align="right" valign="top">device_sample::first_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0de8bc66eb3a2158707426160b666bfa">data_ptr</a> = nullptr</td></tr>
+<tr class="separator:a0de8bc66eb3a2158707426160b666bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3bf017988bad4e7598b6c4a930eabc8" id="r_ab3bf017988bad4e7598b6c4a930eabc8"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3bf017988bad4e7598b6c4a930eabc8">data_id</a> = 0</td></tr>
+<tr class="separator:ab3bf017988bad4e7598b6c4a930eabc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a0eb18042c63469b156ec801674b02821" name="a0eb18042c63469b156ec801674b02821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eb18042c63469b156ec801674b02821">&#9670;&#160;</a></span>buffer_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int portaudio::StreamData::buffer_id = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a850c8014855042350a2941a60c0d5f79" name="a850c8014855042350a2941a60c0d5f79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a850c8014855042350a2941a60c0d5f79">&#9670;&#160;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="common_8h.html#a9a9b2bab273ada6a7bfb1620a4758eff">device_sample</a> portaudio::StreamData::data = {nullptr, 0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3bf017988bad4e7598b6c4a930eabc8" name="ab3bf017988bad4e7598b6c4a930eabc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3bf017988bad4e7598b6c4a930eabc8">&#9670;&#160;</a></span>data_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int portaudio::StreamData::data_id = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0de8bc66eb3a2158707426160b666bfa" name="a0de8bc66eb3a2158707426160b666bfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0de8bc66eb3a2158707426160b666bfa">&#9670;&#160;</a></span>data_ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">device_sample::first_type portaudio::StreamData::data_ptr = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae5c807f8f532b01ce8267311e14176f3" name="ae5c807f8f532b01ce8267311e14176f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5c807f8f532b01ce8267311e14176f3">&#9670;&#160;</a></span>keep</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classKeeper.html">Keeper</a>&gt; portaudio::StreamData::keep</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a121034863a2e95cab5b40d23384c809c" name="a121034863a2e95cab5b40d23384c809c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a121034863a2e95cab5b40d23384c809c">&#9670;&#160;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string portaudio::StreamData::name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>dictaphone-core/include/<a class="el" href="device__handler_8h_source.html">device_handler.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

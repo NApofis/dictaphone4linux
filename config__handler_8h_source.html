@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dictaphone4linux: Исходный файл dictaphone-core/include/config_handler.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">dictaphone4linux
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e04bd40bd7dff2801aaf17266eadab2c.html">dictaphone-core</a></li><li class="navelem"><a class="el" href="dir_56a2555623869d721e3f74aade86a732.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">config_handler.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="config__handler_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Created by nik on 21.11.24.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="pulseaudio__device_8h.html">pulseaudio_device.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;config.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structCoreConfigHandler.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structCoreConfigHandler.html">CoreConfigHandler</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    [[nodiscard]] std::string <a class="code hl_function" href="structCoreConfigHandler.html#a58eeedc154fcc4610fa53626f3f20395">get_input_device_module</a>(<a class="code hl_struct" href="structportaudio_1_1DeviceInfo.html">portaudio::DeviceInfo</a>* ptr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    [[nodiscard]] std::string <a class="code hl_function" href="structCoreConfigHandler.html#ac490c3012229b958b0496ba0c57be2e6">get_output_device_module</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    [[nodiscard]] std::string <a class="code hl_function" href="structCoreConfigHandler.html#af51f96d3faf1638d5d89bb27302e37dd">get_path_for_records</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structCoreConfigHandler.html#a387e8860c59e86a820e3ed1a8ed189b0">   23</a></span>    [[nodiscard]] <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="structCoreConfigHandler.html#a387e8860c59e86a820e3ed1a8ed189b0">get_file_minute_size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> config-&gt;file_minute_size(); }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structCoreConfigHandler.html#ac2ee0cd36ea9722bb10eb3de8a516fe7">delete_old_records</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="structCoreConfigHandler.html#ae2bd2d8a12d2aecdc98f709f534b0ea1">load_new_version</a>();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structCoreConfigHandler.html#a84b9d1224825872c8d7663423fa32bf8">   28</a></span>    <a class="code hl_function" href="structCoreConfigHandler.html#a84b9d1224825872c8d7663423fa32bf8">CoreConfigHandler</a>()</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        last_check = std::filesystem::last_write_time(<a class="code hl_variable" href="dictaphone-common_2include_2config_8h.html#aeff9e36ee37c0660b4745ad9adc597ad">CONFIG_FILE_PATH</a>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        config = std::make_shared&lt;Config&gt;();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    };</div>
+</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    std::shared_ptr&lt;Config&gt; config;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    std::chrono::time_point&lt;std::chrono::file_clock&gt; last_check;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
+</div>
+<div class="ttc" id="adictaphone-common_2include_2config_8h_html_aeff9e36ee37c0660b4745ad9adc597ad"><div class="ttname"><a href="dictaphone-common_2include_2config_8h.html#aeff9e36ee37c0660b4745ad9adc597ad">CONFIG_FILE_PATH</a></div><div class="ttdeci">const std::string CONFIG_FILE_PATH</div><div class="ttdef"><b>Definition</b> config.h:14</div></div>
+<div class="ttc" id="apulseaudio__device_8h_html"><div class="ttname"><a href="pulseaudio__device_8h.html">pulseaudio_device.h</a></div></div>
+<div class="ttc" id="astructCoreConfigHandler_html"><div class="ttname"><a href="structCoreConfigHandler.html">CoreConfigHandler</a></div><div class="ttdef"><b>Definition</b> config_handler.h:18</div></div>
+<div class="ttc" id="astructCoreConfigHandler_html_a387e8860c59e86a820e3ed1a8ed189b0"><div class="ttname"><a href="structCoreConfigHandler.html#a387e8860c59e86a820e3ed1a8ed189b0">CoreConfigHandler::get_file_minute_size</a></div><div class="ttdeci">unsigned int get_file_minute_size() const</div><div class="ttdef"><b>Definition</b> config_handler.h:23</div></div>
+<div class="ttc" id="astructCoreConfigHandler_html_a58eeedc154fcc4610fa53626f3f20395"><div class="ttname"><a href="structCoreConfigHandler.html#a58eeedc154fcc4610fa53626f3f20395">CoreConfigHandler::get_input_device_module</a></div><div class="ttdeci">std::string get_input_device_module(portaudio::DeviceInfo *ptr) const</div><div class="ttdef"><b>Definition</b> config_handler.cpp:47</div></div>
+<div class="ttc" id="astructCoreConfigHandler_html_a84b9d1224825872c8d7663423fa32bf8"><div class="ttname"><a href="structCoreConfigHandler.html#a84b9d1224825872c8d7663423fa32bf8">CoreConfigHandler::CoreConfigHandler</a></div><div class="ttdeci">CoreConfigHandler()</div><div class="ttdef"><b>Definition</b> config_handler.h:28</div></div>
+<div class="ttc" id="astructCoreConfigHandler_html_ac2ee0cd36ea9722bb10eb3de8a516fe7"><div class="ttname"><a href="structCoreConfigHandler.html#ac2ee0cd36ea9722bb10eb3de8a516fe7">CoreConfigHandler::delete_old_records</a></div><div class="ttdeci">void delete_old_records() const</div><div class="ttdef"><b>Definition</b> config_handler.cpp:23</div></div>
+<div class="ttc" id="astructCoreConfigHandler_html_ac490c3012229b958b0496ba0c57be2e6"><div class="ttname"><a href="structCoreConfigHandler.html#ac490c3012229b958b0496ba0c57be2e6">CoreConfigHandler::get_output_device_module</a></div><div class="ttdeci">std::string get_output_device_module() const</div><div class="ttdef"><b>Definition</b> config_handler.cpp:85</div></div>
+<div class="ttc" id="astructCoreConfigHandler_html_ae2bd2d8a12d2aecdc98f709f534b0ea1"><div class="ttname"><a href="structCoreConfigHandler.html#ae2bd2d8a12d2aecdc98f709f534b0ea1">CoreConfigHandler::load_new_version</a></div><div class="ttdeci">bool load_new_version()</div><div class="ttdef"><b>Definition</b> config_handler.cpp:119</div></div>
+<div class="ttc" id="astructCoreConfigHandler_html_af51f96d3faf1638d5d89bb27302e37dd"><div class="ttname"><a href="structCoreConfigHandler.html#af51f96d3faf1638d5d89bb27302e37dd">CoreConfigHandler::get_path_for_records</a></div><div class="ttdeci">std::string get_path_for_records() const</div><div class="ttdef"><b>Definition</b> config_handler.cpp:13</div></div>
+<div class="ttc" id="astructportaudio_1_1DeviceInfo_html"><div class="ttname"><a href="structportaudio_1_1DeviceInfo.html">portaudio::DeviceInfo</a></div><div class="ttdef"><b>Definition</b> pulseaudio_device.h:21</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

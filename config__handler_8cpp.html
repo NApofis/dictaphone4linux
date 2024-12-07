@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dictaphone4linux: Файл dictaphone-core/src/config_handler.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">dictaphone4linux
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e04bd40bd7dff2801aaf17266eadab2c.html">dictaphone-core</a></li><li class="navelem"><a class="el" href="dir_22600eecf646a1f6e28563d440c09737.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">Файл config_handler.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;portaudio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="config__handler_8h_source.html">config_handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="records_8h_source.html">records.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для config_handler.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="config__handler_8cpp__incl.png" border="0" usemap="#adictaphone-core_2src_2config__handler_8cpp" alt=""/></div>
+<map name="adictaphone-core_2src_2config__handler_8cpp" id="adictaphone-core_2src_2config__handler_8cpp">
+<area shape="rect" title=" " alt="" coords="284,5,419,46"/>
+<area shape="rect" title=" " alt="" coords="5,168,66,193"/>
+<area shape="poly" title=" " alt="" coords="284,38,198,58,152,74,110,96,77,125,53,156,49,153,74,121,107,92,150,69,196,52,283,32"/>
+<area shape="rect" title=" " alt="" coords="637,168,722,193"/>
+<area shape="poly" title=" " alt="" coords="395,44,641,158,639,163,393,49"/>
+<area shape="rect" href="config__handler_8h.html" title=" " alt="" coords="294,94,409,120"/>
+<area shape="poly" title=" " alt="" coords="354,46,354,78,349,78,349,46"/>
+<area shape="rect" href="records_8h.html" title=" " alt="" coords="121,94,195,120"/>
+<area shape="poly" title=" " alt="" coords="304,49,203,90,201,85,302,44"/>
+<area shape="rect" href="common_8h.html" title=" " alt="" coords="639,94,720,120"/>
+<area shape="poly" title=" " alt="" coords="420,41,624,90,623,95,419,46"/>
+<area shape="rect" title=" " alt="" coords="140,168,208,193"/>
+<area shape="poly" title=" " alt="" coords="322,123,219,164,217,159,320,118"/>
+<area shape="rect" title=" " alt="" coords="218,241,272,267"/>
+<area shape="poly" title=" " alt="" coords="329,123,299,142,272,169,258,197,251,226,246,225,253,196,268,166,296,138,326,118"/>
+<area shape="rect" title=" " alt="" coords="445,168,524,193"/>
+<area shape="poly" title=" " alt="" coords="375,118,450,158,447,162,373,123"/>
+<area shape="rect" href="pulseaudio__device_8h.html" title=" " alt="" coords="282,168,421,193"/>
+<area shape="poly" title=" " alt="" coords="354,120,354,152,349,152,349,120"/>
+<area shape="rect" title=" " alt="" coords="548,168,614,193"/>
+<area shape="poly" title=" " alt="" coords="391,118,534,162,532,167,390,123"/>
+<area shape="poly" title=" " alt="" coords="335,196,277,235,274,230,332,192"/>
+<area shape="rect" title=" " alt="" coords="527,241,584,267"/>
+<area shape="poly" title=" " alt="" coords="387,191,514,235,512,240,385,196"/>
+<area shape="poly" title=" " alt="" coords="139,123,70,162,68,157,136,118"/>
+<area shape="poly" title=" " alt="" coords="163,119,171,152,165,153,158,120"/>
+<area shape="poly" title=" " alt="" coords="150,121,130,155,126,174,131,192,145,209,163,223,204,241,202,246,161,227,142,213,126,195,121,174,125,153,146,119"/>
+<area shape="poly" title=" " alt="" coords="682,120,682,152,677,152,677,120"/>
+<area shape="poly" title=" " alt="" coords="699,118,717,133,733,152,742,173,741,184,736,195,708,222,672,240,635,250,600,254,599,249,634,245,670,235,705,218,732,192,736,183,737,174,728,155,713,137,695,122"/>
+<area shape="poly" title=" " alt="" coords="664,122,611,161,608,156,661,118"/>
+<area shape="rect" title=" " alt="" coords="796,168,835,193"/>
+<area shape="poly" title=" " alt="" coords="704,118,784,160,781,164,701,123"/>
+</map>
+</div>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>
