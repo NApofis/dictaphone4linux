@@ -3,7 +3,6 @@
 //
 
 #pragma once
-#include <syslog.h>
 #include <list>
 #include <vector>
 
@@ -48,47 +47,3 @@ using record_sample_data = std::shared_ptr<std::vector<SAMPLE_TYPE>>;
 using device_sample = std::pair<SAMPLE_TYPE*, size_t>;
 using records_storage = std::shared_ptr<std::list<record_sample_data>>;
 
-/**
- * Логер будет сохранять логи работы в файл в папке программы
- */
-class Loger
-{
-public:
-
-    static void info(const std::string& message)
-    {
-        log(message, LOG_INFO);
-    }
-
-    static void warning(const std::string& message)
-    {
-        log(message, LOG_WARNING);
-    }
-
-    static void error(const std::string& message)
-    {
-        log(message, LOG_ERR);
-    }
-
-
-private:
-
-    static void log(const std::string& message, std::int32_t priority)
-    {
-        std::ofstream out;
-        out.open(PROGRAM_ROOT_PATH+"/log.txt", std::ios::app);
-        out << "[" << priority_str(priority) << "] " << message << std::endl;
-        out.close();
-    }
-
-    static std::string priority_str(std::int32_t priority)
-    {
-        switch (priority)
-        {
-            case LOG_ERR: return "error";
-            case LOG_WARNING: return "warning";
-            case LOG_INFO: return "info";
-            default: return "unknown_priority";
-        }
-    }
-};

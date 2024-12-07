@@ -7,6 +7,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <syslog.h>
 #include "dictaphone-common/const.h"
 
 const std::string PROGRAM_ROOT_PATH = PROGRAM_ROOT_DIRECTORY; // Папка с файлами пдля программы
@@ -59,3 +60,49 @@ public:
 
 };
 
+
+
+/**
+ * Логер будет сохранять логи работы в файл в папке программы
+ */
+class Loger
+{
+public:
+
+    static void info(const std::string& message)
+    {
+        log(message, LOG_INFO);
+    }
+
+    static void warning(const std::string& message)
+    {
+        log(message, LOG_WARNING);
+    }
+
+    static void error(const std::string& message)
+    {
+        log(message, LOG_ERR);
+    }
+
+
+private:
+
+    static void log(const std::string& message, std::int32_t priority)
+    {
+        std::ofstream out;
+        out.open(PROGRAM_ROOT_PATH+"/log.txt", std::ios::app);
+        out << "[" << priority_str(priority) << "] " << message << std::endl;
+        out.close();
+    }
+
+    static std::string priority_str(std::int32_t priority)
+    {
+        switch (priority)
+        {
+        case LOG_ERR: return "error";
+        case LOG_WARNING: return "warning";
+        case LOG_INFO: return "info";
+        default: return "unknown_priority";
+        }
+    }
+};

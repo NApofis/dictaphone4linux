@@ -7,6 +7,7 @@
 #include <fstream>
 
 #include "pulseaudio_device.h"
+#include "config.h"
 
 #include <complex>
 
@@ -126,8 +127,11 @@ namespace portaudio
             " source_name=" + dev.device +
             R"( source_properties="'device.description=\")" + dev.human_name + R"(\"'")";
         execute_command(cmd);
+        Loger::info("Создано виртуальное устройство " + dev.human_name);
+
         auto tests = list_input_devices();
         constexpr bool real = false;
+
         return find(tests, &dev.device, &dev.human_name, &real);
     }
 
@@ -136,8 +140,8 @@ namespace portaudio
         const std::string cmd = "pacmd load-module module-combine-sink sink_name=" + dev.device +
             " slaves=" + dev.master +
             R"( sink_properties="'device.description=\")" + dev.human_name + R"(\"'")";
-
         execute_command(cmd);
+        Loger::info("Создано виртуальное устройство " + dev.human_name);
         auto tests = list_output_devices();
         constexpr bool real = false;
         return find(tests, &dev.device, &dev.human_name, &real);
