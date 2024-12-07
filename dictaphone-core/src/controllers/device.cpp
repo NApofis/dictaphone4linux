@@ -13,44 +13,46 @@ void DeviceController::execute()
         mix->run();
     }
 
-    verification(data->input_device, input_device);
-    verification(data->output_device, output_device);
+    if (data->input_device.first == Status::created || data->output_device.first == Status::created)
+    {
+        device_disconnect(input_device);
+        data->input_device.first == Status::created;
+        device_disconnect(output_device);
+        data->output_device.first == Status::created;
+    }
+
+    connect_device(data->input_device, input_device);
+    connect_device(data->output_device, output_device);
     return next_execute_if_exists();
 }
+
+void DeviceController::device_disconnect(DeviceHandlerInfo& dev_info) const
+{
+    dev_info.stop_flag->store(true);
+    if (dev_info.thread.joinable())
+    {
+        Loger::info("Остановка записи устройства " + dev_info.name);
+        dev_info.thread.join();
+    }
+
+    mix->remove_device(dev_info.name);
+    dev_info.name = "";
+}
+
 
 void DeviceController::cancel()
 {
     // Завершаем запись усех устройств по очереди
-    bool in = false, out = false;
-    if(!input_device.name.empty() && input_device.thread.joinable())
-    {
-        Loger::info("Остановка записи устройства " + input_device.name);
-        input_device.stop_flag->store(true);
-        in = true;
-    }
-    if(!output_device.name.empty() && output_device.thread.joinable())
-    {
-        Loger::info("Остановка записи устройства " + output_device.name);
-        output_device.stop_flag->store(true);
-        out = true;
-    }
-    if(in)
-    {
-        input_device.thread.join();
-        mix->remove_device(input_device.name);
-    }
-    if(out)
-    {
-        output_device.thread.join();
-        mix->remove_device(output_device.name);
-    }
+    device_disconnect(input_device);
+    device_disconnect(output_device);
+
     Loger::info("Остановка работы микшера");
     mix->stop();
     return next_cancel_if_exists();
 }
 
 
-void DeviceController::verification(dev_status& new_dev, DeviceHandlerInfo& dev_info) const
+void DeviceController::connect_device(dev_status& new_dev, DeviceHandlerInfo& dev_info) const
 {
     if(new_dev.first == Status::unchanged)
     {
@@ -58,13 +60,12 @@ void DeviceController::verification(dev_status& new_dev, DeviceHandlerInfo& dev_
         if(!dev_info.name.empty() && dev_info.stop_flag->load())
         {
             Loger::warning("Потеря соединения с устройством");
+            device_disconnect(dev_info);
             new_dev.first = Status::brocken;
-            mix->remove_device(dev_info.name);
         }
         return;
     }
-
-    if(new_dev.first != Status::created)
+    else if(new_dev.first == Status::brocken)
     {
         Loger::error("Устройство не было подключено после разъединения");
         return;
@@ -73,11 +74,7 @@ void DeviceController::verification(dev_status& new_dev, DeviceHandlerInfo& dev_
     // Устройство изменилось => нужно остановить текущую запись
     if(!dev_info.name.empty())
     {
-        dev_info.stop_flag->store(true);
-        dev_info.thread.join();
-
-        mix->remove_device(dev_info.name);
-        dev_info.name = "";
+        device_disconnect(dev_info);
     }
 
     new_dev.first = Status::unchanged;
@@ -95,7 +92,7 @@ void DeviceController::verification(dev_status& new_dev, DeviceHandlerInfo& dev_
         Loger::warning("Устройство не подключено поскольку еще не сохранены записи предыдущего устройства");
         new_dev.first = Status::brocken;
     }
-    dev_info.stop_flag = std::make_shared<std::atomic_bool>(false);
+    dev_info.stop_flag->store(false);
     dev_info.thread = std::thread([this, &dev_info, name=new_dev.second](){portaudio::connect(name, mix, dev_info.stop_flag);});
 }
 

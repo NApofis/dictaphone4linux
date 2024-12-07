@@ -35,6 +35,4 @@ private:
 
     std::shared_ptr<Config> config;
     std::chrono::time_point<std::chrono::file_clock> last_check;
-
-    [[nodiscard]] static bool check_portaudio_device(const std::string& name);
 };

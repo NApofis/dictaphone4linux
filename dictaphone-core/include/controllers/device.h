@@ -18,7 +18,7 @@ class DeviceController : public iChain
     {
         std::string name;
         std::thread thread;
-        std::shared_ptr<std::atomic_bool> stop_flag;
+        std::shared_ptr<std::atomic_bool> stop_flag = std::make_shared<std::atomic_bool>(false);
     };
 
     DeviceHandlerInfo input_device;
@@ -26,7 +26,8 @@ class DeviceController : public iChain
 
     std::shared_ptr<Mixer> mix = nullptr;
 
-    void verification(dev_status& new_dev, DeviceHandlerInfo& dev_info) const;
+    void connect_device(dev_status& new_dev, DeviceHandlerInfo& dev_info) const;
+    void device_disconnect(DeviceHandlerInfo& dev_info) const;
 
 public:
     using iChain::iChain;
