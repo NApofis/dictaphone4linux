@@ -100,7 +100,7 @@ std::string CoreConfigHandler::get_output_device_module() const
     const auto ptr = portaudio::find(device_list, &device, nullptr, nullptr);
     if(!ptr)
     {
-        Loger::error("Выбранное устройство выводе не найдено");
+        Loger::error("Выбранное устройство вывода не найдено");
         return {};
     }
 
