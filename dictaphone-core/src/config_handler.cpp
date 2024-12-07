@@ -135,7 +135,10 @@ bool CoreConfigHandler::check_portaudio_device(const std::string& name)
 
     std::string dev_names;
     bool found = false;
-    for (int i = 0; i < Pa_GetDeviceCount(); i++)
+    size_t device_count = Pa_GetDeviceCount();
+    Loger::warning("PortAudio количество устройств " + device_count);
+
+    for (int i = 0; i < device_count; i++)
     {
         const auto deviceInfo = Pa_GetDeviceInfo(i);
         dev_names += std::string(deviceInfo->name) + ", ";
@@ -146,7 +149,6 @@ bool CoreConfigHandler::check_portaudio_device(const std::string& name)
         }
     }
 
-    Pa_Terminate();
     if (!found)
     {
         Loger::warning("Устройство " + name + " не найдено в списке [" + dev_names + "]");
