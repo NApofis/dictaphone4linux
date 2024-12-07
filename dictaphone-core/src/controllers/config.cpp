@@ -26,6 +26,7 @@ void ConfigController::process_device(const bool is_input_dev, dev_status& statu
     if (name.empty())
     {
         status.first = Status::brocken;
+        return;
     }
 
     if(name != *saved)

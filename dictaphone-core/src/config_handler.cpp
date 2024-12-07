@@ -144,6 +144,7 @@ bool CoreConfigHandler::check_portaudio_device(const std::string& name)
         }
     }
     Loger::warning("Устройство " + name + " не найдено в списке [" + dev_names + "]");
+    Pa_Terminate();
     return false;
 }
 
