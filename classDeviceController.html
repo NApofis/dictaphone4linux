@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dictaphone4linux: Класс DeviceController</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">dictaphone4linux
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="classDeviceController-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс DeviceController</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="device_8h_source.html">device.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:DeviceController:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDeviceController__inherit__graph.png" border="0" usemap="#aDeviceController_inherit__map" alt="Inheritance graph"/></div>
+<map name="aDeviceController_inherit__map" id="aDeviceController_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,79,122,105"/>
+<area shape="rect" href="classiChain.html" title=" " alt="" coords="35,5,92,31"/>
+<area shape="poly" title=" " alt="" coords="66,46,66,79,61,79,61,46"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">см. легенду</a>]</span></center></div>
+<div class="dynheader">
+Граф связей класса DeviceController:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDeviceController__coll__graph.png" border="0" usemap="#aDeviceController_coll__map" alt="Collaboration graph"/></div>
+<map name="aDeviceController_coll__map" id="aDeviceController_coll__map">
+<area shape="rect" title=" " alt="" coords="5,79,122,105"/>
+<area shape="rect" href="classiChain.html" title=" " alt="" coords="35,5,92,31"/>
+<area shape="poly" title=" " alt="" coords="66,46,66,79,61,79,61,46"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a0d3e75c537197126a97c9781ed7c6d6e" id="r_a0d3e75c537197126a97c9781ed7c6d6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d3e75c537197126a97c9781ed7c6d6e">execute</a> () override</td></tr>
+<tr class="separator:a0d3e75c537197126a97c9781ed7c6d6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e3dd1da0a5361f4249a4aafd2adff11" id="r_a8e3dd1da0a5361f4249a4aafd2adff11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e3dd1da0a5361f4249a4aafd2adff11">cancel</a> () override</td></tr>
+<tr class="separator:a8e3dd1da0a5361f4249a4aafd2adff11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67f3bb1bb31314e5dc014537c15d862b" id="r_a67f3bb1bb31314e5dc014537c15d862b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67f3bb1bb31314e5dc014537c15d862b">iChain</a> (std::shared_ptr&lt; <a class="el" href="structData.html">Data</a> &gt; d, std::unique_ptr&lt; <a class="el" href="classiChain.html">iChain</a> &gt; &amp;chain)</td></tr>
+<tr class="separator:a67f3bb1bb31314e5dc014537c15d862b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35255ba05a7e9c809cb821babb3743eb" id="r_a35255ba05a7e9c809cb821babb3743eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35255ba05a7e9c809cb821babb3743eb">iChain</a> (std::shared_ptr&lt; <a class="el" href="structData.html">Data</a> &gt; d)</td></tr>
+<tr class="separator:a35255ba05a7e9c809cb821babb3743eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classiChain"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classiChain')"><img src="closed.png" alt="-"/>&#160;Открытые члены унаследованные от <a class="el" href="classiChain.html">iChain</a></td></tr>
+<tr class="memitem:a67f3bb1bb31314e5dc014537c15d862b inherit pub_methods_classiChain" id="r_a67f3bb1bb31314e5dc014537c15d862b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiChain.html#a67f3bb1bb31314e5dc014537c15d862b">iChain</a> (std::shared_ptr&lt; <a class="el" href="structData.html">Data</a> &gt; d, std::unique_ptr&lt; <a class="el" href="classiChain.html">iChain</a> &gt; &amp;chain)</td></tr>
+<tr class="separator:a67f3bb1bb31314e5dc014537c15d862b inherit pub_methods_classiChain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35255ba05a7e9c809cb821babb3743eb inherit pub_methods_classiChain" id="r_a35255ba05a7e9c809cb821babb3743eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiChain.html#a35255ba05a7e9c809cb821babb3743eb">iChain</a> (std::shared_ptr&lt; <a class="el" href="structData.html">Data</a> &gt; d)</td></tr>
+<tr class="separator:a35255ba05a7e9c809cb821babb3743eb inherit pub_methods_classiChain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d0ef337bc108155a9a72679be40fc3c inherit pub_methods_classiChain" id="r_a6d0ef337bc108155a9a72679be40fc3c"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiChain.html#a6d0ef337bc108155a9a72679be40fc3c">~iChain</a> ()=default</td></tr>
+<tr class="separator:a6d0ef337bc108155a9a72679be40fc3c inherit pub_methods_classiChain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Дополнительные унаследованные члены</h2></td></tr>
+<tr class="inherit_header pro_methods_classiChain"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classiChain')"><img src="closed.png" alt="-"/>&#160;Защищенные члены унаследованные от <a class="el" href="classiChain.html">iChain</a></td></tr>
+<tr class="memitem:ac337db2501a00a2477c59e63fa188582 inherit pro_methods_classiChain" id="r_ac337db2501a00a2477c59e63fa188582"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiChain.html#ac337db2501a00a2477c59e63fa188582">next_execute_if_exists</a> () const</td></tr>
+<tr class="separator:ac337db2501a00a2477c59e63fa188582 inherit pro_methods_classiChain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00c6fd864b649f167dccb4dfec946719 inherit pro_methods_classiChain" id="r_a00c6fd864b649f167dccb4dfec946719"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiChain.html#a00c6fd864b649f167dccb4dfec946719">next_cancel_if_exists</a> () const</td></tr>
+<tr class="separator:a00c6fd864b649f167dccb4dfec946719 inherit pro_methods_classiChain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classiChain"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classiChain')"><img src="closed.png" alt="-"/>&#160;Защищенные данные унаследованные от <a class="el" href="classiChain.html">iChain</a></td></tr>
+<tr class="memitem:a94405d67502f980b8852d526f7cb5189 inherit pro_attribs_classiChain" id="r_a94405d67502f980b8852d526f7cb5189"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structData.html">Data</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiChain.html#a94405d67502f980b8852d526f7cb5189">data</a></td></tr>
+<tr class="separator:a94405d67502f980b8852d526f7cb5189 inherit pro_attribs_classiChain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac53b985db7222319d627cabb4ce0b973 inherit pro_attribs_classiChain" id="r_ac53b985db7222319d627cabb4ce0b973"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classiChain.html">iChain</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiChain.html#ac53b985db7222319d627cabb4ce0b973">next</a> = nullptr</td></tr>
+<tr class="separator:ac53b985db7222319d627cabb4ce0b973 inherit pro_attribs_classiChain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Элемент цепочки запускающий запись звука с аудио устройств </p>
+</div><h2 class="groupheader">Методы</h2>
+<a id="a8e3dd1da0a5361f4249a4aafd2adff11" name="a8e3dd1da0a5361f4249a4aafd2adff11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e3dd1da0a5361f4249a4aafd2adff11">&#9670;&#160;</a></span>cancel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeviceController::cancel </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Замещает <a class="el" href="classiChain.html#a9395fac5e43327c882a0d2e21a7f7ccc">iChain</a>.</p>
+
+</div>
+</div>
+<a id="a0d3e75c537197126a97c9781ed7c6d6e" name="a0d3e75c537197126a97c9781ed7c6d6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d3e75c537197126a97c9781ed7c6d6e">&#9670;&#160;</a></span>execute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeviceController::execute </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Замещает <a class="el" href="classiChain.html#a1f8c5c60a5a10b1482c8675e499b3e98">iChain</a>.</p>
+
+</div>
+</div>
+<a id="a35255ba05a7e9c809cb821babb3743eb" name="a35255ba05a7e9c809cb821babb3743eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35255ba05a7e9c809cb821babb3743eb">&#9670;&#160;</a></span>iChain() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iChain::iChain </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="structData.html">Data</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>d</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a67f3bb1bb31314e5dc014537c15d862b" name="a67f3bb1bb31314e5dc014537c15d862b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67f3bb1bb31314e5dc014537c15d862b">&#9670;&#160;</a></span>iChain() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iChain::iChain </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="structData.html">Data</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>d</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classiChain.html">iChain</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>chain</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>dictaphone-core/include/controllers/<a class="el" href="device_8h_source.html">device.h</a></li>
+<li>dictaphone-core/src/controllers/<a class="el" href="device_8cpp.html">device.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

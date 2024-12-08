@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dictaphone4linux: Исходный файл dictaphone-core/include/controllers/sound.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">dictaphone4linux
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e04bd40bd7dff2801aaf17266eadab2c.html">dictaphone-core</a></li><li class="navelem"><a class="el" href="dir_56a2555623869d721e3f74aade86a732.html">include</a></li><li class="navelem"><a class="el" href="dir_78878e3e57f62f8583eccfb6ee2f2ec0.html">controllers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">sound.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="sound_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Created by ntikhonov on 05.12.24.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="icontroller_8h.html">controllers/icontroller.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classSoundSaveController.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="classSoundSaveController.html">SoundSaveController</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classiChain.html">iChain</a></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">struct </span>WavHeaders</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        uint8_t RIFF[4] = {<span class="charliteral">&#39;R&#39;</span>, <span class="charliteral">&#39;I&#39;</span>, <span class="charliteral">&#39;F&#39;</span>, <span class="charliteral">&#39;F&#39;</span>};</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        uint32_t chunk_size ;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        uint8_t WAVE[4] = {<span class="charliteral">&#39;W&#39;</span>, <span class="charliteral">&#39;A&#39;</span>, <span class="charliteral">&#39;V&#39;</span>, <span class="charliteral">&#39;E&#39;</span>};</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        uint8_t fmt[4] = {<span class="charliteral">&#39;f&#39;</span>, <span class="charliteral">&#39;m&#39;</span>, <span class="charliteral">&#39;t&#39;</span>, <span class="charliteral">&#39; &#39;</span>};</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        uint32_t subchunk_size = 16;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        uint16_t audio_format = 1;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        uint16_t num_of_channels = <a class="code hl_variable" href="common_8h.html#a51e1746c45bf6fc93de15270dd8eaa33">NUM_CHANNELS</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        uint32_t samples_per_sec = <a class="code hl_variable" href="common_8h.html#a017c6db4ab1f280dea426f06f5b681f1">SAMPLE_RATE</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        uint32_t bytes_per_sec = <a class="code hl_variable" href="common_8h.html#a017c6db4ab1f280dea426f06f5b681f1">SAMPLE_RATE</a> * 2;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        uint16_t block_align = 2;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        uint16_t bits_per_sample = 16;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        uint8_t subchunk_2_ID[4] = {<span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;t&#39;</span>, <span class="charliteral">&#39;a&#39;</span>};</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        uint32_t subchunk_2_size;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    };</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> read_header(std::fstream&amp; file, WavHeaders&amp; header);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> write_header(std::fstream&amp; file, WavHeaders&amp; header);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">size_t</span> max_file_size() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    std::string current_file;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::string path_for_records;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">size_t</span> file_size = 0;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::string gen_filename();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> write_sound(<span class="keywordtype">bool</span> clear = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">using </span><a class="code hl_function" href="classiChain.html#a67f3bb1bb31314e5dc014537c15d862b">iChain::iChain</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSoundSaveController.html#a33ae275a0123105f6d458ec83b0b7fbf">execute</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSoundSaveController.html#aeef91c7783cbf63f8dce2d4d31c8838a">cancel</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
+</div>
+<div class="ttc" id="aclassSoundSaveController_html"><div class="ttname"><a href="classSoundSaveController.html">SoundSaveController</a></div><div class="ttdef"><b>Definition</b> sound.h:12</div></div>
+<div class="ttc" id="aclassSoundSaveController_html_a33ae275a0123105f6d458ec83b0b7fbf"><div class="ttname"><a href="classSoundSaveController.html#a33ae275a0123105f6d458ec83b0b7fbf">SoundSaveController::execute</a></div><div class="ttdeci">void execute() override</div><div class="ttdef"><b>Definition</b> sound.cpp:28</div></div>
+<div class="ttc" id="aclassSoundSaveController_html_aeef91c7783cbf63f8dce2d4d31c8838a"><div class="ttname"><a href="classSoundSaveController.html#aeef91c7783cbf63f8dce2d4d31c8838a">SoundSaveController::cancel</a></div><div class="ttdeci">void cancel() override</div><div class="ttdef"><b>Definition</b> sound.cpp:33</div></div>
+<div class="ttc" id="aclassiChain_html"><div class="ttname"><a href="classiChain.html">iChain</a></div><div class="ttdef"><b>Definition</b> icontroller.h:36</div></div>
+<div class="ttc" id="aclassiChain_html_a67f3bb1bb31314e5dc014537c15d862b"><div class="ttname"><a href="classiChain.html#a67f3bb1bb31314e5dc014537c15d862b">iChain::iChain</a></div><div class="ttdeci">iChain(std::shared_ptr&lt; Data &gt; d, std::unique_ptr&lt; iChain &gt; &amp;chain)</div><div class="ttdef"><b>Definition</b> icontroller.h:59</div></div>
+<div class="ttc" id="acommon_8h_html_a017c6db4ab1f280dea426f06f5b681f1"><div class="ttname"><a href="common_8h.html#a017c6db4ab1f280dea426f06f5b681f1">SAMPLE_RATE</a></div><div class="ttdeci">constexpr size_t SAMPLE_RATE</div><div class="ttdef"><b>Definition</b> common.h:14</div></div>
+<div class="ttc" id="acommon_8h_html_a51e1746c45bf6fc93de15270dd8eaa33"><div class="ttname"><a href="common_8h.html#a51e1746c45bf6fc93de15270dd8eaa33">NUM_CHANNELS</a></div><div class="ttdeci">constexpr size_t NUM_CHANNELS</div><div class="ttdef"><b>Definition</b> common.h:15</div></div>
+<div class="ttc" id="aicontroller_8h_html"><div class="ttname"><a href="icontroller_8h.html">icontroller.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

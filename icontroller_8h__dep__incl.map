@@ -1,0 +1,23 @@
+<map id="dictaphone&#45;core/include/controllers/icontroller.h" name="dictaphone&#45;core/include/controllers/icontroller.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="356,5,514,46"/>
+<area shape="rect" id="Node000002" href="$dictaphone-core_2include_2controllers_2config_8h.html" title=" " alt="" coords="174,94,332,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="381,55,295,96,293,91,379,50"/>
+<area shape="rect" id="Node000007" href="$device_8h.html" title=" " alt="" coords="356,94,514,135"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="438,62,438,94,433,94,433,62"/>
+<area shape="rect" id="Node000009" href="$sound_8h.html" title=" " alt="" coords="539,94,697,135"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="491,50,578,91,576,96,489,55"/>
+<area shape="rect" id="Node000003" href="$daemon_8h.html" title=" " alt="" coords="11,183,169,223"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="204,145,128,185,126,180,201,140"/>
+<area shape="rect" id="Node000006" href="$dictaphone-core_2src_2controllers_2config_8cpp.html" title=" " alt="" coords="194,183,341,223"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="261,150,267,182,261,183,256,151"/>
+<area shape="rect" id="Node000004" href="$dictaphone-core_2main_8cpp.html" title=" " alt="" coords="5,279,175,304"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="93,239,93,279,87,279,87,239"/>
+<area shape="rect" id="Node000005" href="$daemon_8cpp.html" title=" " alt="" coords="310,271,446,312"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="171,226,313,268,312,273,169,231"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="420,150,406,184,392,231,384,271,379,270,387,229,401,182,415,148"/>
+<area shape="rect" id="Node000008" href="$device_8cpp.html" title=" " alt="" coords="416,183,567,223"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="459,147,481,181,476,184,454,149"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="616,151,605,189,595,208,581,225,551,248,517,266,481,278,447,286,445,280,479,273,515,261,548,244,577,221,590,206,600,187,611,149"/>
+<area shape="rect" id="Node000010" href="$sound_8cpp.html" title=" " alt="" coords="642,183,791,223"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="653,143,696,180,693,184,650,147"/>
+</map>

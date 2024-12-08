@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['daemon_0',['Daemon',['../classDaemon.html',1,'']]],
+  ['daemon_2ecpp_1',['daemon.cpp',['../daemon_8cpp.html',1,'']]],
+  ['daemon_2eh_2',['daemon.h',['../daemon_8h.html',1,'']]],
+  ['daemon_5fcommand_3',['daemon_command',['../namespacedaemon__command.html',1,'']]],
+  ['daemon_5fcommand_2ecpp_4',['daemon_command.cpp',['../daemon__command_8cpp.html',1,'']]],
+  ['daemon_5fcommand_2eh_5',['daemon_command.h',['../daemon__command_8h.html',1,'']]],
+  ['daemon_5fname_6',['DAEMON_NAME',['../common_8h.html#a3848559e59b1d43c26bd374965e91719',1,'common.h']]],
+  ['data_7',['Data',['../structData.html',1,'']]],
+  ['data_8',['data',['../classiChain.html#a94405d67502f980b8852d526f7cb5189',1,'iChain::data'],['../structportaudio_1_1StreamData.html#a850c8014855042350a2941a60c0d5f79',1,'portaudio::StreamData::data']]],
+  ['data_5fid_9',['data_id',['../structportaudio_1_1StreamData.html#ab3bf017988bad4e7598b6c4a930eabc8',1,'portaudio::StreamData']]],
+  ['data_5fptr_10',['data_ptr',['../structportaudio_1_1StreamData.html#a0de8bc66eb3a2158707426160b666bfa',1,'portaudio::StreamData']]],
+  ['delete_5fold_5frecords_11',['delete_old_records',['../structCoreConfigHandler.html#ac2ee0cd36ea9722bb10eb3de8a516fe7',1,'CoreConfigHandler']]],
+  ['delete_5frecords_12',['delete_records',['../structUIDeleterRecords.html#a5192f2e08c48acf856a2ea5a352476a8',1,'UIDeleterRecords::delete_records()'],['../namespacerecords.html#ad433b62b1989b1d5b612da91a57492bd',1,'records::delete_records(const std::string &amp;path, const std::chrono::system_clock::time_point *time, comparator com)']]],
+  ['delete_5frecords_5fafter_13',['delete_records_after',['../namespacerecords.html#a7fa4d86eece6ce6592288cab14e97819',1,'records']]],
+  ['delete_5frecords_5fbefore_14',['delete_records_before',['../namespacerecords.html#a55c7d7483e44ca68a9938a343fca9ea0',1,'records']]],
+  ['dev_5fstatus_15',['dev_status',['../common_8h.html#a4d0ab8b68f205bd6027ca4e5ba1e2ef1',1,'common.h']]],
+  ['device_16',['device',['../structportaudio_1_1DeviceInfo.html#a7149496a9649d75fe310e8b81f6e6c31',1,'portaudio::DeviceInfo']]],
+  ['device_2ecpp_17',['device.cpp',['../device_8cpp.html',1,'']]],
+  ['device_2eh_18',['device.h',['../device_8h.html',1,'']]],
+  ['device_5fhandler_2ecpp_19',['device_handler.cpp',['../device__handler_8cpp.html',1,'']]],
+  ['device_5fhandler_2eh_20',['device_handler.h',['../device__handler_8h.html',1,'']]],
+  ['device_5fsample_21',['device_sample',['../common_8h.html#a9a9b2bab273ada6a7bfb1620a4758eff',1,'common.h']]],
+  ['devicecontroller_22',['DeviceController',['../classDeviceController.html',1,'']]],
+  ['deviceinfo_23',['DeviceInfo',['../structportaudio_1_1DeviceInfo.html',1,'portaudio']]]
+];

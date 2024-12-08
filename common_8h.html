@@ -1,0 +1,449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dictaphone4linux: Файл dictaphone-core/include/common.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">dictaphone4linux
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e04bd40bd7dff2801aaf17266eadab2c.html">dictaphone-core</a></li><li class="navelem"><a class="el" href="dir_56a2555623869d721e3f74aade86a732.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">Определения типов</a> &#124;
+<a href="#enum-members">Перечисления</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle"><div class="title">Файл common.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;list&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;config.h&quot;</code><br />
+<code>#include &quot;portaudio.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для common.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="common_8h__incl.png" border="0" usemap="#adictaphone-core_2include_2common_8h" alt=""/></div>
+<map name="adictaphone-core_2include_2common_8h" id="adictaphone-core_2include_2common_8h">
+<area shape="rect" title=" " alt="" coords="60,5,218,46"/>
+<area shape="rect" title=" " alt="" coords="5,94,44,120"/>
+<area shape="poly" title=" " alt="" coords="112,49,56,87,53,83,109,44"/>
+<area shape="rect" title=" " alt="" coords="68,94,125,120"/>
+<area shape="poly" title=" " alt="" coords="131,48,113,81,108,79,126,45"/>
+<area shape="rect" title=" " alt="" coords="149,94,215,120"/>
+<area shape="poly" title=" " alt="" coords="152,45,170,79,166,81,147,48"/>
+<area shape="rect" title=" " alt="" coords="238,94,323,120"/>
+<area shape="poly" title=" " alt="" coords="176,44,247,84,244,88,173,49"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Граф файлов, в которые включается этот файл:</div>
+<div class="dyncontent">
+<div class="center"><img src="common_8h__dep__incl.png" border="0" usemap="#adictaphone-core_2include_2common_8hdep" alt=""/></div>
+<map name="adictaphone-core_2include_2common_8hdep" id="adictaphone-core_2include_2common_8hdep">
+<area shape="rect" title=" " alt="" coords="406,5,564,46"/>
+<area shape="rect" href="icontroller_8h.html" title=" " alt="" coords="299,183,457,223"/>
+<area shape="poly" title=" " alt="" coords="463,60,439,95,390,183,385,181,434,93,459,57"/>
+<area shape="rect" href="daemon_8h.html" title=" " alt="" coords="11,360,169,401"/>
+<area shape="poly" title=" " alt="" coords="392,51,337,70,285,96,247,124,214,157,185,194,160,232,121,306,99,361,94,359,117,304,155,230,181,191,210,154,244,120,282,92,335,65,390,46"/>
+<area shape="rect" href="dictaphone-core_2src_2controllers_2config_8cpp.html" title=" " alt="" coords="194,360,341,401"/>
+<area shape="poly" title=" " alt="" coords="425,55,360,89,288,137,253,166,220,198,192,234,168,272,162,292,168,311,191,338,220,357,217,362,187,342,164,313,157,292,164,270,187,231,216,195,249,162,285,133,357,85,422,50"/>
+<area shape="rect" href="mixer_8h.html" title=" " alt="" coords="448,94,606,135"/>
+<area shape="poly" title=" " alt="" coords="503,59,520,92,515,95,499,61"/>
+<area shape="rect" href="device__handler_8cpp.html" title=" " alt="" coords="775,271,912,312"/>
+<area shape="poly" title=" " alt="" coords="579,47,638,67,701,95,761,133,789,156,813,181,827,203,837,227,845,270,840,271,832,228,823,205,809,184,785,160,758,137,699,100,636,72,578,52"/>
+<area shape="rect" href="config__handler_8cpp.html" title=" " alt="" coords="874,94,1010,135"/>
+<area shape="poly" title=" " alt="" coords="580,41,856,91,874,95,873,100,855,97,579,46"/>
+<area shape="rect" href="dictaphone-core_2include_2controllers_2config_8h.html" title=" " alt="" coords="178,271,336,312"/>
+<area shape="poly" title=" " alt="" coords="340,235,286,273,283,269,337,230"/>
+<area shape="rect" href="device_8h.html" title=" " alt="" coords="360,271,518,312"/>
+<area shape="poly" title=" " alt="" coords="403,235,428,269,423,272,399,238"/>
+<area shape="rect" href="sound_8h.html" title=" " alt="" coords="592,271,750,312"/>
+<area shape="poly" title=" " alt="" coords="460,226,605,268,604,273,459,231"/>
+<area shape="poly" title=" " alt="" coords="207,322,129,362,126,357,204,317"/>
+<area shape="poly" title=" " alt="" coords="264,327,268,359,262,360,258,328"/>
+<area shape="rect" href="dictaphone-core_2main_8cpp.html" title=" " alt="" coords="5,456,175,482"/>
+<area shape="poly" title=" " alt="" coords="93,416,93,456,87,456,87,416"/>
+<area shape="rect" href="daemon_8cpp.html" title=" " alt="" coords="341,449,476,489"/>
+<area shape="poly" title=" " alt="" coords="178,403,341,447,340,452,176,408"/>
+<area shape="poly" title=" " alt="" coords="436,328,415,449,409,448,431,327"/>
+<area shape="rect" href="device_8cpp.html" title=" " alt="" coords="446,360,598,401"/>
+<area shape="poly" title=" " alt="" coords="471,322,505,358,501,361,467,325"/>
+<area shape="poly" title=" " alt="" coords="662,328,642,367,628,386,612,403,580,424,546,440,477,460,476,455,544,435,578,419,608,399,624,383,638,364,657,325"/>
+<area shape="rect" href="sound_8cpp.html" title=" " alt="" coords="673,360,822,401"/>
+<area shape="poly" title=" " alt="" coords="701,322,732,358,728,361,697,326"/>
+<area shape="poly" title=" " alt="" coords="482,145,413,185,410,180,479,141"/>
+<area shape="rect" href="device__handler_8h.html" title=" " alt="" coords="482,183,640,223"/>
+<area shape="poly" title=" " alt="" coords="543,148,556,181,551,183,538,150"/>
+<area shape="rect" href="mixer_8cpp.html" title=" " alt="" coords="664,183,799,223"/>
+<area shape="poly" title=" " alt="" coords="588,139,686,180,684,185,586,143"/>
+<area shape="poly" title=" " alt="" coords="556,239,529,360,524,359,551,238"/>
+<area shape="poly" title=" " alt="" coords="640,226,780,268,778,273,639,231"/>
+</map>
+</div>
+</div>
+<p><a href="common_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Определения типов</h2></td></tr>
+<tr class="memitem:afd09629dd82d36841459b86c16d1dd90" id="r_afd09629dd82d36841459b86c16d1dd90"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd09629dd82d36841459b86c16d1dd90">SAMPLE_TYPE</a> = short</td></tr>
+<tr class="separator:afd09629dd82d36841459b86c16d1dd90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d0ab8b68f205bd6027ca4e5ba1e2ef1" id="r_a4d0ab8b68f205bd6027ca4e5ba1e2ef1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d0ab8b68f205bd6027ca4e5ba1e2ef1">dev_status</a> = std::pair&lt; <a class="el" href="#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>, std::string &gt;</td></tr>
+<tr class="separator:a4d0ab8b68f205bd6027ca4e5ba1e2ef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96165ad54bf3b8541c220e00c39f6306" id="r_a96165ad54bf3b8541c220e00c39f6306"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a> = std::shared_ptr&lt;std::vector&lt;<a class="el" href="#afd09629dd82d36841459b86c16d1dd90">SAMPLE_TYPE</a>&gt;&gt;</td></tr>
+<tr class="separator:a96165ad54bf3b8541c220e00c39f6306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a9b2bab273ada6a7bfb1620a4758eff" id="r_a9a9b2bab273ada6a7bfb1620a4758eff"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a9b2bab273ada6a7bfb1620a4758eff">device_sample</a> = std::pair&lt;<a class="el" href="#afd09629dd82d36841459b86c16d1dd90">SAMPLE_TYPE</a>*, size_t&gt;</td></tr>
+<tr class="separator:a9a9b2bab273ada6a7bfb1620a4758eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3d1165b963e6786c2e6b4f719b4eacf" id="r_af3d1165b963e6786c2e6b4f719b4eacf"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3d1165b963e6786c2e6b4f719b4eacf">records_storage</a> = std::shared_ptr&lt;std::list&lt;<a class="el" href="#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a>&gt;&gt;</td></tr>
+<tr class="separator:af3d1165b963e6786c2e6b4f719b4eacf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a67a0db04d321a74b7e7fcfd3f1a3f70b" id="r_a67a0db04d321a74b7e7fcfd3f1a3f70b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> { <a class="el" href="#a67a0db04d321a74b7e7fcfd3f1a3f70bae2fa538867c3830a859a5b17ab24644b">created</a>
+, <a class="el" href="#a67a0db04d321a74b7e7fcfd3f1a3f70ba8d7b3d6b83c0a517eac07e1aac94b773">unchanged</a>
+, <a class="el" href="#a67a0db04d321a74b7e7fcfd3f1a3f70baea39ca605eebd14322f913b37f7f3688">brocken</a>
+ }</td></tr>
+<tr class="separator:a67a0db04d321a74b7e7fcfd3f1a3f70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a3848559e59b1d43c26bd374965e91719" id="r_a3848559e59b1d43c26bd374965e91719"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3848559e59b1d43c26bd374965e91719">DAEMON_NAME</a> = &quot;dictaphone4linux&quot;</td></tr>
+<tr class="separator:a3848559e59b1d43c26bd374965e91719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4203cb08fd9823f5614e85e0ffd1c1a" id="r_aa4203cb08fd9823f5614e85e0ffd1c1a"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4203cb08fd9823f5614e85e0ffd1c1a">BUFFERS_COUNT</a> = 20</td></tr>
+<tr class="separator:aa4203cb08fd9823f5614e85e0ffd1c1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a017c6db4ab1f280dea426f06f5b681f1" id="r_a017c6db4ab1f280dea426f06f5b681f1"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a017c6db4ab1f280dea426f06f5b681f1">SAMPLE_RATE</a> = 44100</td></tr>
+<tr class="separator:a017c6db4ab1f280dea426f06f5b681f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e1746c45bf6fc93de15270dd8eaa33" id="r_a51e1746c45bf6fc93de15270dd8eaa33"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51e1746c45bf6fc93de15270dd8eaa33">NUM_CHANNELS</a> = 1</td></tr>
+<tr class="separator:a51e1746c45bf6fc93de15270dd8eaa33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ae2d858c19a32b80fab195ee52d1ee3" id="r_a7ae2d858c19a32b80fab195ee52d1ee3"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ae2d858c19a32b80fab195ee52d1ee3">CHUNK_BUFFER_SIZE</a> = 512</td></tr>
+<tr class="separator:a7ae2d858c19a32b80fab195ee52d1ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d19c927e10b629da1665060fffbc09d" id="r_a0d19c927e10b629da1665060fffbc09d"><td class="memItemLeft" align="right" valign="top">constexpr unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d19c927e10b629da1665060fffbc09d">SAMPLE_VAL</a></td></tr>
+<tr class="separator:a0d19c927e10b629da1665060fffbc09d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Типы</h2>
+<a id="a4d0ab8b68f205bd6027ca4e5ba1e2ef1" name="a4d0ab8b68f205bd6027ca4e5ba1e2ef1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d0ab8b68f205bd6027ca4e5ba1e2ef1">&#9670;&#160;</a></span>dev_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a4d0ab8b68f205bd6027ca4e5ba1e2ef1">dev_status</a> = std::pair&lt; <a class="el" href="#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>, std::string &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a9b2bab273ada6a7bfb1620a4758eff" name="a9a9b2bab273ada6a7bfb1620a4758eff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a9b2bab273ada6a7bfb1620a4758eff">&#9670;&#160;</a></span>device_sample</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a9a9b2bab273ada6a7bfb1620a4758eff">device_sample</a> = std::pair&lt;<a class="el" href="#afd09629dd82d36841459b86c16d1dd90">SAMPLE_TYPE</a>*, size_t&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96165ad54bf3b8541c220e00c39f6306" name="a96165ad54bf3b8541c220e00c39f6306"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96165ad54bf3b8541c220e00c39f6306">&#9670;&#160;</a></span>record_sample_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a> = std::shared_ptr&lt;std::vector&lt;<a class="el" href="#afd09629dd82d36841459b86c16d1dd90">SAMPLE_TYPE</a>&gt;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af3d1165b963e6786c2e6b4f719b4eacf" name="af3d1165b963e6786c2e6b4f719b4eacf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3d1165b963e6786c2e6b4f719b4eacf">&#9670;&#160;</a></span>records_storage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#af3d1165b963e6786c2e6b4f719b4eacf">records_storage</a> = std::shared_ptr&lt;std::list&lt;<a class="el" href="#a96165ad54bf3b8541c220e00c39f6306">record_sample_data</a>&gt;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd09629dd82d36841459b86c16d1dd90" name="afd09629dd82d36841459b86c16d1dd90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd09629dd82d36841459b86c16d1dd90">&#9670;&#160;</a></span>SAMPLE_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#afd09629dd82d36841459b86c16d1dd90">SAMPLE_TYPE</a> = short</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Перечисления</h2>
+<a id="a67a0db04d321a74b7e7fcfd3f1a3f70b" name="a67a0db04d321a74b7e7fcfd3f1a3f70b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67a0db04d321a74b7e7fcfd3f1a3f70b">&#9670;&#160;</a></span>Status</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Статусы устройства </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a67a0db04d321a74b7e7fcfd3f1a3f70bae2fa538867c3830a859a5b17ab24644b" name="a67a0db04d321a74b7e7fcfd3f1a3f70bae2fa538867c3830a859a5b17ab24644b"></a>created&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a67a0db04d321a74b7e7fcfd3f1a3f70ba8d7b3d6b83c0a517eac07e1aac94b773" name="a67a0db04d321a74b7e7fcfd3f1a3f70ba8d7b3d6b83c0a517eac07e1aac94b773"></a>unchanged&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a67a0db04d321a74b7e7fcfd3f1a3f70baea39ca605eebd14322f913b37f7f3688" name="a67a0db04d321a74b7e7fcfd3f1a3f70baea39ca605eebd14322f913b37f7f3688"></a>brocken&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Переменные</h2>
+<a id="aa4203cb08fd9823f5614e85e0ffd1c1a" name="aa4203cb08fd9823f5614e85e0ffd1c1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4203cb08fd9823f5614e85e0ffd1c1a">&#9670;&#160;</a></span>BUFFERS_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t BUFFERS_COUNT = 20</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7ae2d858c19a32b80fab195ee52d1ee3" name="a7ae2d858c19a32b80fab195ee52d1ee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ae2d858c19a32b80fab195ee52d1ee3">&#9670;&#160;</a></span>CHUNK_BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t CHUNK_BUFFER_SIZE = 512</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3848559e59b1d43c26bd374965e91719" name="a3848559e59b1d43c26bd374965e91719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3848559e59b1d43c26bd374965e91719">&#9670;&#160;</a></span>DAEMON_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string DAEMON_NAME = &quot;dictaphone4linux&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a51e1746c45bf6fc93de15270dd8eaa33" name="a51e1746c45bf6fc93de15270dd8eaa33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e1746c45bf6fc93de15270dd8eaa33">&#9670;&#160;</a></span>NUM_CHANNELS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t NUM_CHANNELS = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a017c6db4ab1f280dea426f06f5b681f1" name="a017c6db4ab1f280dea426f06f5b681f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a017c6db4ab1f280dea426f06f5b681f1">&#9670;&#160;</a></span>SAMPLE_RATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t SAMPLE_RATE = 44100</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d19c927e10b629da1665060fffbc09d" name="a0d19c927e10b629da1665060fffbc09d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d19c927e10b629da1665060fffbc09d">&#9670;&#160;</a></span>SAMPLE_VAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long SAMPLE_VAL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Инициализатор</b><div class="fragment"><div class="line">= []() <span class="keyword">constexpr</span> -&gt; <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span></div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">if</span>(std::is_same_v&lt;SAMPLE_TYPE, int&gt;)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">return</span> paInt32;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(std::is_same_v&lt;SAMPLE_TYPE, short&gt;)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">return</span> paInt16;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">return</span> paFloat32;</div>
+<div class="line">    }</div>
+<div class="line">}()</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

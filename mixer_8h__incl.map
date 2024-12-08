@@ -1,0 +1,26 @@
+<map id="dictaphone&#45;core/include/mixer.h" name="dictaphone&#45;core/include/mixer.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="212,5,371,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,94,66,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,49,82,94,80,89,227,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="90,94,141,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="249,49,156,90,154,85,246,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="332,168,390,193"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="252,49,229,63,210,81,201,99,201,109,206,118,228,141,257,157,288,167,317,173,316,178,286,172,255,162,225,145,201,121,196,110,196,98,206,78,226,59,249,44"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="215,94,282,120"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="283,48,265,81,260,79,279,45"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="307,94,364,120"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="305,45,324,79,319,82,300,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="388,94,491,120"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="330,44,405,84,402,89,327,49"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="515,94,625,120"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="362,44,514,87,512,92,360,49"/>
+<area shape="rect" id="Node000009" href="$common_8h.html" title=" " alt="" coords="650,94,731,120"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="372,39,635,91,634,96,371,45"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="650,120,405,172,404,167,649,114"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="595,168,633,193"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="679,122,640,159,636,155,675,118"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="658,168,723,193"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="693,120,693,152,688,152,688,120"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="747,168,831,193"/>
+<area shape="poly" id="edge12_Node000009_Node000012" title=" " alt="" coords="708,118,762,156,759,161,705,122"/>
+</map>

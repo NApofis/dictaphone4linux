@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['sample_5frate_0',['SAMPLE_RATE',['../common_8h.html#a017c6db4ab1f280dea426f06f5b681f1',1,'common.h']]],
+  ['sample_5ftype_1',['SAMPLE_TYPE',['../common_8h.html#afd09629dd82d36841459b86c16d1dd90',1,'common.h']]],
+  ['sample_5fval_2',['SAMPLE_VAL',['../common_8h.html#a0d19c927e10b629da1665060fffbc09d',1,'common.h']]],
+  ['save_3',['save',['../classConfig.html#a1a590ec335014f1f5314995a23e8edd1',1,'Config']]],
+  ['save_5fconfig_4',['save_config',['../structUIConfigHandler.html#a926fcbff4f6334e5ec95bae8fc63ede1',1,'UIConfigHandler']]],
+  ['selected_5fdelete_5fperiod_5',['selected_delete_period',['../structUIDeleterRecords.html#a8dd4e511d1af69a2f3ddacd03f7ed881',1,'UIDeleterRecords']]],
+  ['selected_5fdelete_5fvalue_6',['selected_delete_value',['../structUIDeleterRecords.html#aabc465a72a3660d0a6968c0c5e8a46cc',1,'UIDeleterRecords']]],
+  ['selected_5finput_5fdevice_7',['selected_input_device',['../structUIConfigHandler.html#a1480ddecc16076655041b282c961e0f2',1,'UIConfigHandler']]],
+  ['selected_5finput_5fdevice_5fname_8',['selected_input_device_name',['../structUIConfigHandler.html#ac39710882e03ed203e938268cbff20b4',1,'UIConfigHandler']]],
+  ['selected_5foutput_5fdevice_9',['selected_output_device',['../structUIConfigHandler.html#a1ebb915fda289f188066d335bba2b587',1,'UIConfigHandler']]],
+  ['selected_5foutput_5fdevice_5fname_10',['selected_output_device_name',['../structUIConfigHandler.html#ab29ca0d7112c176a97d7f0958436f6c9',1,'UIConfigHandler']]],
+  ['separator_11',['SEPARATOR',['../namespaceportaudio.html#ae42f3451a5bdfebb66594fa8cd06b42c',1,'portaudio']]],
+  ['shelf_5flife_12',['shelf_life',['../structUIConfigHandler.html#ac8ac622169b1a66953e28654a40d4112',1,'UIConfigHandler::shelf_life'],['../classConfig.html#a97ed7039d3e132bdb61a9012af59055f',1,'Config::shelf_life()'],['../classConfig.html#aef4d96c9fbfe3a22e0080cc06039f0e4',1,'Config::shelf_life(unsigned int val)']]],
+  ['sound_2ecpp_13',['sound.cpp',['../sound_8cpp.html',1,'']]],
+  ['sound_2eh_14',['sound.h',['../sound_8h.html',1,'']]],
+  ['soundsavecontroller_15',['SoundSaveController',['../classSoundSaveController.html',1,'']]],
+  ['split_5fby_5findex_16',['split_by_index',['../namespaceportaudio.html#a464bb88410f105096508bb9e50d239e2',1,'portaudio']]],
+  ['start_17',['start',['../namespacedaemon__command.html#ad055ba80fb9a7b3efa84196f1b0d9e91',1,'daemon_command']]],
+  ['start_5fstring_18',['START_STRING',['../dictaphone-common_2include_2config_8h.html#ac48682ed81129a4877eaae1911b9892f',1,'config.h']]],
+  ['status_19',['Status',['../common_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b',1,'common.h']]],
+  ['stop_20',['stop',['../classDaemon.html#ab84d0d2c8706f8c4f3866379c728f01c',1,'Daemon::stop()'],['../classMixer.html#ae36e97b0769fe6c317aa9e7fea14884c',1,'Mixer::stop()'],['../namespacedaemon__command.html#a7bb253a5396a03870f3b61f55279205a',1,'daemon_command::stop()']]],
+  ['storage_5frecords_21',['storage_records',['../structData.html#a6de003fed223e941ea0c58ebee69e3c2',1,'Data']]],
+  ['storage_5frecords_5flock_22',['storage_records_lock',['../structData.html#ac8e5ed8dff616598544f2ae45a298415',1,'Data']]],
+  ['streamdata_23',['StreamData',['../structportaudio_1_1StreamData.html',1,'portaudio']]]
+];

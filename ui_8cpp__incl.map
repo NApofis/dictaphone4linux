@@ -1,0 +1,23 @@
+<map id="dictaphone&#45;cli/src/ui.cpp" name="dictaphone&#45;cli/src/ui.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="344,5,467,46"/>
+<area shape="rect" id="Node000002" href="$ui_8h.html" title=" " alt="" coords="250,94,291,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="373,49,306,88,303,83,370,44"/>
+<area shape="rect" id="Node000008" href="$records_8h.html" title=" " alt="" coords="368,94,442,120"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="408,46,408,78,402,78,402,46"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="450,168,510,193"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="424,45,457,93,469,123,477,152,472,153,464,125,452,95,420,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="244,241,297,267"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="273,120,273,226,268,226,268,120"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="308,168,375,193"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="284,118,320,155,317,158,280,122"/>
+<area shape="rect" id="Node000005" href="$pulseaudio__device_8h.html" title=" " alt="" coords="5,168,144,193"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="250,118,123,164,121,159,249,113"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="167,168,232,193"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="261,122,224,158,221,155,257,118"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="109,191,230,235,228,240,107,196"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="46,241,103,267"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="77,194,77,226,72,226,72,194"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="408,120,405,156,399,176,389,195,372,212,353,225,313,244,311,239,350,221,369,208,384,192,394,174,400,155,403,120"/>
+<area shape="poly" id="edge11_Node000008_Node000004" title=" " alt="" coords="397,122,364,158,360,154,393,118"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="420,118,458,155,455,159,416,122"/>
+</map>
