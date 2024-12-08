@@ -26,7 +26,7 @@ namespace portaudio
         unsigned int data_id = 0;
     };
 
-    void connect(const std::string& device, const std::shared_ptr<Keeper>& keeper, const std::shared_ptr<std::atomic_bool>& flag);
+    void connect(PaStreamParameters params, const std::string& device, const std::shared_ptr<Keeper>& keeper, const std::shared_ptr<std::atomic_bool>& flag);
     static int callback(const void* input_data, void*, unsigned long frames_per_Buffer,
         const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void* user_data);
 }

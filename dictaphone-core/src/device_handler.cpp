@@ -11,47 +11,13 @@
 
 namespace portaudio
 {
-    void connect(const std::string& device, const std::shared_ptr<Keeper>& keeper, const std::shared_ptr<std::atomic_bool>& flag)
+    void connect(const PaStreamParameters params, const std::string& device, const std::shared_ptr<Keeper>& keeper, const std::shared_ptr<std::atomic_bool>& flag)
     {
-
-        freopen("/dev/null","w",stderr);
-        PaError err = Pa_Initialize();
-        freopen("/dev/tty","w",stderr);
-        if (err != paNoError) {
-            Loger::error("Не удалось подключится к устройству " + device);
-            flag->store(true);
-            return;
-        }
-
-        bool found = false;
-        PaStreamParameters inputParameters;
-        for (int i = 0; i < Pa_GetDeviceCount(); i++)
-        {
-            const PaDeviceInfo* deviceInfo = Pa_GetDeviceInfo(i);
-            if(std::string(deviceInfo->name).find(device) != std::string::npos)
-            {
-                inputParameters.device = i;
-                found = true;
-            }
-        }
-
-        if (!found)
-        {
-            Loger::error("Не удалось найти устройство " + device);
-            flag->store(true);
-            return;
-        }
-
-        inputParameters.channelCount = 1;
-        inputParameters.sampleFormat = SAMPLE_VAL;
-        inputParameters.suggestedLatency = Pa_GetDeviceInfo(inputParameters.device)->defaultHighInputLatency;
-        inputParameters.hostApiSpecificStreamInfo = nullptr;
-
         PaStream* stream;
         StreamData data = {device, 0, keeper};
-        err = Pa_OpenStream(
+        PaError err = Pa_OpenStream(
             &stream,
-            &inputParameters,
+            &params,
             nullptr,
             SAMPLE_RATE,
             CHUNK_BUFFER_SIZE,
@@ -61,7 +27,7 @@ namespace portaudio
 
         if (err != paNoError)
         {
-            Loger::error("Не удалось подключится к устройству " + device);
+            Loger::error("Устройство найдено " + device + " но к нему не удалось подключиться");
             flag->store(true);
             return;
         }
@@ -69,7 +35,7 @@ namespace portaudio
         err = Pa_StartStream(stream);
         if (err != paNoError)
         {
-            Loger::error("Не удалось подключится к устройству " + device);
+            Loger::error("Не начать чтение с устройства  " + device);
             flag->store(true);
             return;
         }
@@ -82,7 +48,6 @@ namespace portaudio
                 Pa_Sleep(1000);
             }
             Pa_CloseStream(stream);
-            Pa_Terminate();
         }
         catch (std::exception& e)
         {
