@@ -84,6 +84,10 @@ void DeviceController::connect_device(dev_status& new_dev, DeviceHandlerInfo& de
     {
         // Запись устройства отключили.
         new_dev.first = Status::unchanged;
+        if (!dev_info.name.empty())
+        {
+            device_disconnect(dev_info);
+        }
         return;
     }
 
